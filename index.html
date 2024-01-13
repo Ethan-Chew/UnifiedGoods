@@ -10,12 +10,13 @@
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
+        <script src="./tailwind.config.js"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
         <header class="flex flex-col fixed w-screen">
             <!-- Top Nav -->
-            <div class="bg-slate-300 flex items-center px-5 py-2">
+            <div class="bg-lightblue flex items-center px-5 py-2">
                 <!-- Left Navigation -->
                 <div class="flex-1 flex justify-left gap-6 mr-auto">
                     <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
@@ -30,7 +31,7 @@
                 <!-- Right Navigation -->
                 <div class="flex-1 flex gap-6 items-center justify-end">
                     <i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i>
-                    <button class="py-2 px-4 bg-slate-400 rounded-xl font-medium cursor-pointer">
+                    <button class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </button>
                 </div>
