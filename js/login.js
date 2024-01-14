@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (userObj.password === password) {
                         sessionStorage.setItem("userID", data._id)
                         window.location.href = "index.html"
+                    } else {
+                        errorField.innerText = "Incorrect Password!"
                     }
                 }
             })
