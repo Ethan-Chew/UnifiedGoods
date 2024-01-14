@@ -10,6 +10,7 @@
         
         <!-- JS Functions -->
         <script src="./tailwind.config.js"></script>
+        <script src="./js/login.js"></script>
     </head>
     <body>
         <div class="flex flex-row w-screen h-screen">
@@ -29,31 +30,38 @@
                         <p class="text-xl">Welcome Back. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     
-                    <div class="flex flex-col gap-3">
-                        <label>
-                            <p class="mb-1">Username</p>
-                            <input 
-                            type="text"
-                            class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
-                            ></input>
-                        </label>
-                        <label>
-                            <p class="mb-1">Password</p>
-                            <input 
-                            type="password"
-                            class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
-                            ></input>
-                        </label>
-                    </div>
-
-                    <div class="flex flex-row gap-10 mt-8">
-                        <button class="px-5 py-2 text-white rounded-lg bg-btnblue hover:bg-mainblue/[0.9]">
-                            Login
-                        </button>
-                        <button class="px-5 py-2 border-2 rounded-lg border-btnblue hover:border-mainblue/[0.9]">
-                            <a href="/create.html">Create an Account</a>
-                        </button>
-                    </div>
+                    <form id="login-form">
+                        <div class="flex flex-col gap-3">
+                            <label>
+                                <p class="mb-1">Username</p>
+                                <input 
+                                type="text"
+                                id="username"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
+                                ></input>
+                            </label>
+                            <label>
+                                <p class="mb-1">Password</p>
+                                <input 
+                                type="password"
+                                id="password"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
+                                ></input>
+                            </label>
+                        </div>
+    
+                        <div class="flex flex-row gap-10 mt-8">
+                            <button type="submit" id="submit-login" class="px-5 py-2 text-white rounded-lg bg-btnblue hover:bg-mainblue/[0.9]">
+                                Login
+                            </button>
+                            <button class="px-5 py-2 border-2 rounded-lg border-btnblue hover:border-mainblue/[0.9]">
+                                <a href="/create.html">Create an Account</a>
+                            </button>
+                        </div>
+                        <p class="mt-1 text-red-800" id="err-msg"></p>
+                    </form>
                 </div>
             </div>
         </div>

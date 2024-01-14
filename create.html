@@ -10,6 +10,7 @@
         
         <!-- JS Functions -->
         <script src="./tailwind.config.js"></script>
+        <script src="./js/createacc.js"></script>
     </head>
     <body>
         <div class="flex flex-row w-screen h-screen">
@@ -26,54 +27,76 @@
                         <p class="text-xl">Join (insert name), and start buying xxx with ease!</p>
                     </div>
                     
-                    <div class="flex flex-col gap-3">
-                        <div class="flex gap-3">
+                    <form id="create-form">
+                        <div class="flex flex-col gap-3">
+                            <div class="flex gap-3">
+                                <label>
+                                    <p class="mb-1">First Name</p>
+                                    <input 
+                                    type="text"
+                                    id="first-name"
+                                    class="px-2 py-1 border-slate-400 border-2 rounded-lg"
+                                    required
+                                    ></input>
+                                </label>
+                                <label>
+                                    <p class="mb-1">Last Name</p>
+                                    <input 
+                                    type="text"
+                                    id="last-name"
+                                    class="px-2 py-1 border-slate-400 border-2 rounded-lg"
+                                    required
+                                    ></input>
+                                </label>
+                            </div>
                             <label>
-                                <p class="mb-1">First Name</p>
+                                <p class="mb-1">Username</p>
                                 <input 
                                 type="text"
-                                class="px-2 py-1 border-slate-400 border-2 rounded-lg"
+                                id="username"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
                                 ></input>
                             </label>
                             <label>
-                                <p class="mb-1">Last Name</p>
+                                <p class="mb-1">Email</p>
                                 <input 
-                                type="text"
-                                class="px-2 py-1 border-slate-400 border-2 rounded-lg"
+                                type="email"
+                                id="email"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
+                                ></input>
+                            </label>
+                            <label>
+                                <p class="mb-1">Password</p>
+                                <input 
+                                type="password"
+                                id="password"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
+                                ></input>
+                            </label>
+                            <label>
+                                <p class="mb-1">Confirm Password</p>
+                                <input 
+                                type="password"
+                                id="confirmPassword"
+                                class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
+                                required
                                 ></input>
                             </label>
                         </div>
-                        <label>
-                            <p class="mb-1">Username</p>
-                            <input 
-                            type="text"
-                            class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
-                            ></input>
-                        </label>
-                        <label>
-                            <p class="mb-1">Password</p>
-                            <input 
-                            type="password"
-                            class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
-                            ></input>
-                        </label>
-                        <label>
-                            <p class="mb-1">Confirm Password</p>
-                            <input 
-                            type="password"
-                            class="px-2 py-1 w-1/2 border-slate-400 border-2 rounded-lg"
-                            ></input>
-                        </label>
-                    </div>
-
-                    <div class="flex flex-row gap-10 mt-5">
-                        <button class="px-5 py-2 text-white rounded-lg bg-mainblue/[0.7] hover:bg-mainblue/[0.9]">
-                            Create
-                        </button>
-                        <button class="px-5 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
-                            <a href="/login.html">Sign In</a>
-                        </button>
-                    </div>
+    
+                        <div class="flex flex-row gap-10 mt-5">
+                            <button type="submit" id="submit-create" class="px-5 py-2 text-white rounded-lg bg-mainblue/[0.7] hover:bg-mainblue/[0.9]">
+                                Create
+                            </button>
+                            <button class="px-5 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
+                                <a href="/login.html">Sign In</a>
+                            </button>
+                        </div>
+                        <p class="mt-1 text-red-800" id="err-msg"></p>
+                    </form>
                 </div>
             </div>
         </div>
