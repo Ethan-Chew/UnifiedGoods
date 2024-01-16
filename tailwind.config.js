@@ -6,7 +6,16 @@ tailwind.config = {
                 lightblue: "#A3BAC3",
                 btnblue: "#539eb4",
                 btn2blue: "#4697af"
-            }
+            },
+            animation: {
+                'infinite-scroll': 'infinite-scroll 25s linear infinite',
+            },
+            keyframes: {
+                'infinite-scroll': {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-100%)' },
+                }
+            }  
         }
     }
 }

@@ -3,17 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="referrer" content="no-referrer">
         <link rel="stylesheet" href="./styles/components/navbar.css" type="text/css">
-        <link rel="stylesheet" href="./styles/index.css" type="text/css">
         
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
-        <script src="./js/index.js"></script>
         <script src="./tailwind.config.js"></script>
+        <script src="./js/product.js"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -56,63 +54,7 @@
             </nav>
         </header>
 
-        <!-- Main Body Contents -->
-        <div class="w-screen flex flex-col">
-            <!-- Featured Product Banner -->
-            <img class="w-full aspect-auto" srcset="/img/banner.jpg">
-
-            <!-- Website Information -->
-            <section class="p-5">
-                <h1 class="font-bold text-3xl">App Name</h1>
-                <p class="text-balance">Bla Bla Bla</p>
-            </section>
-
-            <!-- Items -->
-            <section class="bg-lightblue/[0.2] p-5">
-                <h1 class="font-bold text-3xl">Trending Items</h1>
-                <!-- Featured Items -->
-                <div class="items-center my-5">
-                    <!-- Items -->
-                    <!-- NOTE: Can be a scrolling carousell -->
-                    <div id="carousel" class="flex flex-row flex-wrap gap-5"></div>
-                </div>
-            </div>
-
-            <!-- Categories -->
-            <section class="flex flex-col p-5">
-                <h1 class="font-bold text-3xl">Categories</h1>
-                <div class="flex w-full mx-auto items-center">
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Video -->
-            <div>
-                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/GMMLgHC8wVE" title="GYATT FOR NERIZZLER 【Full Version + 1 Hour Loop】 [Hololive Advent - Rebellion Remix by Ludokano]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-
-            <!-- News -->
-            <section class="flex flex-col p-5">
-                <h1 class="font-bold text-3xl">News</h1>
-                <p class="text-balance">Bla Bla Bla</p>
-            </section>
-        </d>
+        <!-- Main Content -->
         
         <!-- Contacts and about -->
         <footer class="bg-black flex flex-row align-center px-5 py-8 text-white">
