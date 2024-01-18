@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <header class="flex flex-col fixed top-0 w-screen">
+            <!-- Top Nav -->
+            <div class="bg-lightblue flex items-center px-5 py-2">
+                <!-- Left Navigation -->
+                <div class="flex-1 flex justify-left gap-6 mr-auto">
+                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                    <i data-feather="search" class="stroke-2 cursor-pointer"></i>
+                </div>
+
+                <!-- Logo -->
+                <div class="font-bold text-2xl">
+                    App Name
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex-1 flex gap-6 items-center justify-end">
+                    <i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i>
+                    <a href="/signin.html" id="sign-in-btn" class="hidden md:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Bottom Nav (Desktop) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 hidden sm:flex flex-row justify-center">
+                <a class="cursor-pointer">Tab 1</a>
+                <a class="cursor-pointer">Tab 2</a>
+                <a class="cursor-pointer">Tab 3</a>
+                <a class="cursor-pointer">Tab 4</a>
+            </nav>
+            <!-- Bottom Nav (Mobile) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                <a>Tab 1</a>
+                <a>Tab 2</a>
+                <a>Tab 3</a>
+                <a>Tab 4</a>
+                <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    Sign In
+                </a>
+            </nav>
+        </header>
+    </body>
+</html>

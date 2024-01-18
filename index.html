@@ -17,7 +17,7 @@
     </head>
     <body>
         <!-- Navigation Bar -->
-        <header class="flex flex-col fixed w-screen">
+        <header class="flex flex-col fixed top-0 w-screen">
             <!-- Top Nav -->
             <div class="bg-lightblue flex items-center px-5 py-2">
                 <!-- Left Navigation -->
@@ -34,7 +34,7 @@
                 <!-- Right Navigation -->
                 <div class="flex-1 flex gap-6 items-center justify-end">
                     <i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i>
-                    <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    <a href="/signin.html" id="sign-in-btn" class="hidden md:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
                 </div>
@@ -53,6 +53,9 @@
                 <a>Tab 2</a>
                 <a>Tab 3</a>
                 <a>Tab 4</a>
+                <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    Sign In
+                </a>
             </nav>
         </header>
 

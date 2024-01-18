@@ -25,4 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("product-title").innerText = chosenProduct.title
             document.getElementById("product-desc").innerText = chosenProduct.description
         })
+    
+    // Check Sign In on Add to Cart
+    const addToCart = document.getElementById("add-cart-btn")
+    addToCart.addEventListener("click", function () {
+        if (!sessionStorage.getItem("userID")) {
+            document.getElementById("overlay").classList.remove("hidden")
+        }
+    })
 })
