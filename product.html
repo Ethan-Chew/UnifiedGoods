@@ -8,6 +8,7 @@
         
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
@@ -32,7 +33,7 @@
 
                 <!-- Right Navigation -->
                 <div class="flex-1 flex gap-6 items-center justify-end">
-                    <i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i>
+                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
                     <a href="/signin.html" id="sign-in-btn" class="hidden md:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
@@ -94,7 +95,8 @@
                                 >
                             </label>
                             <button id="add-cart-btn" class="w-1/2 bg-subblack rounded-lg text-white py-3">
-                                Add to Cart
+                                <a id="add-cart-lbl">Add to Cart</a>
+                                <dotlottie-player id="add-success" class="hidden h-9" src="https://lottie.host/229f7728-ef72-43e6-b892-471c222ff89d/9N8CY90e5D.json" background="transparent" speed="1"></dotlottie-player>
                             </button>
                         </div>
                     </div>

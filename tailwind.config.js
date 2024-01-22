@@ -6,7 +6,8 @@ tailwind.config = {
                 lightblue: "#A3BAC3",
                 btnblue: "#539eb4",
                 btn2blue: "#4697af",
-                subblack: "#171214"
+                subblack: "#171214",
+                offwhite: "#F9F9F9"
             },
             animation: {
                 'infinite-scroll': 'infinite-scroll 25s linear infinite',
