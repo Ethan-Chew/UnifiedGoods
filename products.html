@@ -3,9 +3,183 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <meta name="referrer" content="no-referrer">
+        <title>Products List</title>
+        <link rel="stylesheet" href="./styles/components/navbar.css" type="text/css">
+        <link rel="stylesheet" href="./styles/index.css" type="text/css">
+        
+        <script src="https://cdn.tailwindcss.com"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
+        
+        <!-- JS Functions -->
+        <script src="./js/components/navbar.js"></script>
+        <script src="./js/index.js"></script>
+        <script src="./tailwind.config.js"></script>
     </head>
     <body>
-        <p>Products Page goes here</p>
+        <!-- Navigation Bar -->
+        <header class="flex flex-col fixed top-0 w-screen">
+            <!-- Top Nav -->
+            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                <!-- Left Navigation -->
+                <div class="flex-1 flex justify-left gap-6 mr-auto">
+                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                    <i data-feather="search" class="stroke-2 cursor-pointer"></i>
+                </div>
+
+                <!-- Logo -->
+                <div class="font-bold text-2xl">
+                    <a href="/">App Name</a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex-1 flex gap-6 items-center justify-end">
+                    <i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i>
+                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Bottom Nav (Desktop) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 hidden sm:flex flex-row justify-center">
+                <a class="cursor-pointer">Home</a>
+                <a class="cursor-pointer">Products</a>
+                <a class="cursor-pointer">Rewards</a>
+                <a class="cursor-pointer">Tab 4</a>
+            </nav>
+            <!-- Bottom Nav (Mobile) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                <a>Tab 1</a>
+                <a>Tab 2</a>
+                <a>Tab 3</a>
+                <a>Tab 4</a>
+                <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    Sign In
+                </a>
+            </nav>
+        </header>
+        
+        <div class="w-screen h-screen pt-[15vh]">
+            <!--Categories (Desktop)-->
+            <div class="relative">
+                <div class="bg-lightblue hidden fixed w-[30vh] h-[80vh] p-4 text-center md:flex flex-col items-center">
+                    <div class="text-2xl font-bold m-4">
+                        Categories
+                    </div>
+                    <div>
+                        <input type="checkbox" id="option1" name="option">
+                        <label for="option1">Option1</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="option2" name="option">
+                        <label for="option2">Option2</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="option3" name="option">
+                        <label for="option3">Option3</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="option4" name="option">
+                        <label for="option4">Option4</label>
+                    </div>
+                </div>
+            </div>
+            <!--Categories (Mobile)-->
+            <div class="relative md:hidden">
+                <div class="bg-lightblue relative w-full h-full text-center flex flex-col p-5">
+                    <div class="text-2xl font-bold mb-4">
+                        Categories
+                    </div>
+                    <div class="flex flex-row justify-center">
+                        <div>
+                            <input type="checkbox" id="option1" name="option">
+                            <label for="option1">Option1</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="option2" name="option">
+                            <label for="option2">Option2</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="option3" name="option">
+                            <label for="option3">Option3</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="option4" name="option">
+                            <label for="option4">Option4</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="flex flex-col items-center justify-center lg:pl-[30vh]">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold mb-4">Products List</h1>
+                </div>
+
+                <!-- Products Display -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Product 1 -->
+                    <div class="bg-lightblue shadow-md p-4 rounded text-center">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold">Product 1</p>
+                            <p class="text-gray-600">Category</p>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="bg-lightblue shadow-md p-4 rounded text-center">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold">Product 2</p>
+                            <p class="text-gray-600">Category</p>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="bg-lightblue shadow-md p-4 rounded text-center">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold">Product 3</p>
+                            <p class="text-gray-600">Category</p>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="bg-lightblue shadow-md p-4 rounded text-center">
+                        <div class="flex items-center mb-4">
+                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold">Product 4</p>
+                            <p class="text-gray-600">Category</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts and about -->
+        <footer class="bg-black flex flex-row align-center px-5 py-8 text-white">
+            <div class="flex flex-col">
+                <p class="font-bold text-2xl">(some name)</p>
+                <p>Some Location</p> 
+            </div>
+            <div class="ml-auto">
+                <p class="font-bold text-xl">Contact Us</p>
+                <!-- Add Social Media Icons here -->
+            </div>
+        </footer>
+
+        <!-- Import Icons -->
+        <script src="https://unpkg.com/feather-icons"></script>
+        <script>
+            feather.replace();
+        </script> 
     </body>
 </html>
