@@ -19,16 +19,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (ids.includes(id)) {
                     id = Math.floor(Math.random() * (data.length))
                 } else { ids.push(id) }
-                const card = `<div class="w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center">
-                    <img class="aspect-square rounded-lg" src="${data[id].images[0]}" alt="${data[id].title}">
-                    <p class="font-bold text-center text-lg my-3">${data[id].title}</p>
-                    <div class="mt-auto flex flex-col md:flex-row items-center gap-10">
-                        <p class="text-lg">$${data[id].price}</p>
-                        <button class="px-5 py-2 bg-red-300 rounded-lg">
-                            <a href="/product.html?id=${data[id].id}">View More</a>
-                        </button>
+                const card = `<a class="w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${data[id].id}">
+                    <div>
+                        <img class="aspect-square rounded-lg" src="${data[id].images[0]}" alt="${data[id].title}">
+                        <p class="font-bold text-center text-lg my-3">${data[id].title}</p>
                     </div>
-                </div>`
+                </a>`
                 document.getElementById("carousel").innerHTML += card
             }
 

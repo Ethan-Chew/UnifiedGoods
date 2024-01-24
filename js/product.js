@@ -38,21 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
         // Show Sign In overlay if user not signed in
         if (!sessionStorage.getItem("userID")) {
             document.getElementById("overlay").classList.remove("hidden")
+        } else {
+            // Add to Local Storage
+    
+    
+            // Show Lottie Animation (hide after 1s)
+            const lottieSuccess = document.getElementById("add-success")
+            const addCartLabel = document.getElementById("add-cart-lbl")
+            addCartLabel.classList.add("hidden")
+            lottieSuccess.classList.remove("hidden")
+            lottieSuccess.goToAndStop(0, true);
+            lottieSuccess.play()
+            setTimeout(() => {
+                addCartLabel.classList.remove("hidden")
+                lottieSuccess.classList.add("hidden")
+            }, 2000)
         }
-
-        // Add to Local Storage
-
-
-        // Show Lottie Animation (hide after 1s)
-        const lottieSuccess = document.getElementById("add-success")
-        const addCartLabel = document.getElementById("add-cart-lbl")
-        addCartLabel.classList.add("hidden")
-        lottieSuccess.classList.remove("hidden")
-        lottieSuccess.goToAndStop(0, true);
-        lottieSuccess.play()
-        setTimeout(() => {
-            addCartLabel.classList.remove("hidden")
-            lottieSuccess.classList.add("hidden")
-        }, 2000)
     })
 })

@@ -12,7 +12,6 @@
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
-        <script src="./js/index.js"></script>
         <script src="./tailwind.config.js"></script>
     </head>
     <body>
@@ -60,74 +59,31 @@
         </header>
 
         <!-- Main Body Contents -->
-        <div class="w-screen flex flex-col">
-            <!-- Featured Product Banner -->
-            <img class="w-full aspect-auto" srcset="/img/banner.jpg">
-
-            <!-- Website Information -->
-            <section class="p-5">
-                <h1 class="font-bold text-3xl">App Name</h1>
-                <p class="text-balance">Bla Bla Bla</p>
-            </section>
-
-            <!-- Items -->
-            <section class="bg-lightblue/[0.2] p-5">
-                <h1 class="font-bold text-3xl">Trending Items</h1>
-                <!-- Featured Items -->
-                <div class="items-center my-5">
-                    <!-- Items -->
-                    <!-- NOTE: Can be a scrolling carousell -->
-                    <div id="carousel" class="flex flex-row overflow-x-auto gap-5"></div>
+        <div class="w-screen h-screen flex">
+            <div class="w-screen h-1/2 searchHeader flex flex-col justify-center items-center">
+                <div class="w-3/4 bg-white px-6 py-4 shadow-xl text-2xl relative top-44 rounded-3xl flex flex-col md:flex-row gap-5 align-left md:align-center items-left md:items-center">
+                    <!-- Search Field -->
+                    <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
+                        <i data-feather="search" class="h-8 w-8"></i>
+                        <input placeholder="Search..." class="p-1 w-full"></input>
+                    </div>
+                    <!-- Section Search -->
+                    <div class="flex flex-row gap-3">
+                        <i data-feather="shopping-bag" class="h-8 w-8"></i>
+                        <select>
+                            <option value="hello">Select Option</option>
+                            <option value="hello">hello</option>
+                            <option value="hello">hello</option>
+                            <option value="hello">hello</option>
+                            <option value="hello">hello</option>
+                        </select>
+                    </div>
+                    <button class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
+                        Search
+                    </button>
                 </div>
             </div>
-
-            <!-- Categories -->
-            <section class="flex flex-col p-5">
-                <h1 class="font-bold text-3xl">Categories</h1>
-                <div class="flex w-full mx-auto items-center">
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                    <div class="flex-1 p-5">
-                        <img class="w-[33rem] mx-auto" src="/img/category.jpg">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Video -->
-            <div>
-                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/GMMLgHC8wVE" title="GYATT FOR NERIZZLER 【Full Version + 1 Hour Loop】 [Hololive Advent - Rebellion Remix by Ludokano]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-
-            <!-- News -->
-            <section class="flex flex-col p-5">
-                <h1 class="font-bold text-3xl">News</h1>
-                <p class="text-balance">Bla Bla Bla</p>
-            </section>
-        </d>
-        
-        <!-- Contacts and about -->
-        <footer class="bg-black flex flex-row align-center px-5 py-8 text-white">
-            <div class="flex flex-col">
-                <p class="font-bold text-2xl">(some name)</p>
-                <p>Some Location</p> 
-            </div>
-            <div class="ml-auto">
-                <p class="font-bold text-xl">Contact Us</p>
-                <!-- Add Social Media Icons here -->
-            </div>
-        </footer>
+        </div>
 
         <!-- Import Icons -->
         <script src="https://unpkg.com/feather-icons"></script>
