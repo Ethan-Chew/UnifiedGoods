@@ -12,11 +12,12 @@
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
+        <script src="./js/search.js"></script>
         <script src="./tailwind.config.js"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
-        <header class="flex flex-col fixed top-0 w-screen drop-shadow-lg">
+        <header class="flex flex-col fixed top-0 w-screen drop-shadow-lg z-20">
             <!-- Top Nav -->
             <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
                 <!-- Left Navigation -->
@@ -67,23 +68,39 @@
                         <!-- Search Field -->
                         <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
                             <i data-feather="search" class="h-8 w-8"></i>
-                            <input placeholder="Search..." class="p-1 w-full"></input>
+                            <input id="search-field" placeholder="Search..." class="p-1 w-full"></input>
                         </div>
                         <!-- Section Search -->
                         <div class="flex flex-row gap-3">
                             <i data-feather="shopping-bag" class="h-8 w-8"></i>
-                            <select>
-                                <option value="hello">Select Option</option>
-                                <option value="hello">hello</option>
-                                <option value="hello">hello</option>
-                                <option value="hello">hello</option>
-                                <option value="hello">hello</option>
+                            <select id="category-field">
+                                <option value="0">Select Option</option>
+                                <option value="1">Clothes</option>
+                                <option value="2">Electronics</option>
+                                <option value="3">Furniture</option>
+                                <option value="4">Shoes</option>
+                                <option value="5">Miscellaneous</option>
+                                <option value="6">Men's Top</option>
+                                <option value="7">Men's Bottom</option>
+                                <option value="8">Women's Dress</option>
+                                <option value="9">Women's Top</option>
+                                <option value="10">Women's Bottom</option>
                             </select>
                         </div>
-                        <button class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
+                        <button id="search-submit" class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
                             Search
                         </button>
                     </div>
+                </div>
+            </div>
+            <div id="content-container" class="hidden px-10 py-5">
+                <div class="pb-8">
+                    <h2 class="text-3xl font-semibold" id="search-desc">Search for "..."</h2>
+                    <p class="text-xl" id="search-count">We found <span class="font-semibold">100</span> results.</p>
+                </div>
+
+                <div id="results-container" class="flex flex-row flex-wrap gap-x-8 gap-y-10">
+                    
                 </div>
             </div>
         </div>
