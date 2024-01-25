@@ -13,3 +13,4 @@ We have split the documentation for this project into other parts, which can be 
 3. [Technologies Used](./docs/testing.md) -- Outline of the various technologies used while creating the site
 
 ## Credits
+The [data](https://assets.ethanchew.com/main.json) used in this website has been taken from various sources, such as the SHEIN website. 

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (ids.includes(id)) {
                     id = Math.floor(Math.random() * (data.length))
                 } else { ids.push(id) }
-                const card = `<a class="w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${data[id].id}">
+                const card = `<a class="w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${data[id].id}&from=index">
                     <div>
                         <img class="aspect-square rounded-lg" src="${data[id].images[0]}" alt="${data[id].title}">
                         <p class="font-bold text-center text-lg my-3">${data[id].title}</p>
