@@ -59,28 +59,31 @@
         </header>
 
         <!-- Main Body Contents -->
-        <div class="w-screen h-screen flex">
-            <div class="w-screen h-1/2 searchHeader flex flex-col justify-center items-center">
-                <div class="w-3/4 bg-white px-6 py-4 shadow-xl text-2xl relative top-44 rounded-3xl flex flex-col md:flex-row gap-5 align-left md:align-center items-left md:items-center">
-                    <!-- Search Field -->
-                    <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
-                        <i data-feather="search" class="h-8 w-8"></i>
-                        <input placeholder="Search..." class="p-1 w-full"></input>
+        <div class="w-screen h-screen">
+            <div class="w-screen h-1/2 bg-gradient-to-br from-cyan-500 to-blue-500 flex justify-center items-center gap-14">
+                <div class="w-screen flex flex-col justify-center items-center relative top-16 gap-14">
+                    <h1 class="text-white text-6xl font-semibold">Find your Style</h1>
+                    <div class="w-3/4 bg-white px-6 py-4 shadow-xl text-2xl rounded-3xl flex flex-col md:flex-row gap-5 align-left md:align-center items-left md:items-center">
+                        <!-- Search Field -->
+                        <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
+                            <i data-feather="search" class="h-8 w-8"></i>
+                            <input placeholder="Search..." class="p-1 w-full"></input>
+                        </div>
+                        <!-- Section Search -->
+                        <div class="flex flex-row gap-3">
+                            <i data-feather="shopping-bag" class="h-8 w-8"></i>
+                            <select>
+                                <option value="hello">Select Option</option>
+                                <option value="hello">hello</option>
+                                <option value="hello">hello</option>
+                                <option value="hello">hello</option>
+                                <option value="hello">hello</option>
+                            </select>
+                        </div>
+                        <button class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
+                            Search
+                        </button>
                     </div>
-                    <!-- Section Search -->
-                    <div class="flex flex-row gap-3">
-                        <i data-feather="shopping-bag" class="h-8 w-8"></i>
-                        <select>
-                            <option value="hello">Select Option</option>
-                            <option value="hello">hello</option>
-                            <option value="hello">hello</option>
-                            <option value="hello">hello</option>
-                            <option value="hello">hello</option>
-                        </select>
-                    </div>
-                    <button class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
-                        Search
-                    </button>
                 </div>
             </div>
         </div>
