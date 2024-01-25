@@ -63,67 +63,97 @@
         <div class="w-screen h-screen pt-[15vh]">
             <!--Categories (Desktop)-->
             <div class="relative">
-                <div class="bg-lightblue hidden fixed w-[30vh] h-[80vh] p-4 text-center md:flex flex-col items-center">
-                    <div class="text-2xl font-bold m-4">
+                <div class="bg-lightblue hidden fixed w-[25vh] h-[50vh] p-4 md:flex flex-col">
+                    <div class="text-2xl text-center border-black border-2 w-[20vh] font-bold mb-4">
                         Categories
                     </div>
-                    <div>
+                    <div class="m-2">
                         <input type="checkbox" id="option1" name="option">
-                        <label for="option1">Option1</label>
+                        <label for="option1">Men's Top</label>
                     </div>
-                    <div>
+                    <div class="m-2">
                         <input type="checkbox" id="option2" name="option">
-                        <label for="option2">Option2</label>
+                        <label for="option2">Men's Bottom</label>
                     </div>
-                    <div>
+                    <div class="m-2">
                         <input type="checkbox" id="option3" name="option">
-                        <label for="option3">Option3</label>
+                        <label for="option3">Women's Dress</label>
                     </div>
-                    <div>
+                    <div class="m-2">
                         <input type="checkbox" id="option4" name="option">
-                        <label for="option4">Option4</label>
+                        <label for="option4">Women's Top</label>
                     </div>
+                    <div class="m-2">
+                        <input type="checkbox" id="option5" name="option">
+                        <label for="option5">Women's Bottom</label>
+                    </div>
+                    <div class="m-auto">
+                        <button class="bg-black text-white w-32">Apply</button>
+                    </div>
+                    <div class="m-auto">
+                        <button class="bg-black text-white w-32">Select All</button>
+                    </div>
+                    <div class="m-auto">
+                        <button class="bg-black text-white w-32">Clear</button>
+                    </div>
+                    
                 </div>
             </div>
             <!--Categories (Mobile)-->
             <div class="relative md:hidden">
-                <div class="bg-lightblue relative w-full h-full text-center flex flex-col p-5">
-                    <div class="text-2xl font-bold mb-4">
+                <div class="bg-lightblue relative w-full flex flex-col p-5">
+                    <div class="text-2xl text-center border-black border-2 w-[20vh] font-bold m-auto mb-4">
                         Categories
                     </div>
-                    <div class="flex flex-row justify-center">
-                        <div>
+                    <div class="grid grid-cols-2">
+                        <div class="p-1">
                             <input type="checkbox" id="option1" name="option">
-                            <label for="option1">Option1</label>
+                            <label for="option1">Men's Top</label>
                         </div>
-                        <div>
+                        <div class="p-1">
                             <input type="checkbox" id="option2" name="option">
-                            <label for="option2">Option2</label>
+                        <label for="option2">Men's Bottom</label>
                         </div>
-                        <div>
+                        <div class="p-1">
                             <input type="checkbox" id="option3" name="option">
-                            <label for="option3">Option3</label>
+                        <label for="option3">Women's Dress</label>
                         </div>
-                        <div>
+                        <div class="p-1">
                             <input type="checkbox" id="option4" name="option">
-                            <label for="option4">Option4</label>
+                        <label for="option4">Women's Top</label>
+                        </div>
+                        <div class="p-1">
+                            <input type="checkbox" id="option5" name="option">
+                        <label for="option5">Women's Bottom</label>
+                        </div>  
+                    </div>
+
+                    <div class="flex flex-row gap-1 flex-wrap">
+                        <div class="m-auto">
+                            <button class="bg-black text-white w-32">Apply</button>
+                        </div>
+                        <div class="m-auto">
+                            <button class="bg-black text-white w-32">Select All</button>
+                        </div>
+                        <div class="m-auto">
+                            <button class="bg-black text-white w-32">Clear</button>
                         </div>
                     </div>
                 </div>
             </div>
             
 
-            <div class="flex flex-col items-center justify-center lg:pl-[30vh]">
+            <div class="flex flex-col items-center h-screen md:pl-[26vh] lg:pl-[26vh] pl-[1vh] pr-[1vh]">
                 <div class="text-center">
                     <h1 class="text-4xl font-bold mb-4">Products List</h1>
                 </div>
 
                 <!-- Products Display -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     <!-- Product 1 -->
                     <div class="bg-lightblue shadow-md p-4 rounded text-center">
                         <div class="flex items-center mb-4">
-                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                            <img src="https://via.placeholder.com/200" alt="Product Image" class="object-cove aspect-square">
                         </div>
                         <div>
                             <p class="text-lg font-bold">Product 1</p>
@@ -133,7 +163,7 @@
                     <!-- Product 2 -->
                     <div class="bg-lightblue shadow-md p-4 rounded text-center">
                         <div class="flex items-center mb-4">
-                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                            <img src="https://via.placeholder.com/200" alt="Product Image" class="object-cover aspect-square">
                         </div>
                         <div>
                             <p class="text-lg font-bold">Product 2</p>
@@ -143,7 +173,7 @@
                     <!-- Product 3 -->
                     <div class="bg-lightblue shadow-md p-4 rounded text-center">
                         <div class="flex items-center mb-4">
-                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                            <img src="https://via.placeholder.com/200" alt="Product Image" class="object-cover aspect-square">
                         </div>
                         <div>
                             <p class="text-lg font-bold">Product 3</p>
@@ -153,28 +183,30 @@
                     <!-- Product 4 -->
                     <div class="bg-lightblue shadow-md p-4 rounded text-center">
                         <div class="flex items-center mb-4">
-                            <img src="https://via.placeholder.com/120" alt="Product Image" class="object-cover">
+                            <img src="https://via.placeholder.com/200" alt="Product Image" class="object-cover aspect-square">
                         </div>
                         <div>
                             <p class="text-lg font-bold">Product 4</p>
                             <p class="text-gray-600">Category</p>
                         </div>
                     </div>
+                    
                 </div>
             </div>
+            <!-- Contacts and about -->
+            <footer class="bg-black flex flex-row align-center px-5 py-8 text-white mt-5 bottom-0">
+                <div class="flex flex-col">
+                    <p class="font-bold text-2xl">(some name)</p>
+                    <p>Some Location</p> 
+                </div>
+                <div class="ml-auto">
+                    <p class="font-bold text-xl">Contact Us</p>
+                    <!-- Add Social Media Icons here -->
+                </div>
+            </footer>
         </div>
 
-        <!-- Contacts and about -->
-        <footer class="bg-black flex flex-row align-center px-5 py-8 text-white">
-            <div class="flex flex-col">
-                <p class="font-bold text-2xl">(some name)</p>
-                <p>Some Location</p> 
-            </div>
-            <div class="ml-auto">
-                <p class="font-bold text-xl">Contact Us</p>
-                <!-- Add Social Media Icons here -->
-            </div>
-        </footer>
+        
 
         <!-- Import Icons -->
         <script src="https://unpkg.com/feather-icons"></script>
