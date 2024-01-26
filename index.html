@@ -23,7 +23,7 @@
                 <!-- Left Navigation -->
                 <div class="flex-1 flex justify-left gap-6 mr-auto">
                     <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <i data-feather="search" class="stroke-2 cursor-pointer"></i>
+                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
                 </div>
 
                 <!-- Logo -->
@@ -42,17 +42,17 @@
             
             <!-- Bottom Nav (Desktop) -->
             <nav class="bg-slate-100 px-5 py-3 gap-4 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer">Home</a>
-                <a class="cursor-pointer">Products</a>
-                <a class="cursor-pointer">Rewards</a>
-                <a class="cursor-pointer">Tab 4</a>
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
             </nav>
             <!-- Bottom Nav (Mobile) -->
             <nav class="bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a>Tab 1</a>
-                <a>Tab 2</a>
-                <a>Tab 3</a>
-                <a>Tab 4</a>
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
                 <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                     Sign In
                 </a>
@@ -77,7 +77,7 @@
                 <div class="items-center my-5">
                     <!-- Items -->
                     <!-- NOTE: Can be a scrolling carousell -->
-                    <div id="carousel" class="flex flex-row overflow-x-auto gap-5"></div>
+                    <div id="carousel" class="flex flex-row overflow-x-auto flex-wrap md:flex-nowrap justify-center gap-5"></div>
                 </div>
             </div>
 

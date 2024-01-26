@@ -12,6 +12,13 @@ document.addEventListener("DOMContentLoaded", async function() {
     // HTML Elements
     const smallImgsDiv = document.getElementById("small-imgs")
     const productImage = document.getElementById("product-img")
+    const backBtn = document.getElementById("back-btn")
+
+    // Update Back Button Redirect
+    if (goBack == "search") {
+        backBtn.src = "/search.html"
+        backBtn.innerText = "< Back to Search"
+    }
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+        <link rel="stylesheet" href="./styles/components/navbar.css" type="text/css">
+        <link rel="stylesheet" href="./styles/index.css" type="text/css">
+        
+        <script src="https://cdn.tailwindcss.com"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
+        
+        <!-- JS Functions -->
+        <script src="./js/components/navbar.js"></script>
+        <script src="./js/index.js"></script>
+        <script src="./tailwind.config.js"></script>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <header class="flex flex-col fixed top-0 w-screen drop-shadow-lg">
+            <!-- Top Nav -->
+            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                <!-- Left Navigation -->
+                <div class="flex-1 flex justify-left gap-6 mr-auto">
+                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+                </div>
+
+                <!-- Logo -->
+                <div class="font-bold text-2xl">
+                    <a href="/">App Name</a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex-1 flex gap-6 items-center justify-end">
+                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
+                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Bottom Nav (Desktop) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 hidden sm:flex flex-row justify-center">
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
+            </nav>
+            <!-- Bottom Nav (Mobile) -->
+            <nav class="bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
+                <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    Sign In
+                </a>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <div class="w-screen h-screen flex justify-center items-center">
+            <div class="flex flex-col gap-10 items-center bg-blue-100 rounded-3xl shadow-lg">
+                <h1 class="font-bold text-4xl">Profile</h1>
+                <div class="flex flex-col items-center gap-2">
+                    <img class="w-60 h-60 rounded-full" src="https://thispersondoesnotexist.com/">
+                    <p class="text-3xl">Some Name</p>
+                </div>
+                <div class="flex flex-col items-start gap-3">
+                    <h2 class="font-semibold text-3xl">Edit Particulars</h2>
+                    <form class="flex flex-col gap-2">
+                        <label>
+                            <p class="mb-1">Username</p>
+                            <input
+                                class="px-3 py-2"
+                                id="username"
+                                placeholder="username"
+                            ></input>
+                        </label>
+                        <label>
+                            <p class="mb-1">Username</p>
+                            <input
+                                class="px-3 py-2"
+                                id="username"
+                                placeholder="username"
+                            ></input>
+                        </label>
+                        <button class="">
+                            Update Profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

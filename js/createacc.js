@@ -19,38 +19,61 @@ document.addEventListener("DOMContentLoaded", function() {
         if (password !== confirmPassword) {
             errorField.innerText = "Error: Passwords must match!"
         } else {
-            const jsonData = {
-                name: firstName + lastName,
-                username: username,
-                email: email,
-                password: password,
-                cart: [],
-                points: 0
-            }
-
-            const settings = {
-                method: "POST",
+            // Check if Username already exists in the database
+            const verifySettings = {
+                method: "GET",
                 headers: {
-                  "Content-Type": "application/json",
-                  "x-apikey": APIKEY,
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
                 },
-                body: JSON.stringify(jsonData),
                 beforeSend: function () {
-                  document.getElementById("submit-create").disabled = true;
+                    document.getElementById("submit-create").disabled = true;
                 }
             }
 
-            // Send Fetch Request
-            fetch(APIURL, settings)
-                .then(response => response.json())
-                .then(data => {
-                    if (data._id !== undefined) {
-                        sessionStorage.setItem("userID", data._id)
-                        window.location.href = "index.html"
+            fetch(`${APIURL}?q={"username":"${username}"}`, verifySettings)
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.length != 0) {
+                        // Account with the same username already exists
+                        errorField.innerText = "Error: An account with the same username already exists"
                     } else {
-                        errorField.innerText = "Error: Error creating a new user"
+                        // Create the Account
+                        const jsonData = {
+                            name: firstName + lastName,
+                            username: username,
+                            email: email,
+                            password: password,
+                            cart: [],
+                            points: 0
+                        }
+            
+                        const createSettings = {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              "x-apikey": APIKEY,
+                            },
+                            body: JSON.stringify(jsonData),
+                            beforeSend: function () {
+                              document.getElementById("submit-create").disabled = true;
+                            }
+                        }
+            
+                        // Send Fetch Request
+                        fetch(APIURL, createSettings)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data._id !== undefined) {
+                                    sessionStorage.setItem("userID", data._id)
+                                    window.location.href = "index.html"
+                                } else {
+                                    errorField.innerText = "Error: Error creating a new user"
+                                }
+                            })
                     }
                 })
-        }     
+
+            }     
     })
 })
