@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     // HTML Elements
     const smallImgsDiv = document.getElementById("small-imgs")
     const productImage = document.getElementById("product-img")
+
     const backBtn = document.getElementById("back-btn")
 
     // Update Back Button Redirect
@@ -50,13 +51,31 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Check Sign In on Add to Cart
     const addToCart = document.getElementById("add-cart-btn")
-    addToCart.addEventListener("click", function () {
+    addToCart.addEventListener("click", async function () {
         // Show Sign In overlay if user not signed in
         if (!sessionStorage.getItem("userID")) {
             document.getElementById("overlay").classList.remove("hidden")
         } else {
-            // Add to Local Storage
-    
+            // Update user's cart in settings [WILL NEED TO CHANGE]
+            const userDBURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
+            const quantity = document.getElementById("quantity-entry").value
+            const patchSettings = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-apikey": APIKEY,
+                },
+                body: JSON.stringify({
+                    "$push": {
+                        "cart": {
+                            "itemid": productID,
+                            "quantity": quantity,
+                            "discount": 0
+                        }
+                    }
+                })
+            }
+            const patchUserResponse = await fetch(`${userDBURL}/${sessionStorage.getItem("userID")}`, patchSettings)
     
             // Show Lottie Animation (hide after 1s)
             const lottieSuccess = document.getElementById("add-success")
