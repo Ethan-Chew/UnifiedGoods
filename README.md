@@ -4,7 +4,7 @@
 **Disclaimer:** This website is solely created for a school assignment, and all information and names mentioned are entirely fictional, any resemblence to real-life entities is purely a coincidence. All content in this site does not act as real-world information.
 
 ## Features
-
+Our project contains of many different pages
 
 ## Further Documentation
 We have split the documentation for this project into other parts, which can be accessed using the links below.

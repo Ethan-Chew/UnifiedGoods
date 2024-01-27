@@ -61,37 +61,51 @@
         
         <!-- Main Content -->
         <div class="w-screen h-screen flex justify-center items-center">
-            <div class="flex flex-col gap-10 items-center bg-blue-100 rounded-3xl shadow-lg">
-                <h1 class="font-bold text-4xl">Profile</h1>
-                <div class="flex flex-col items-center gap-2">
-                    <img class="w-60 h-60 rounded-full" src="https://thispersondoesnotexist.com/">
-                    <p class="text-3xl">Some Name</p>
-                </div>
-                <div class="flex flex-col items-start gap-3">
-                    <h2 class="font-semibold text-3xl">Edit Particulars</h2>
-                    <form class="flex flex-col gap-2">
-                        <label>
-                            <p class="mb-1">Username</p>
-                            <input
-                                class="px-3 py-2"
-                                id="username"
-                                placeholder="username"
-                            ></input>
-                        </label>
-                        <label>
-                            <p class="mb-1">Username</p>
-                            <input
-                                class="px-3 py-2"
-                                id="username"
-                                placeholder="username"
-                            ></input>
-                        </label>
-                        <button class="">
-                            Update Profile
-                        </button>
-                    </form>
+            <div class="flex flex-col items-left bg-gray-200 px-14 py-6 shadow-xl rounded-2xl">
+                <h1 class="font-bold text-4xl mb-8">Profile</h1>
+                <div class="flex flex-row gap-20">
+                    <div class="flex flex-col items-center gap-2">
+                        <img class="w-40 h-40 rounded-full" src="https://thispersondoesnotexist.com/">
+                        <p class="text-2xl">Some Name</p>
+                    </div>
+                    <div class="flex flex-row">
+                        <form class="flex flex-col gap-2">
+                            <label>
+                                <p class="mb-1">Username</p>
+                                <input
+                                    class="px-3 py-2"
+                                    id="username"
+                                    placeholder="username"
+                                ></input>
+                            </label>
+                            <label>
+                                <p class="mb-1">Email</p>
+                                <input
+                                    class="px-3 py-2"
+                                    id="username"
+                                    placeholder="username"
+                                ></input>
+                            </label>
+                            <button id="update-btn" class="bg-blue-200 hover:bg-blue-300 py-2 rounded-xl mt-2">
+                                Update Profile
+                            </button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
+            <!-- <div class="flex flex-col gap-10 items-center bg-blue-100 rounded-3xl shadow-lg">
+                <h1 class="font-bold text-4xl">Profile</h1>
+                <div class="flex flex-col items-start gap-3">
+                    <h2 class="font-semibold text-3xl">Edit Particulars</h2>
+                </div>
+            </div> -->
         </div>
+
+        <!-- Import Icons -->
+        <script src="https://unpkg.com/feather-icons"></script>
+        <script>
+            feather.replace();
+        </script> 
     </body>
 </html>
