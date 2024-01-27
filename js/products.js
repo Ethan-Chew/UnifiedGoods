@@ -15,30 +15,30 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Show All Categories
     const categoryContainer = document.getElementById("category-container")
-    let categoryResults = []
-    for (let i = 0; i < apiData.length; i++) {
-        const category = apiData[i].category.name
-        if (!categoryResults.includes(category)) {
-            categoryResults.push(category)
-            categoryContainer.innerHTML += `<div class="m-2">
-            <input type="checkbox" id="${category}" name="${category}">
-            <label for="${category}">${category}</label>
-        </div>`
-        }
+        let categoryResults = []
+        for (let i = 0; i < apiData.length; i++) {
+            const category = apiData[i].category.name
+            if (!categoryResults.includes(category)) {
+                categoryResults.push(category)
+                categoryContainer.innerHTML += `<div class="m-2">
+                <input type="checkbox" id="${category}" name="${category}">
+                <label for="${category}">${category}</label>
+            </div>`
+            }
     }
 
     // Show All Products
     const productContainer = document.getElementById("product-container")
-    for (let i = 0; i < apiData.length; i++) {
-        productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center" href="/product.html?id=${apiData[i].id}">
-        <div class="flex items-center">
-            <img src="${apiData[i].images[0]}" alt="Product Image" class="object-cove aspect-square w-[20rem] h-auto">
-        </div>
-        <div class="text-base">
-            <p class="font-bold">${apiData[i].title}</p>
-            <p class="text-gray-600">${apiData[i].category.name}</p>
-        </div>
-    </a>`
+        for (let i = 0; i < apiData.length; i++) {
+            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center" href="/product.html?id=${apiData[i].id}">
+            <div class="flex items-center">
+                <img src="${apiData[i].images[0]}" alt="${apiData[i].title}" class="object-cove aspect-square w-[20rem] h-auto">
+            </div>
+            <div class="text-base">
+                <p class="font-bold">${apiData[i].title}</p>
+                <p class="text-gray-600">${apiData[i].category.name}</p>
+            </div>
+        </a>`
     }
 
     // Calculate total amount of products
@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         // Loop and render products
         for (let i = startIndex; i < endIndex && i < totalProducts; i++) {
             const product = apiData[i]
-            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center" href="/product.html?id=${product.id}">
+            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center h-[25rem]" href="/product.html?id=${product.id}">
                 <div class="flex items-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">
                 </div>
-                <div class="text-base">
+                <div class="text-base flex flex-col">
                     <p class="font-bold">${product.title}</p>
                     <p class="text-gray-600">${product.category.name}</p>
                 </div>
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     function createPageNavigation() {
         // Create a new div to store page navigation
         const pageNavigationContainer = document.createElement("div")
-        pageNavigationContainer.classList.add("flex", "justify-center", "mt-4")
+        pageNavigationContainer.classList.add("w-screen","md:w-auto", "flex", "md:justify-content", "md:flex-wrap", "mt-4", "max-md:overflow-auto", "touch-pan-x")
       
         for (let i = 1; i <= totalPages; i++) {
             const pageLink = document.createElement("a")
@@ -83,14 +83,22 @@ document.addEventListener("DOMContentLoaded", async function() {
                 "px-3", 
                 "py-1", 
                 "border", 
-                "border-gray-400", 
+                "border-black", 
                 "rounded-full", 
-                "hover:bg-gray-200"
+                "hover:bg-gray-200",
             );
             pageLink.textContent = i
 
+            if (i === 1) {
+                pageLink.classList.add("bg-gray-200")
+            }
+
             pageLink.addEventListener("click", () => {
-                renderProductsForPage(i)
+                for (let j = 0; j < pageNavigationContainer.children.length; j++) {
+                    pageNavigationContainer.children[j].classList.remove("bg-gray-200")
+                }
+                pageLink.classList.add("bg-gray-200")
+                renderProductsForPage(i) 
             })
             
             pageNavigationContainer.appendChild(pageLink)
@@ -98,11 +106,51 @@ document.addEventListener("DOMContentLoaded", async function() {
         // Insert page navigation container after the product container
         productContainer.parentNode.insertBefore(pageNavigationContainer, productContainer.nextSibling)
     }
-      
+    
     // Call the function to create the page navigation
     createPageNavigation()
 
-
     // Render the products for the first page
     renderProductsForPage(1)
+
+    // Apply filter
+    document.getElementById("apply").addEventListener("click", function() {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']:checked")
+        const selectedCategories = Array.from(checkboxes).map(checkbox => checkbox.id)
+        const filteredProducts = apiData.filter(product => selectedCategories.includes(product.category.name))
+
+        if (filteredProducts.length != 0) {
+            // Recalculate the total number of pages based on the filtered products
+            totalProducts = filteredProducts.length
+            totalPages = Math.ceil(totalProducts / productsPerPage)
+
+            productContainer.innerHTML = ""
+            const pageNavigationContainer = document.querySelector(".page-navigation-container")
+            pageNavigationContainer.innerHTML = ""
+
+            // Re-render the page navigation
+            createPageNavigation()
+
+            // Render the products for the first page of filtered products
+            renderProductsForPage(1)
+        }
+
+    })
+
+    // Select all checkboxes
+    document.getElementById("select-all").addEventListener("click", function() {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']")
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = true
+        })
+    })
+
+    // Clear all checkboxes
+    document.getElementById("clear").addEventListener("click", function() {
+        const checkboxes = document.querySelectorAll("input[type='checkbox']")
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false
+        })
+    })
 })
+
