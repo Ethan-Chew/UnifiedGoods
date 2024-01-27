@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", async function() {
-    // Hide Sign In Button
-    if (sessionStorage.getItem("userID")) {
-        document.getElementById("sign-in-btn").classList.add("md:hidden")
-    }
+import { db } from "./api/firebase.js"
+import { getDoc, updateDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js'
 
+document.addEventListener("DOMContentLoaded", async function() {
     // Query API and Update Data
     const urlParameters = new URLSearchParams(window.location.search)
     const productID = Number(urlParameters.get("id"))
@@ -12,6 +10,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     // HTML Elements
     const smallImgsDiv = document.getElementById("small-imgs")
     const productImage = document.getElementById("product-img")
+    const addCartBtn = document.getElementById("add-cart-btn")
+    const addCartLabel = document.getElementById("add-cart-lbl")
+    const loaderAnim = document.getElementById("loader")
 
     const backBtn = document.getElementById("back-btn")
 
@@ -23,7 +24,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"
+    loaderAnim.classList.remove("hidden")
     const apiResponse = await fetch(shopURL)
+    loaderAnim.classList.add("hidden")
     const apiData = await apiResponse.json()
     
     // Filter to only show chosen product
@@ -50,48 +53,69 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Check Sign In on Add to Cart
-    const addToCart = document.getElementById("add-cart-btn")
-    addToCart.addEventListener("click", async function () {
+    addCartBtn.addEventListener("click", async function () {
+        const username = sessionStorage.getItem("username")
+
         // Show Sign In overlay if user not signed in
-        if (!sessionStorage.getItem("userID")) {
+        if (!username) {
             document.getElementById("overlay").classList.remove("hidden")
         } else {
-            // Update user's cart in settings [WILL NEED TO CHANGE]
-            const APIKEY = "65b3d7e8d6d732424adaa3d0"
-            const userDBURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
+            // Disable Add to Cart Button, start loading
+            addCartBtn.disabled = true
+            loaderAnim.classList.remove("hidden")
+
             const quantity = document.getElementById("quantity-entry").value
-            const patchSettings = {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
-                },
-                body: JSON.stringify({
-                    "$push": {
-                        "cart": {
-                            "itemid": productID,
-                            "quantity": quantity,
-                            "discount": 0
-                        }
-                    }
-                }),
-                beforeSend: function () {
-                    document.getElementById("add-cart-btn").disabled = true
-                }
+            const item = {
+                "itemid": productID,
+                "quantity": quantity,
+                "discount": 0 // To upadte
             }
-            const patchUserResponse = await fetch(`${userDBURL}/${sessionStorage.getItem("userID")}`, patchSettings)
-    
-            // Show Lottie Animation (hide after 1s)
-            const lottieSuccess = document.getElementById("add-success")
-            const addCartLabel = document.getElementById("add-cart-lbl")
-            addCartLabel.classList.add("hidden")
-            lottieSuccess.classList.remove("hidden")
-            lottieSuccess.goToAndStop(0, true);
-            lottieSuccess.play()
-            setTimeout(() => {
-                addCartLabel.classList.remove("hidden")
-                lottieSuccess.classList.add("hidden")
-            }, 2000)
+
+            // Get user's existing cart
+            let userCart = []
+            const getUserResponse = await getDoc(doc(db, "users", username))
+            if (!getUserResponse.exists()) {
+                alert("User does not exist!")
+                window.location.href = "signin.html"
+            } else {
+                const userObj = getUserResponse.data()
+                userCart = userObj.cart
+            }
+            
+            // Check if Item already exists in the cart
+            const existingCartIndex = userCart.findIndex(item => item.itemid == productID);
+            if (existingCartIndex === -1) {
+                // Item does not exist in cart
+                userCart.push(item)
+            } else {
+                // Item exists in the cart
+                userCart[existingCartIndex].quantity = quantity
+            }
+
+            // Update user's cart
+            try {
+                const updateCartResponse = await updateDoc(doc(db, "users", username), {
+                    cart: userCart
+                })
+
+                // Stop Loading
+                loaderAnim.classList.add("hidden")
+
+                // Show Lottie Animation (hide after 1s)
+                const lottieSuccess = document.getElementById("add-success")
+                addCartLabel.classList.add("hidden")
+                lottieSuccess.classList.remove("hidden")
+                lottieSuccess.play()
+                setTimeout(() => {
+                    addCartLabel.classList.remove("hidden")
+                    lottieSuccess.classList.add("hidden")
+                }, 2000)
+            } catch (err) {
+                console.error(err)
+            }
+
+            // Enable Add to Cart button
+            addCartBtn.disabled = false
         }
     })
 })

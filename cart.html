@@ -11,7 +11,7 @@
         <!-- JS Functions -->
         <script rc="./js/components/navbar.js"></script>
         <script src="./tailwind.config.js"></script>
-        <script src="./js/cart.js"></script>
+        <script type="module" src="./js/cart.js"></script>
 
         <title>Document</title>
     </head>
@@ -68,7 +68,7 @@
                     <!-- <div class="bg-offwhite w-full p-5 flex flex-row gap-10">
                         <img src="https://i.imgur.com/cBuLvBi.jpeg" class="w-1/5" />
                         <div class="flex flex-col">
-                            <p class="font-semibold text-3xl">Some Stupid Red Cap</p>
+                            <p class="font-semibold text-3xl">Some Red Cap</p>
                             <p class="text-2xl">$0.00</p>
                             <div class="mt-auto flex flex-row gap-5">
                                 <label class="px-5 py-2 bg-black text-white">
@@ -98,7 +98,7 @@
                 <div class="w-1/3 ml-auto">
                     <div class="bg-offwhite w-full p-5 flex flex-col gap-5">
                         <div>
-                            <p class="text-xl">Checkout (0 items):</p>
+                            <p id="checkout-title" class="text-xl">Checkout (0 items):</p>
                             <p class="text-2xl font-medium">$0.00</p>
                         </div>
                         <button class="bg-mainblue/[0.8] hover:bg-mainblue disabled:bg-slate-400 disabled:cursor-not-allowed text-white py-2 rounded-xl" disabled>Proceed to Checkout</button>

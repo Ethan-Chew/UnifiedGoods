@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {  
-    const APIKEY = "65b3d7e8d6d732424adaa3d0"
-    const APIURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
+import { db } from "./api/firebase.js"
+import { getDoc, setDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js'
+
+document.addEventListener("DOMContentLoaded", async function () {  
+    // If user is already signed in, just redirect to index.html
+    if (sessionStorage.getItem("username")) {
+        window.location.href = "index.html"
+    }
 
     // Wait for Form Creation onSubmit
-    document.getElementById("create-form").addEventListener("submit", function (e) {
+    document.getElementById("create-form").addEventListener("submit", async function (e) {
         e.preventDefault()
 
         const errorField = document.getElementById("err-msg")
@@ -19,61 +24,32 @@ document.addEventListener("DOMContentLoaded", function() {
         if (password !== confirmPassword) {
             errorField.innerText = "Error: Passwords must match!"
         } else {
+            // Disable resubmit of create account
+            document.getElementById("submit-create").disabled = true;
+
             // Check if Username already exists in the database
-            const verifySettings = {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": APIKEY,
-                },
-                beforeSend: function () {
-                    document.getElementById("submit-create").disabled = true;
+            const checkResponse = await getDoc(doc(db, "users", username))
+
+            if (checkResponse.exists()) {
+                errorField.innerText = "Error: An account with the same username already exists"
+            } else {
+                // Username doesn't exist, create user
+                try {
+                    await setDoc(doc(db, "users", username), {
+                        name: firstName + lastName,
+                        username: username,
+                        email: email,
+                        password: password,
+                        cart: [],
+                        points: 0
+                    })
+
+                    sessionStorage.setItem("username", username)
+                    window.location.href = "/"
+                } catch (err) {
+                    errorField.innerText = `Unknown Error! Error: ${err}`
                 }
             }
-
-            fetch(`${APIURL}?q={"username":"${username}"}`, verifySettings)
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.length != 0) {
-                        // Account with the same username already exists
-                        errorField.innerText = "Error: An account with the same username already exists"
-                    } else {
-                        // Create the Account
-                        const jsonData = {
-                            name: firstName + lastName,
-                            username: username,
-                            email: email,
-                            password: password,
-                            cart: [],
-                            points: 0
-                        }
-            
-                        const createSettings = {
-                            method: "POST",
-                            headers: {
-                              "Content-Type": "application/json",
-                              "x-apikey": APIKEY,
-                            },
-                            body: JSON.stringify(jsonData),
-                            beforeSend: function () {
-                              document.getElementById("submit-create").disabled = true;
-                            }
-                        }
-            
-                        // Send Fetch Request
-                        fetch(APIURL, createSettings)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data._id !== undefined) {
-                                    sessionStorage.setItem("userID", data._id)
-                                    window.location.href = "index.html"
-                                } else {
-                                    errorField.innerText = "Error: Error creating a new user"
-                                }
-                            })
-                    }
-                })
-
-            }     
+        }
     })
 })

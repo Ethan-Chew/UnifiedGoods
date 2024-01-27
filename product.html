@@ -13,7 +13,7 @@
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
         <script src="./tailwind.config.js"></script>
-        <script src="./js/product.js"></script>
+        <script type="module" src="./js/product.js"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -128,6 +128,11 @@
                     <!-- Add Social Media Icons here -->
                 </div>
             </footer>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loader" class="hidden w-screen h-screen fixed z-10 top-0 bg-subblack/50 backdrop-blur-sm flex items-center justify-center">
+            <dotlottie-player src="https://lottie.host/eda4695d-ae7d-48a1-9387-288eac4f6ef4/KEgsdjAn6c.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         </div>
 
         <!-- Import Icons -->
