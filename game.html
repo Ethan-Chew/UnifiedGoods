@@ -10,26 +10,42 @@
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
-        <script src="./js/index.js"></script>
         <script src="./tailwind.config.js"></script>
     </head>
-    <body class="h-screen flex align-center justify-center">
-        <div class="flex flex-col align-center justify-center m-20 p-8 bg-blue-200">
-            <h1 class="text-5xl font-bold mb-8">Guess the Price!</h1>
-            <div class="flex flex-row gap-5 align-center">
-                <img id="product-img" class="w-32" src="https://i.imgur.com/DMQHGA0.jpeg" alt="product-img">
-                <div class="flex flex-col align-center">
-                    <p class="text-3xl font-semibold">Some Item</p>
-                    <p class="max-w-3xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur quae iste cum distinctio quis molestias eum rerum, in sed ab non sapiente perspiciatis qui explicabo consequuntur facere, voluptates impedit libero?</p>
+    <body class="h-screen flex align-center justify-center game-bg">
+        <div class="flex flex-col align-center justify-center m-20 p-8 bg-offwhite/[0.65] backdrop-blur-xl gap-8">
+            <div class="flex flex-col gap-7">
+                <h1 class="text-5xl font-bold">Guess the Price!</h1>
+                <div class="flex flex-row gap-5 align-center">
+                    <img id="product-img" class="w-32" src="https://i.imgur.com/DMQHGA0.jpeg" alt="product-img">
+                    <div class="flex flex-col align-center">
+                        <p class="text-3xl font-semibold mb-2">Some Item</p>
+                        <p class="max-w-3xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur quae iste cum distinctio quis molestias eum rerum, in sed ab non sapiente perspiciatis qui explicabo consequuntur facere, voluptates impedit libero?</p>
+                    </div>
                 </div>
             </div>
             <div>
-                <h3 class="text-2xl font-bold">Tries Remaining</h3>
-                <div class="flex flex-row">
-                    <div class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center">
-                        <p class="font-semibold text-lg">1</p>
-                    </div>
+                <h3 class="text-2xl font-bold mb-2">Tries Remaining</h3>
+                <div class="flex flex-row gap-3">
+                    <div id="try-1" class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center"><p class="font-semibold text-lg">1</p></div>
+                    <div id="try-2" class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center"><p class="font-semibold text-lg">2</p></div>
+                    <div id="try-3" class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center"><p class="font-semibold text-lg">3</p></div>
                 </div>
+            </div>
+            <div class="flex flex-col">
+                <h3 class="text-2xl font-bold mb-2">Guess It!</h3>
+                <div class="w-2/5 flex flex-col items-left align-left gap-2">
+                    <input
+                        placeholder="$0.00"
+                        class="px-3 py-2"
+                    ></input>
+                    <button
+                        class="w-1/2 bg-btnblue hover:bg-btn2blue text-white py-2"
+                    >Guess!</button>
+                </div>
+            </div>
+            <div class="fixed right-0 bottom-0 px-5 pl-7 py-3 bg-offwhite/[0.8] rounded-tl-3xl">
+                <p><span class="font-semibold">Time Remaining:</span> 100s</p>
             </div>
         </div>
     </body>

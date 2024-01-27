@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="./styles/components/navbar.css" type="text/css">
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>  
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
@@ -17,42 +16,42 @@
     </head>
     <body>
         <!-- Navigation Bar -->
-        <header class="flex flex-col fixed top-0 w-screen">
+        <header class="flex flex-col fixed top-0 w-screen drop-shadow-lg">
             <!-- Top Nav -->
-            <div class="bg-lightblue flex items-center px-5 py-2">
+            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
                 <!-- Left Navigation -->
                 <div class="flex-1 flex justify-left gap-6 mr-auto">
                     <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <i data-feather="search" class="stroke-2 cursor-pointer"></i>
+                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
                 </div>
 
                 <!-- Logo -->
                 <div class="font-bold text-2xl">
-                    App Name
+                    <a href="/">App Name</a>
                 </div>
 
                 <!-- Right Navigation -->
                 <div class="flex-1 flex gap-6 items-center justify-end">
                     <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
-                    <a href="/signin.html" id="sign-in-btn" class="hidden md:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
                 </div>
             </div>
             
             <!-- Bottom Nav (Desktop) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-4 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer">Tab 1</a>
-                <a class="cursor-pointer">Tab 2</a>
-                <a class="cursor-pointer">Tab 3</a>
-                <a class="cursor-pointer">Tab 4</a>
+            <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
             </nav>
             <!-- Bottom Nav (Mobile) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a>Tab 1</a>
-                <a>Tab 2</a>
-                <a>Tab 3</a>
-                <a>Tab 4</a>
+            <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                <a class="cursor-pointer" href="/">Home</a>
+                <a class="cursor-pointer" href="/products.html">Products</a>
+                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html">Profile</a>
                 <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                     Sign In
                 </a>
