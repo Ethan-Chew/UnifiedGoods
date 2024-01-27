@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const APIKEY = "65a398e2c69bc871e5f5e224"
+    const APIKEY = "65b3d7e8d6d732424adaa3d0"
     const APIURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
     const loaderAnim = document.getElementById("loader")
 

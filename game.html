@@ -3,9 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
+        <link rel="stylesheet" href="./styles/index.css" type="text/css">
         
+        <script src="https://cdn.tailwindcss.com"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
+        
+        <!-- JS Functions -->
+        <script src="./js/components/navbar.js"></script>
+        <script src="./js/index.js"></script>
+        <script src="./tailwind.config.js"></script>
+    </head>
+    <body class="h-screen flex align-center justify-center">
+        <div class="flex flex-col align-center justify-center m-20 p-8 bg-blue-200">
+            <h1 class="text-5xl font-bold mb-8">Guess the Price!</h1>
+            <div class="flex flex-row gap-5 align-center">
+                <img id="product-img" class="w-32" src="https://i.imgur.com/DMQHGA0.jpeg" alt="product-img">
+                <div class="flex flex-col align-center">
+                    <p class="text-3xl font-semibold">Some Item</p>
+                    <p class="max-w-3xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur quae iste cum distinctio quis molestias eum rerum, in sed ab non sapiente perspiciatis qui explicabo consequuntur facere, voluptates impedit libero?</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold">Tries Remaining</h3>
+                <div class="flex flex-row">
+                    <div class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center">
+                        <p class="font-semibold text-lg">1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

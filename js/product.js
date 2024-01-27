@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             document.getElementById("overlay").classList.remove("hidden")
         } else {
             // Update user's cart in settings [WILL NEED TO CHANGE]
+            const APIKEY = "65b3d7e8d6d732424adaa3d0"
             const userDBURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
             const quantity = document.getElementById("quantity-entry").value
             const patchSettings = {
@@ -73,7 +74,10 @@ document.addEventListener("DOMContentLoaded", async function() {
                             "discount": 0
                         }
                     }
-                })
+                }),
+                beforeSend: function () {
+                    document.getElementById("add-cart-btn").disabled = true
+                }
             }
             const patchUserResponse = await fetch(`${userDBURL}/${sessionStorage.getItem("userID")}`, patchSettings)
     

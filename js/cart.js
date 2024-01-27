@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // URLs
     const userDBURL = "https://fedassignment-6326.restdb.io/rest/shopusers"
-    const APIKEY = "65a398e2c69bc871e5f5e224"
+    const APIKEY = "65b3d7e8d6d732424adaa3d0"
     const shopDBURL = "https://assets.ethanchew.com/main.json"
 
     // HTML Elements
