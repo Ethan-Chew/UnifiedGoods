@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             const category = apiData[i].category.name
             if (!categoryResults.includes(category)) {
                 categoryResults.push(category)
-                categoryContainer.innerHTML += `<div class="m-2">
+                categoryContainer.innerHTML += `<div class="m-1">
                 <input type="checkbox" id="${category}" name="${category}">
                 <label for="${category}">${category}</label>
             </div>`
@@ -168,6 +168,16 @@ document.addEventListener("DOMContentLoaded", async function() {
             // Uncheck the checkbox
             checkbox.checked = false
         })
+        // Clear existing content of product container
+        document.getElementById("page-nav-container").parentNode.removeChild(document.getElementById("page-nav-container"))
+        // Render all the products
+        totalProducts = apiData.length
+        totalPages = Math.ceil(totalProducts / productsPerPage)
+        createPageNavigation(apiData)
+        renderProductsForPage(1, apiData)
     })
+
+    document.getElementById('hidden-1').classList.remove('hidden');
+    document.getElementById('hidden-2').classList.remove('hidden');
 })
 
