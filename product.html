@@ -71,8 +71,8 @@
                         <div class="flex flex-col gap-5">
                             <div>
                                 <h1 id="product-title" class="font-bold text-5xl mb-3">Some Title</h1>
-                                <p class="text-2xl font-medium mb-2">S$???</p>
-                                <button class="px-3 py-2 bg-mainblue/[0.3] hover:bg-mainblue/[0.5] rounded-xl">
+                                <p id="prod-price" class="text-2xl font-medium mb-2">S$???</p>
+                                <button id="guess-price-btn" class="px-3 py-2 bg-mainblue/[0.3] hover:bg-mainblue/[0.5] rounded-xl disabled:cursor-not-allowed">
                                     Guess the Price
                                 </button>
                             </div>
@@ -97,8 +97,8 @@
                 </div>
             </div>
 
-            <!-- Add to Cart Overlay -->
-            <div id="overlay" class="hidden w-screen h-screen bg-subblack/60 backdrop-blur-sm fixed z-10 top-0 flex items-center justify-center">
+            <!-- Add to Cart (not signed in) Overlay -->
+            <div id="nsi-overlay" class="hidden w-screen h-screen bg-subblack/60 backdrop-blur-sm fixed z-10 top-0 flex items-center justify-center">
                 <div id="inner-overlay" class="bg-white py-4 px-5 flex flex-col items-left max-w-lg mx-10 gap-5 rounded-lg z-20">
                     <div>
                         <h3 class="font-bold text-2xl mb-2">You need to Sign In!</h3>
@@ -111,6 +111,25 @@
                         </button>
                         <button class="px-3 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
                             <a href="/signup.html">Create an Account</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add to Cart (did not play game) Overlay -->
+            <div id="nogame-overlay" class="hidden w-screen h-screen bg-subblack/60 backdrop-blur-sm fixed z-10 top-0 flex items-center justify-center">
+                <div id="inner-overlay" class="bg-white py-4 px-5 flex flex-col items-left max-w-lg mx-10 gap-5 rounded-lg z-20">
+                    <div>
+                        <h3 class="font-bold text-2xl mb-2">Are you sure!?</h3>
+                        <p>If you add this item to cart without playing the game, you will experience a markup of 20 - 30%!</p>    
+                    </div>
+
+                    <div class="flex flex-row gap-4">
+                        <button id="overlay-guess-price" class="px-3 py-2 text-white rounded-lg bg-mainblue/[0.7] hover:bg-mainblue/[0.9]">
+                            Guess the Price!
+                        </button>
+                        <button id="overlay-accept-markup" class="px-3 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
+                            It's Fine!
                         </button>
                     </div>
                 </div>

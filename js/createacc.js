@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         email: email,
                         password: password,
                         cart: [],
+                        currentCartHistory: [],
                         points: 0
                     })
 

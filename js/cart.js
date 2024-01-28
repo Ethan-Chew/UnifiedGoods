@@ -40,13 +40,30 @@ document.addEventListener("DOMContentLoaded", async function() {
             }
         }
 
+        
         /// Display Cart on Screen
         for (let i = 0; i < cartItems.length; i++) {
+            /// Get the price based on discount
+            let itemPrice = ""
+            for (let j = 0; j < cart.length; j++) {
+                if (cart[j].itemid == cartItems[i].id) {
+                    // Product is in the cart, check discount
+                    if (cart[j].discount == null) {
+                        // Null discount, display '???'
+                        itemPrice = "S$???"
+                    } else {
+                        // Set price based on price - discount
+                        const discountAmt = cartItems[i].price * (cart[j].discount / 100)
+                        itemPrice = `S$${cartItems[i].price - discountAmt} (${cart[j].discount >= 0 ? "discounted" : "marked-up"})`
+                    }
+                    break
+                }
+            }
             container.innerHTML += `<div id="${`container-${i}`}" class="bg-offwhite w-full p-5 flex flex-row gap-10">
                 <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/5" />
                 <div class="flex flex-col">
                     <p class="font-semibold text-3xl">${cartItems[i].title}</p>
-                    <p class="text-2xl">$0.00</p>
+                    <p class="text-2xl">${itemPrice}</p>
                     <div class="mt-auto flex flex-row gap-5">
                         <label class="px-5 py-2 bg-black text-white">
                             Quantity: 

@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const urlParameters = new URLSearchParams(window.location.search)
     const productID = Number(urlParameters.get("id"))
     const goBack = urlParameters.get("from")
+    const discount = urlParameters.get("discount")
+    const username = sessionStorage.getItem("username")
 
     // HTML Elements
     const smallImgsDiv = document.getElementById("small-imgs")
@@ -13,8 +15,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     const addCartBtn = document.getElementById("add-cart-btn")
     const addCartLabel = document.getElementById("add-cart-lbl")
     const loaderAnim = document.getElementById("loader")
-
     const backBtn = document.getElementById("back-btn")
+    const productPriceLbl = document.getElementById("prod-price")
+    const guessPriceBtn = document.getElementById("guess-price-btn")
 
     // Update Back Button Redirect
     if (goBack == "search") {
@@ -52,54 +55,115 @@ document.addEventListener("DOMContentLoaded", async function() {
         })
     }
 
-    // Check Sign In on Add to Cart
+    // Get user's existing cart
+    let userCart = []
+    let userCartHistory = []
+    const getUserResponse = await getDoc(doc(db, "users", username))
+    if (!getUserResponse.exists()) {
+        alert("User does not exist!")
+        window.location.href = "signin.html"
+    } else {
+        const userObj = getUserResponse.data()
+        userCart = userObj.cart
+        userCartHistory = userObj.currentCartHistory
+    }
+
+    // Update the price based on discount
+    let cartSelectedItem = {}
+    for (let i = 0; i < userCart.length; i++) {
+        if (userCart[i].itemid == productID) {
+            // Product is in the cart, check discount
+            cartSelectedItem = userCart[i]
+            if (userCart[i].discount == null) {
+                // Null discount, display '???'
+                productPriceLbl.innerText = "S$???"
+            } else {
+                // Set price based on price - discount
+                const discountAmt = chosenProduct.price * (userCart[i].discount / 100)
+                productPriceLbl.innerText = `S$${chosenProduct.price - discountAmt} (${userCart[i].discount >= 0 ? "discounted" : "marked-up"})`
+            }
+            break
+        }
+    }
+
+    // Hide Play Game button if user has added/removed the product from current cart
+    for (let i = 0; i < userCartHistory.length; i++) {
+        if (userCartHistory[i] == productID) {
+            guessPriceBtn.disabled = true
+            guessPriceBtn.innerText = "You've guessed before!"
+            break
+        }
+    }
+
+    // Function to add Item to Cart
+    async function addToCart(discount) {
+        // Disable Add to Cart Button, start loading
+        addCartBtn.disabled = true
+        loaderAnim.classList.remove("hidden")
+
+        const quantity = document.getElementById("quantity-entry").value
+        const item = {
+            "itemid": productID,
+            "quantity": quantity,
+            "discount": discount
+        }
+
+        // Check if Item already exists in the cart
+        const existingCartIndex = userCart.findIndex(item => item.itemid == productID);
+        if (existingCartIndex === -1) {
+            // Item does not exist in cart
+            userCart.push(item)
+            userCartHistory.push(item.itemid)
+        } else {
+            // Item exists in the cart
+            userCart[existingCartIndex].quantity = quantity
+        }
+
+        // Update user's cart
+        try {
+            const updateCartResponse = await updateDoc(doc(db, "users", username), {
+                cart: userCart,
+                currentCartHistory: userCartHistory
+            })
+
+            // Stop Loading
+            loaderAnim.classList.add("hidden")
+        } catch (err) {
+            console.error(err)
+        }
+
+        // Enable Add to Cart button
+        addCartBtn.disabled = false
+    }
+
+    // Add Item to Cart if Signed In and Has Played Game/Accept Markup
     addCartBtn.addEventListener("click", async function () {
         const username = sessionStorage.getItem("username")
 
         // Show Sign In overlay if user not signed in
         if (!username) {
-            document.getElementById("overlay").classList.remove("hidden")
+            document.getElementById("nsi-overlay").classList.remove("hidden")
         } else {
-            // Disable Add to Cart Button, start loading
-            addCartBtn.disabled = true
-            loaderAnim.classList.remove("hidden")
-
-            const quantity = document.getElementById("quantity-entry").value
-            const item = {
-                "itemid": productID,
-                "quantity": quantity,
-                "discount": 0 // To upadte
+            // Check if the user has played the game (if not, discount == null)
+            let gamePlayed = false
+            if (cartSelectedItem.discount != null) {
+                // Not NULL discount, game has been played
+                gamePlayed = true
             }
 
-            // Get user's existing cart
-            let userCart = []
-            const getUserResponse = await getDoc(doc(db, "users", username))
-            if (!getUserResponse.exists()) {
-                alert("User does not exist!")
-                window.location.href = "signin.html"
-            } else {
-                const userObj = getUserResponse.data()
-                userCart = userObj.cart
-            }
-            
-            // Check if Item already exists in the cart
-            const existingCartIndex = userCart.findIndex(item => item.itemid == productID);
-            if (existingCartIndex === -1) {
-                // Item does not exist in cart
-                userCart.push(item)
-            } else {
-                // Item exists in the cart
-                userCart[existingCartIndex].quantity = quantity
-            }
+            // Display Popup if game not played
+            if (!gamePlayed) {
+                document.getElementById("nogame-overlay").classList.remove("hidden")
 
-            // Update user's cart
-            try {
-                const updateCartResponse = await updateDoc(doc(db, "users", username), {
-                    cart: userCart
+                // User accepts markup
+                document.getElementById("overlay-accept-markup").addEventListener("click", async function () {
+                    const randomMarkup = -Math.floor(Math.random() * (31 - 20)) + 20
+                    await addToCart(randomMarkup)
+                    document.getElementById("nsi-overlay").classList.add("hidden")
                 })
-
-                // Stop Loading
-                loaderAnim.classList.add("hidden")
+            } else {
+                // Game as been played before
+                await addToCart(cartSelectedItem.discount)
 
                 // Show Lottie Animation (hide after 1s)
                 const lottieSuccess = document.getElementById("add-success")
@@ -110,12 +174,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     addCartLabel.classList.remove("hidden")
                     lottieSuccess.classList.add("hidden")
                 }, 2000)
-            } catch (err) {
-                console.error(err)
             }
-
-            // Enable Add to Cart button
-            addCartBtn.disabled = false
         }
     })
 })
