@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const apiResponse = await fetch(shopURL)
     const apiData = await apiResponse.json()
 
-    // Show All Categories
+    // Show All Categories [checkbox]
     const categoryContainer = document.getElementById("category-container")
         let categoryResults = []
         for (let i = 0; i < apiData.length; i++) {
@@ -42,14 +42,14 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Calculate total amount of products
-    const totalProducts = apiData.length
+    let totalProducts = apiData.length
     // Calculate the number of products per page
     const productsPerPage = 16
     // Calculate the total number of pages
-    const totalPages = Math.ceil(totalProducts / productsPerPage)
+    let totalPages = Math.ceil(totalProducts / productsPerPage)
 
     // Function to render products for the respective page
-    function renderProductsForPage(pageNumber) {
+    function renderProductsForPage(pageNumber,filteredProducts) {
         // Calculate the start and end index for the current page
         const startIndex = (pageNumber - 1) * productsPerPage
         const endIndex = startIndex + productsPerPage
@@ -57,7 +57,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         productContainer.innerHTML = ""
         // Loop and render products
         for (let i = startIndex; i < endIndex && i < totalProducts; i++) {
-            const product = apiData[i]
+            let product = apiData[i]
+            if (filteredProducts != undefined){
+                product = filteredProducts[i]
+            }
             productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center h-[25rem]" href="/product.html?id=${product.id}">
                 <div class="flex items-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">
@@ -71,9 +74,10 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
     
     // Function to create page navigation container
-    function createPageNavigation() {
+    function createPageNavigation(filteredProducts) {
         // Create a new div to store page navigation
         const pageNavigationContainer = document.createElement("div")
+        pageNavigationContainer.id = "page-nav-container"
         pageNavigationContainer.classList.add("w-screen","md:w-auto", "flex", "md:justify-content", "md:flex-wrap", "mt-4", "max-md:overflow-auto", "touch-pan-x")
       
         for (let i = 1; i <= totalPages; i++) {
@@ -98,7 +102,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                     pageNavigationContainer.children[j].classList.remove("bg-gray-200")
                 }
                 pageLink.classList.add("bg-gray-200")
-                renderProductsForPage(i) 
+                if (filteredProducts != undefined){
+                    renderProductsForPage(i,filteredProducts)
+                } else {
+                    renderProductsForPage(i)
+                }
             })
             
             pageNavigationContainer.appendChild(pageLink)
@@ -125,14 +133,14 @@ document.addEventListener("DOMContentLoaded", async function() {
             totalPages = Math.ceil(totalProducts / productsPerPage)
 
             productContainer.innerHTML = ""
-            const pageNavigationContainer = document.querySelector(".page-navigation-container")
-            pageNavigationContainer.innerHTML = ""
+            const pageNavigationContainer = document.getElementById("page-nav-container")
+            pageNavigationContainer.parentNode.removeChild(pageNavigationContainer);
 
             // Re-render the page navigation
-            createPageNavigation()
+            createPageNavigation(filteredProducts)
 
             // Render the products for the first page of filtered products
-            renderProductsForPage(1)
+            renderProductsForPage(1,filteredProducts)
         }
 
     })
