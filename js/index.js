@@ -24,4 +24,35 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
         })
+    fetch(shopURL, getSettings)
+        .then(response => response.json())
+        .then(data => {
+            const categories = {}
+            data.forEach(item =>{
+                if (!categories[item.category.id]){
+                    categories[item.category.id] = {
+                        id: item.category.id,
+                        name: item.category.name,
+                        image: item.category.image,
+                    }
+                }
+            })
+
+            for (let x = 1; x < 6; x++){
+                console.log(x)
+                const banner = `<a href="/products.html?category=${categories[x].name}&from=index" class="m-5 text-center relative">
+                    <img class="object-fill sm:w-2/3 md:w-[50rem] mx-auto h-[18rem] hover:opacity-50 hover:blur-sm" src="${categories[x].image}" alt="${categories[x].name}">
+                    <div class="absolute inset-0 flex items-center justify-center z-[-5]">
+                        <p class="text-4xl font-bold w-full text-center">${categories[x].name}</p>
+                    </div>
+                </a>`
+                if (x < 3){
+                    document.getElementById("cat-container-1").innerHTML += banner
+                } else {
+                    document.getElementById("cat-container-2").innerHTML += banner
+                }
+                
+            }
+
+        })
 })

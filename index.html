@@ -16,7 +16,7 @@
     </head>
     <body>
         <!-- Navigation Bar -->
-        <header class="flex flex-col fixed top-0 w-screen drop-shadow-lg">
+        <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
             <!-- Top Nav -->
             <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
                 <!-- Left Navigation -->
@@ -81,9 +81,36 @@
             </div>
 
             <!-- Categories -->
+            <section class="flex flex-col p-5">
+                <h1 class="font-bold text-3xl text-center">Categories</h1>
+                <div class="flex max-md:flex-wrap md:w-2/3 mx-auto items-center" id="cat-container-1">
+                    <!--
+                    <div class="p-5">
+                        <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
+                    </div>
+                    <div class="p-5">
+                        <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
+                    </div>
+                    -->
+                </div>
+                <div class="flex max-md:flex-wrap items-center" id="cat-container-2">
+                    <!--
+                    <div class="p-5">
+                        <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
+                    </div>
+                    <div class="p-5">
+                        <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
+                    </div>
+                    <div class="p-5">
+                        <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
+                    </div>
+                    -->
+                </div>
+            </section>
+            <!--
             <section class="p-5 gap-2">
                 <h1 class="font-bold text-3xl text-center pb-4">Categories</h1>
-                <div class="grid grid-cols-1 sm:md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <div class="grid grid-cols-1 sm:md:grid-cols-2 lg:grid-cols-3 gap-2" id="banners">
                     <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
                     <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
                     <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
@@ -92,6 +119,7 @@
                     <img class="sm:w-2/3 md:w-[50rem] mx-auto" src="/img/category.jpg">
                 </div>
             </section>
+            -->
 
             <!-- Video -->
             <div>
