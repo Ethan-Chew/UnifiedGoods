@@ -55,6 +55,15 @@ document.addEventListener("DOMContentLoaded", async function() {
         })
     }
 
+    // Start Game Button
+    guessPriceBtn.addEventListener("click", function () {
+        if (!sessionStorage.getItem("username")) {
+            document.getElementById("nsi-overlay").classList.remove("hidden")
+        } else {
+            window.location.href = `game.html?id=${productID}`
+        }
+    })
+
     // Get user's existing cart
     let userCart = []
     let userCartHistory = []
