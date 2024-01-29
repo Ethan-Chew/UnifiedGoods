@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Query API and Update Data
     const urlParameters = new URLSearchParams(window.location.search)
-    const productID = Number(urlParameters.get("id"))
+    const categoryName = urlParameters.get("category")
+    
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"
@@ -176,6 +177,19 @@ document.addEventListener("DOMContentLoaded", async function() {
         createPageNavigation(apiData)
         renderProductsForPage(1, apiData)
     })
+
+    // If accessed from categories section in index/home page
+    if (categoryName != undefined){
+        filteredProducts = apiData.filter(product => product.category.name === categoryName)
+        totalProducts = filteredProducts.length
+        totalPages = Math.ceil(totalProducts / productsPerPage)
+        // Clear existing content of product container
+        productContainer.innerHTML = ""
+        pageNavigationContainer = document.getElementById("page-nav-container")
+        pageNavigationContainer.parentNode.removeChild(pageNavigationContainer)
+        createPageNavigation(filteredProducts)
+        renderProductsForPage(1, filteredProducts)
+    }
 
     document.getElementById('hidden-1').classList.remove('hidden');
     document.getElementById('hidden-2').classList.remove('hidden');
