@@ -15,17 +15,28 @@ document.addEventListener("DOMContentLoaded", async function() {
     const noItemsContainer = document.getElementById("no-items-container")
     const container = document.getElementById("items-container")
     const checkoutTitle = document.getElementById("checkout-title")
+    const checkoutTotal = document.getElementById("checkout-total")
     
+    // Helper Function to update final checkout price
+    function updateFinalPrice(userCart) {
+        /// Update Total Cost
+        let total = 0.0
+        for (let i = 0; i < userCart.length; i++) {
+            total += Number(userCart[i].quantity) * userCart[i].pricePerQuantity
+        }
+        checkoutTotal.innerText = `S$${parseFloat(total).toFixed(2)}`
+    }
+
     // Retrieve User's Cart from Database
     const getUserResponse = await getDoc(doc(db, "users", username))
     if (!getUserResponse.exists()) {
         alert("User does not exist!")
         window.location.href = "signin.html"
     }
-    let cart = getUserResponse.data().cart
+    let userCart = getUserResponse.data().cart
     
     /// Display Items in the Cart
-    if (cart.length > 0) {
+    if (userCart.length > 0) {
         noItemsContainer.classList.add("hidden") // Hide section displaying no items
 
         // Grab Cart Items from API
@@ -34,27 +45,25 @@ document.addEventListener("DOMContentLoaded", async function() {
         const getItemsResponse = await fetch(shopDBURL)
         const shopItems = await getItemsResponse.json()
 
-        for (let i = 0; i < cart.length; i++) {
-            if (!cartItems.find((item) => item.id == cart[i].itemid)) {
-                cartItems.push(shopItems.find((item) => item.id == cart[i].itemid))
+        for (let i = 0; i < userCart.length; i++) {
+            if (!cartItems.find((item) => item.id == userCart[i].itemid)) {
+                cartItems.push(shopItems.find((item) => item.id == userCart[i].itemid))
             }
         }
-
         
         /// Display Cart on Screen
         for (let i = 0; i < cartItems.length; i++) {
             /// Get the price based on discount
             let itemPrice = ""
-            for (let j = 0; j < cart.length; j++) {
-                if (cart[j].itemid == cartItems[i].id) {
+            for (let j = 0; j < userCart.length; j++) {
+                if (userCart[j].itemid == cartItems[i].id) {
                     // Product is in the cart, check discount
-                    if (cart[j].discount == null) {
+                    if (userCart[j].discount == null) {
                         // Null discount, display '???'
                         itemPrice = "S$???"
                     } else {
                         // Set price based on price - discount
-                        const discountAmt = cartItems[i].price * (cart[j].discount / 100)
-                        itemPrice = `S$${cartItems[i].price - discountAmt} (${cart[j].discount >= 0 ? "discounted" : "marked-up"})`
+                        itemPrice = `S$${userCart[j].pricePerQuantity} (${userCart[j].discount >= 0 ? "discounted" : "marked-up"})`
                     }
                     break
                 }
@@ -69,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                             Quantity: 
                             <input 
                                 id="quantity-${i}"
-                                type="number" value="${cart.find((item) => item.itemid == cartItems[i].id).quantity}" min="1" max="50"
+                                type="number" value="${userCart.find((item) => item.itemid == cartItems[i].id).quantity}" min="1" max="50"
                                 class="ml-2 bg-black text-white w-1/3"
                             >
                         </label>
@@ -100,23 +109,27 @@ document.addEventListener("DOMContentLoaded", async function() {
                 const newQuantity = document.getElementById(`quantity-${i}`).value
 
                 // Check if Item already exists in the cart
-                const existingCartIndex = cart.findIndex(item => item.itemid == cart[i].itemid);
+                const existingCartIndex = userCart.findIndex(item => item.itemid == userCart[i].itemid);
                 if (existingCartIndex !== -1 && newQuantity != "") {
-                    cart[existingCartIndex].quantity = newQuantity
+                    userCart[existingCartIndex].quantity = newQuantity
 
                     // Update Database
                     try {
                         const updateCartResponse = await updateDoc(doc(db, "users", username), {
-                            cart: cart
+                            cart: userCart
                         })
                     } catch (err) {
                         console.error(err)
                     }
+
+                    updateFinalPrice(userCart)
                 }
             })
         }
+
+        updateFinalPrice(userCart)
     }
 
     /// Update Checkout Details
-    checkoutTitle.innerText = `Checkout (${cart.length ? cart.length : 0} item${cart.length == 1 ? "" : "s"})`
+    checkoutTitle.innerText = `Checkout (${userCart.length ? userCart.length : 0} item${userCart.length == 1 ? "" : "s"})`
 })

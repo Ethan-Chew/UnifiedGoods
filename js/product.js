@@ -83,13 +83,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         if (userCart[i].itemid == productID) {
             // Product is in the cart, check discount
             cartSelectedItem = userCart[i]
-            if (userCart[i].discount == null) {
+            if (cartSelectedItem.discount == null) {
                 // Null discount, display '???'
                 productPriceLbl.innerText = "S$???"
             } else {
                 // Set price based on price - discount
-                const discountAmt = chosenProduct.price * (userCart[i].discount / 100)
-                productPriceLbl.innerText = `S$${chosenProduct.price - discountAmt} (${userCart[i].discount >= 0 ? "discounted" : "marked-up"})`
+                productPriceLbl.innerText = `S$${cartSelectedItem.pricePerQuantity} (${cartSelectedItem.discount >= 0 ? "discounted" : "marked-up"})`
             }
             break
         }
@@ -114,7 +113,8 @@ document.addEventListener("DOMContentLoaded", async function() {
         const item = {
             "itemid": productID,
             "quantity": quantity,
-            "discount": discount
+            "discount": discount,
+            "pricePerQuantity": 0
         }
 
         // Check if Item already exists in the cart
@@ -130,6 +130,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         // Update user's cart
         try {
+            const discountAmt = chosenProduct.price * (item.discount / 100)
+            item.pricePerQuantity = chosenProduct.price - discountAmt
             const updateCartResponse = await updateDoc(doc(db, "users", username), {
                 cart: userCart,
                 currentCartHistory: userCartHistory
@@ -143,6 +145,19 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         // Enable Add to Cart button
         addCartBtn.disabled = false
+    }
+
+    // Helper Function to display successful add to cart lottie
+    function displayLottie() {
+        // Show Lottie Animation (hide after 1s)
+        const lottieSuccess = document.getElementById("add-success")
+        addCartLabel.classList.add("hidden")
+        lottieSuccess.classList.remove("hidden")
+        lottieSuccess.play()
+        setTimeout(() => {
+            addCartLabel.classList.remove("hidden")
+            lottieSuccess.classList.add("hidden")
+        }, 2000)
     }
 
     // Add Item to Cart if Signed In and Has Played Game/Accept Markup
@@ -169,20 +184,17 @@ document.addEventListener("DOMContentLoaded", async function() {
                     const randomMarkup = -Math.floor(Math.random() * (31 - 20)) + 20
                     await addToCart(randomMarkup)
                     document.getElementById("nsi-overlay").classList.add("hidden")
+                    document.getElementById("nogame-overlay").classList.add("hidden")
+
+                    // Show Lottie Animation (hide after 1s)
+                    displayLottie()
                 })
             } else {
                 // Game as been played before
                 await addToCart(cartSelectedItem.discount)
 
                 // Show Lottie Animation (hide after 1s)
-                const lottieSuccess = document.getElementById("add-success")
-                addCartLabel.classList.add("hidden")
-                lottieSuccess.classList.remove("hidden")
-                lottieSuccess.play()
-                setTimeout(() => {
-                    addCartLabel.classList.remove("hidden")
-                    lottieSuccess.classList.add("hidden")
-                }, 2000)
+                displayLottie()
             }
         }
     })

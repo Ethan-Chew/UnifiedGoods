@@ -4,6 +4,7 @@ tailwind.config = {
             colors: {
                 mainblue: "#007090",
                 lightblue: "#A3BAC3",
+                containerblue: "#ccd9de",
                 btnblue: "#539eb4",
                 btn2blue: "#4697af",
                 subblack: "#171214",

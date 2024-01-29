@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const urlParameters = new URLSearchParams(window.location.search)
     const categoryName = urlParameters.get("category")
     
+    // Start Loading Animation
+    document.getElementById("loader").classList.remove("hidden")
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"
@@ -22,9 +24,9 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (!categoryResults.includes(category)) {
                 categoryResults.push(category)
                 categoryContainer.innerHTML += `<div class="m-1">
-                <input type="checkbox" id="${category}" name="${category}">
-                <label for="${category}">${category}</label>
-            </div>`
+                    <input type="checkbox" id="${category}" name="${category}">
+                    <label for="${category}">${category}</label>
+                </div>`
             }
     }
 
@@ -193,5 +195,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     document.getElementById('hidden-1').classList.remove('hidden');
     document.getElementById('hidden-2').classList.remove('hidden');
-})
 
+    // End Loading Animation
+    document.getElementById("loader").classList.add("hidden")
+})

@@ -9,7 +9,8 @@
         
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
-        
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
         <script src="./js/products.js"></script>
@@ -92,7 +93,7 @@
                 <h1 class="text-4xl font-bold mb-4">Products List</h1>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="product-container">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-5" id="product-container">
                 <!--Product Information Container-->
                 <!--Product Page Number Container-->
             </div>
@@ -109,6 +110,11 @@
                     <!-- Add Social Media Icons here -->
                 </div>
             </footer>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loader" class="hidden w-screen h-screen fixed z-10 top-0 bg-subblack/50 backdrop-blur-sm flex items-center justify-center">
+            <dotlottie-player src="https://lottie.host/eda4695d-ae7d-48a1-9387-288eac4f6ef4/KEgsdjAn6c.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         </div>
 
         <!-- Import Icons -->

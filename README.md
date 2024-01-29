@@ -24,3 +24,4 @@ We have split the documentation for this project into other parts, which can be 
 
 ## Credits
 The [data](https://assets.ethanchew.com/main.json) used in this website has been taken from various sources, such as the SHEIN website. 
+On our Profile Page, we have taken the profile picture from [FreeRange](https://freerangestock.com/photos/120579/business-man-profile-vector.html).

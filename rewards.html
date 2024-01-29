@@ -9,7 +9,7 @@
         
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
-        <script src="./js/rewards.js"></script>
+        <script type="module" src="./js/rewards.js"></script>
         <script src="./tailwind.config.js"></script>
     </head>
     <body>
@@ -58,19 +58,19 @@
         
         <!-- Body Contents -->
         <section class="w-screen h-screen">
-            <div class="flex flex-row justify-center gap-20 pt-[10rem]">
-                <div class="w-1/3">
-                    <div class ="bg-lightblue flex flex-col p-5 gap-4">
+            <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-20 pt-[10rem] px-10 md:px-0">
+                <div class="md:w-1/3">
+                    <div class ="bg-containerblue flex flex-col p-5 gap-4">
                         <h2 class="font-bold text-4xl">Points</h2>
                         <div>
-                            <p class="font-semibold text-5xl">100</p>
-                            <p class="mt-1 text-lg">60 Points to Gold</p>
+                            <p id="points-label" class="font-semibold text-5xl">100</p>
+                            <p id="points-next-label" class="mt-1 text-lg">60 Points to Gold</p>
                         </div>
                     </div>
-                    <p>Find out more about the various tiers <span id="display-info" class="cursor-pointer underline">here</span></p>
+                    <p class="mt-1">Find out more about the various tiers <span id="display-info" class="cursor-pointer underline">here</span></p>
                 </div>
-                <div class ="bg-lightblue flex flex-col gap-5 p-5 w-1/2">
-                    <h2 class="text-3xl"><a class="font-bold">Tier:</a> Silver</h2>
+                <div class ="bg-containerblue flex flex-col gap-5 p-5 w-full md:w-1/2">
+                    <h2 class="text-3xl"><span class="font-bold">Tier:</> <span id="user-tier">Silver</span></h2>
                     <div>
                         <p>Something something something</p>
                         <p>Something something something</p>
