@@ -17,12 +17,14 @@ Before purchasing a product, the user can guess the price of the product in orde
 | **Far** from Product Price (± 50% of Product Price) | Up to *5% discount* |
 | **More than 50%** Product Price Away | *0% discount*, 20% chance of getting a *10% MARKUP* |
 
-<sup><sub>*All discounts are rounded up to the nearest 10-cents.*</sub></sup>
+*All discounts are rounded up to the nearest 10-cents.*
 
 However, if the user is *lazy* and chooses not to play the game, a random **markup** of *20 - 30%* will be added to their product cost.
 
+When playing the game, users have **3 tries** to guess the price of the product. At the end of the game, the highest discount amount will be chosen. In addition, the user has only *100 seconds (1 minute and 40 seconds)* to complete the game.
+
 ### User Tiers
-Users can earn points depending on how much they spend on the website. As the number of points increases, they may be *promoted* to a different Tier. 
+Users can earn points depending on how much they spend on the website. As the number of points increases, they may be *promoted* to a different Tier. Currently, the tiers do not have any significance, as no rewards are given depending on the user's tier. 
 | Tier | (Minimum) Points |
 | --- | --- |
 | Platinum | 1000 |
@@ -36,7 +38,8 @@ For every **$5 spent**, **1 point** will be awarded.
 ## Full List of Implimented Features
 1. Functional Login and Create Account Pages
 2. Search for products by name and category
-3. 
+3. Adding products to cart
+4. Working Points System
 
 ## Potential Future Improvements
 1. Depending on the user's tier, certain rewards can be awarded to them. For example, vouchers on their birthday month.
