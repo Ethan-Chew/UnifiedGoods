@@ -54,12 +54,12 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (filteredProducts != undefined){
                 product = filteredProducts[i]
             }
-            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center h-[25rem]" href="/product.html?id=${product.id}&from=products">
+            productContainer.innerHTML += `<a class="bg-containerblue shadow-md hover:shadow-xl p-4 rounded-lg text-center h-[25rem]" href="/product.html?id=${product.id}&from=products">
                 <div class="flex items-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">
                 </div>
-                <div class="text-base flex flex-col">
-                    <p class="font-bold">${product.title}</p>
+                <div class="mt-2 flex flex-col gap-2">
+                    <p class="font-bold text-xl">${product.title}</p>
                     <p class="text-gray-600">${product.category.name}</p>
                 </div>
             </a>`
@@ -189,5 +189,4 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Remove loading screen after products and categories loaded
     document.getElementById("loader").remove()
-    
 })

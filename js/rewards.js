@@ -15,13 +15,45 @@ document.addEventListener("DOMContentLoaded", async function() {
     const tierProgressBar = document.getElementById("tier-progress")
 
     // Get User data from Firebase
-    const getUserResponse = await getDoc(doc(db, "users", username))
+    // const getUserResponse = await getDoc(doc(db, "users", username))
     let user
-    if (!getUserResponse.exists()) {
-        alert("User does not exist!")
-        window.location.href = "signin.html"
-    } else {
-        user = getUserResponse.data()
+    // if (!getUserResponse.exists()) {
+    //     alert("User does not exist!")
+    //     window.location.href = "signin.html"
+    // } else {
+    //     user = getUserResponse.data()
+    // }
+    user = {
+        "password": "123",
+        "name": "TestAccount",
+        "username": "a",
+        "currentCartHistory": [
+            3,
+            27,
+            45
+        ],
+        "email": "a@a.com",
+        "cart": [
+            {
+                "discount": 15,
+                "itemid": 3,
+                "quantity": "4",
+                "pricePerQuantity": 58.65
+            },
+            {
+                "itemid": 27,
+                "pricePerQuantity": 12.8,
+                "discount": 20,
+                "quantity": "5"
+            },
+            {
+                "quantity": "1",
+                "itemid": 45,
+                "discount": 19,
+                "pricePerQuantity": 17.82
+            }
+        ],
+        "points": 40
     }
 
     // Get User's Tier
@@ -34,14 +66,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         { tier: "Gold", minPts: 400 },
         { tier: "Platinum", minPts: 1000 }
     ]
-    for (let i = 0; i < tiers.length; i++) {
+    for (let i = tiers.length - 1; i >= 0; i--) {
         if (user.points >= tiers[i].minPts) {
-            tier = tiers[i].tier
-            
-            if (i + 1 != tiers.length) {
-                nextTier = tiers[i + 1]
-            }
-            break
+          tier = tiers[i].tier
+          
+          if (i + 1 != tiers.length) {
+              nextTier = tiers[i + 1]
+          }
+          break
         }
     }
 

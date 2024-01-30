@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const username = sessionStorage.getItem("username")
 
     // HTML Elements
-    const mainContent = document.getElementById("main-content")
+    const mainContent = document.getElementById("main-container")
     const smallImgsDiv = document.getElementById("small-imgs")
     const productImage = document.getElementById("product-img")
     const addCartBtn = document.getElementById("add-cart-btn")
@@ -70,6 +70,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     })
 
+    // Display the Product
+    mainContent.classList.remove("hidden")
+
     // Get user's existing cart
     let userCart = []
     let userCartHistory = []
@@ -109,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
-    // Remove Hidden
+    // Show the Content
     mainContent.classList.remove("hidden")
 
     // Function to add Item to Cart
@@ -197,6 +200,15 @@ document.addEventListener("DOMContentLoaded", async function() {
 
                     // Show Lottie Animation (hide after 1s)
                     displayLottie()
+                })
+
+                // User Starts Game
+                document.getElementById("overlay-guess-price").addEventListener("click", function () {
+                    if (!sessionStorage.getItem("username")) {
+                        document.getElementById("nsi-overlay").classList.remove("hidden")
+                    } else {
+                        window.location.href = `game.html?id=${productID}`
+                    }
                 })
             } else {
                 // Game as been played before
