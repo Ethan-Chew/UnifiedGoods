@@ -6,13 +6,14 @@
         
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
-        
+        <script type="stylesheet" src="./styles/index.css"></script>
+
         <!-- JS Functions -->
         <script src="./js/components/navbar.js"></script>
         <script type="module" src="./js/rewards.js"></script>
         <script src="./tailwind.config.js"></script>
     </head>
-    <body>
+    <body class="min-h-screen flex flex-col">
         <!-- Navigation Bar -->
         <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
             <!-- Top Nav -->
@@ -39,10 +40,10 @@
             
             <!-- Bottom Nav (Desktop) -->
             <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer" href="/">Home</a>
-                <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer" href="/profile.html">Profile</a>
+                <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
+                <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
+                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
+                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
             </nav>
             <!-- Bottom Nav (Mobile) -->
             <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
@@ -50,38 +51,55 @@
                 <a class="cursor-pointer" href="/products.html">Products</a>
                 <a class="cursor-pointer" href="/rewards.html">Rewards</a>
                 <a class="cursor-pointer" href="/profile.html">Profile</a>
-                <a href="/signin.html" id="sign-in-btn" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                     Sign In
                 </a>
             </nav>
         </header>
         
         <!-- Body Contents -->
-        <section class="w-screen h-screen">
-            <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-20 pt-[10rem] px-10 md:px-0">
-                <div class="md:w-1/3">
-                    <div class ="bg-containerblue flex flex-col p-5 gap-4">
-                        <h2 class="font-bold text-4xl">Points</h2>
-                        <div>
-                            <p id="points-label" class="font-semibold text-5xl">100</p>
-                            <p id="points-next-label" class="mt-1 text-lg">60 Points to Gold</p>
+        <section class="pt-[5rem] md:pt-[8rem] px-10 md:px-0 min-w-0">
+            <div class="px-2 md:px-10 xl:px-20">
+                <h1 class="font-bold text-4xl md:text-5xl pb-[2rem]">Your Rewards</h1>
+                <div class="flex flex-col md:flex-row justify-left gap-10 xl:gap-20 md:px-0">
+                    <div class="md:w-1/3">
+                        <div class ="bg-containerblue flex flex-col p-5 gap-4">
+                            <h2 class="font-bold text-4xl">Points</h2>
+                            <div>
+                                <p id="points-label" class="font-semibold text-5xl">100</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center w-full bg-mainblue/40 rounded-full h-3.5">
+                                    <div id="tier-progress" class="bg-mainblue ml-0.5 h-2.5 rounded-full" style="width: 0%"></div>
+                                </div>
+                                <p id="points-next-label" class="mt-1 text-lg text-gray-800">60 Points to Gold</p>
+                            </div>
                         </div>
+                        <p class="mt-1">Find out more about the various tiers <span id="display-info" class="cursor-pointer underline">here</span></p>
                     </div>
-                    <p class="mt-1">Find out more about the various tiers <span id="display-info" class="cursor-pointer underline">here</span></p>
-                </div>
-                <div class ="bg-containerblue flex flex-col gap-5 p-5 w-full md:w-1/2">
-                    <h2 class="text-3xl"><span class="font-bold">Tier:</> <span id="user-tier">Silver</span></h2>
-                    <div>
-                        <p>Something something something</p>
-                        <p>Something something something</p>
-                        <p>Something something something</p>
-                        <p>Something something something</p>
+                    <div class ="bg-containerblue flex flex-col gap-5 p-5 w-full md:w-1/2 flex-grow">
+                        <h2 class="text-3xl"><span class="font-bold">Tier:</span> <span id="user-tier">Silver</span></h2>
+                        <ul class="text-xl">
+                            <li>- 10% off any product on your birthday</li>
+                            <li>- Get 1 Point for 5 dollars spent</li>
+                            <li>- Free Shipping on purchases more than $50</li>
+                        </ul>
+                        <div>
+                            <p class="text-2xl font-bold mb-2">✨ Redeemable Rewards ✨</p>
+                            <div class="flex flex-row gap-5">
+                                <div class="py-3 px-5 rounded-xl bg-container2blue">
+                                    <p class="text-xl font-semibold">Discounted Shirt</p>
+                                    <p>Expires 31/2/24</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- Contacts and about -->
-        <footer clas="inset-x-0 bottom-0">
+        <footer class="inset-x-0 mt-10 md:mt-auto bottom-0">
             <div class="bg-black flex items-center px-5 py-5 text-white">
                 <div class="flex-1">
                     <h1 class="font-bold text-2xl">Contact us</h1>

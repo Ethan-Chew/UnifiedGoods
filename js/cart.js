@@ -18,13 +18,18 @@ document.addEventListener("DOMContentLoaded", async function() {
     const checkoutTotal = document.getElementById("checkout-total")
     
     // Helper Function to update final checkout price
-    function updateFinalPrice(userCart) {
+    function updateCheckoutInfo(userCart) {
         /// Update Total Cost
         let total = 0.0
+        let totalQuantity = 0
         for (let i = 0; i < userCart.length; i++) {
             total += Number(userCart[i].quantity) * userCart[i].pricePerQuantity
+            totalQuantity += Number(userCart[i].quantity)
         }
         checkoutTotal.innerText = `S$${parseFloat(total).toFixed(2)}`
+
+        // Update Checkout TItle
+        checkoutTitle.innerText = `Checkout (${totalQuantity ? totalQuantity : 0} item${totalQuantity == 1 ? "" : "s"})`
     }
 
     // Retrieve User's Cart from Database
@@ -68,13 +73,13 @@ document.addEventListener("DOMContentLoaded", async function() {
                     break
                 }
             }
-            container.innerHTML += `<div id="${`container-${i}`}" class="bg-offwhite w-full p-5 flex flex-row gap-10">
-                <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/5" />
+            container.innerHTML += `<div id="${`container-${i}`}" class="bg-offwhite w-full p-5 flex flex-col md:flex-row gap-5 md:gap-10">
+                <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/3 md:w-1/5" />
                 <div class="flex flex-col">
-                    <p class="font-semibold text-3xl">${cartItems[i].title}</p>
-                    <p class="text-2xl">${itemPrice}</p>
+                    <p class="font-semibold text-2xl md:text-3xl">${cartItems[i].title}</p>
+                    <p class="text-xl md:text-2xl mb-2 md:mb-0">${itemPrice}</p>
                     <div class="mt-auto flex flex-row gap-5">
-                        <label class="px-5 py-2 bg-black text-white">
+                        <label class="px-3 md:px-5 py-2 bg-black text-white">
                             Quantity: 
                             <input 
                                 id="quantity-${i}"
@@ -82,7 +87,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                                 class="ml-2 bg-black text-white w-1/3"
                             >
                         </label>
-                        <button id="remove-${i}" class="px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
+                        <button id="remove-${i}" class="px-3 md:px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
                     </div>
                 </div>
             </div>`
@@ -122,14 +127,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                         console.error(err)
                     }
 
-                    updateFinalPrice(userCart)
+                    updateCheckoutInfo(userCart)
                 }
             })
         }
 
-        updateFinalPrice(userCart)
+        updateCheckoutInfo(userCart)
     }
-
-    /// Update Checkout Details
-    checkoutTitle.innerText = `Checkout (${userCart.length ? userCart.length : 0} item${userCart.length == 1 ? "" : "s"})`
 })
