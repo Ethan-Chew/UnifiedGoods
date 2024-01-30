@@ -32,17 +32,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Show All Products
     const productContainer = document.getElementById("product-container")
-        for (let i = 0; i < apiData.length; i++) {
-            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center" href="/product.html?id=${apiData[i].id}">
-            <div class="flex items-center">
-                <img src="${apiData[i].images[0]}" alt="${apiData[i].title}" class="object-cove aspect-square w-[20rem] h-auto">
-            </div>
-            <div class="text-base">
-                <p class="font-bold">${apiData[i].title}</p>
-                <p class="text-gray-600">${apiData[i].category.name}</p>
-            </div>
-        </a>`
-    }
 
     // Calculate total amount of products
     let totalProducts = apiData.length
@@ -193,9 +182,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         renderProductsForPage(1, filteredProducts)
     }
 
+    // Show the Categories and Products after loading
     document.getElementById('hidden-1').classList.remove('hidden');
     document.getElementById('hidden-2').classList.remove('hidden');
 
-    // End Loading Animation
-    document.getElementById("loader").classList.add("hidden")
+    // Remove loading screen after products and categories loaded
+    document.getElementById("loader").remove()
+    
 })
