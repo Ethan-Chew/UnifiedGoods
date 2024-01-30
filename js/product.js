@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         backBtn.src = "/search.html"
         backBtn.innerText = "< Back to Search"
     }
+    if (goBack == "products") {
+        backBtn.src = "/products.html"
+        backBtn.innerText = "< Back to Product List"
+    }
+
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"

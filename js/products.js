@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (filteredProducts != undefined){
                 product = filteredProducts[i]
             }
-            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center h-[25rem]" href="/product.html?id=${product.id}">
+            productContainer.innerHTML += `<a class="bg-lightblue shadow-md p-4 rounded text-center h-[25rem]" href="/product.html?id=${product.id}&from=products">
                 <div class="flex items-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">
                 </div>
@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // If accessed from categories section in index/home page
     if (categoryName != undefined){
+        const checkbox = 
         filteredProducts = apiData.filter(product => product.category.name === categoryName)
         totalProducts = filteredProducts.length
         totalPages = Math.ceil(totalProducts / productsPerPage)
