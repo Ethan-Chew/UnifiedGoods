@@ -171,7 +171,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // If accessed from categories section in index/home page
     if (categoryName != undefined){
-        const checkbox = 
+        const checkbox = document.getElementById(categoryName)
+        checkbox.checked = true
         filteredProducts = apiData.filter(product => product.category.name === categoryName)
         totalProducts = filteredProducts.length
         totalPages = Math.ceil(totalProducts / productsPerPage)

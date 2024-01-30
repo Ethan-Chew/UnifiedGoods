@@ -37,15 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             })
+            
+            const categoriesArray = Object.values(categories)
+            // Shuffle the categories array randomly
+            categoriesArray.sort(() => Math.random() - 0.5)
 
-            for (let x = 1; x < 6; x++){
-                const banner = `<a href="/products.html?category=${categories[x].name}&from=index" class="m-5 text-center relative">
-                    <img class="object-fill w-screen sm:w-2/3 md:w-[50rem] mx-auto h-[18rem] hover:opacity-50 hover:blur-sm duration-200" src="${categories[x].image}" alt="${categories[x].name}">
-                    <div class="absolute inset-0 flex items-center justify-center z-[-5]">
-                        <p class="text-2xl lg:text-4xl font-bold w-full text-center">${categories[x].name}</p>
+            for (let x = 0; x < 5; x++){
+                const banner = `<a href="/products.html?category=${categoriesArray[x].name}&from=index" class="m-5 text-center relative">
+                    <img class="object-fill w-screen sm:w-2/3 md:w-[50rem] mx-auto h-[18rem] hover:opacity-50 hover:blur-sm duration-200" src="${categoriesArray[x].image}" alt="${categoriesArray[x].name}">
+                    <div class="absolute inset-0 flex items-center justify-center z-[-5] m-5">
+                        <p class="text-2xl lg:text-4xl font-bold w-full text-center text-pretty">${categoriesArray[x].name}</p>
                     </div>
                 </a>`
-                if (x < 3){
+                if (x < 2){
                     document.getElementById("cat-container-1").innerHTML += banner
                 } else {
                     document.getElementById("cat-container-2").innerHTML += banner
