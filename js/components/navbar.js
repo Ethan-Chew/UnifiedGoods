@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Hide Sign In Button
     if (sessionStorage.getItem("username")) {
-        document.getElementById("sign-in-btn").classList.add("md:hidden")
+        document.getElementById("sign-in-btn").classList.add("sm:hidden")
+        document.getElementById("sign-in-btn-mobile").classList.add("hidden")
     }
 
     // Show Mobile Tabs

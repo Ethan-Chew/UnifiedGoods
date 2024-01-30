@@ -16,6 +16,7 @@ Before purchasing a product, the user can guess the price of the product in orde
 | **Close** to Product Price (± 20% of Product Price) | Up to *15% discount*, minimum *5% discount* |
 | **Far** from Product Price (± 50% of Product Price) | Up to *5% discount* |
 | **More than 50%** Product Price Away | *0% discount*, 20% chance of getting a *10% MARKUP* |
+
 <sup><sub>*All discounts are rounded up to the nearest 10-cents.*</sub></sup>
 
 However, if the user is *lazy* and chooses not to play the game, a random **markup** of *20 - 30%* will be added to their product cost.

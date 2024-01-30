@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const username = sessionStorage.getItem("username")
 
     // HTML Elements
+    const mainContent = document.getElementById("main-content")
     const smallImgsDiv = document.getElementById("small-imgs")
     const productImage = document.getElementById("product-img")
     const addCartBtn = document.getElementById("add-cart-btn")
@@ -102,6 +103,9 @@ document.addEventListener("DOMContentLoaded", async function() {
             break
         }
     }
+
+    // Remove Hidden
+    mainContent.classList.remove("hidden")
 
     // Function to add Item to Cart
     async function addToCart(discount) {
