@@ -68,15 +68,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             
             if (userGuess != product.price) {
                 if (priceDifferencePercentage <= 20) {
-                    // Gussed price ± 20% of Product Price, discount + 0.5% for every pricepercentage is 1%
+                    // Gussed price ± 20% of Product Price
                     discount = 5 + (priceDifferencePercentage * 0.5)
                 } else if (priceDifferencePercentage <= 50) {
-                    // Gussed price ± 50% of Product Price, discount + 0.1% for every pricepercentage is 1%
+                    // Gussed price ± 50% of Product Price
                     discount =  priceDifferencePercentage * 0.1
                 } else {
                     // Gussed price > 50% of Product Price
                     const randomNumber = Math.floor(Math.random() * 100)
                     if (randomNumber <= 20) {
+                        console.log(randomNumber)
                         markup = true
                     }
                 }
@@ -111,8 +112,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else if (highestDiscount == 0 && markup == true) {
             finalPrice = product.price * 1.1
             finalPrice = Math.round(finalPrice * 10) / 10
+            discount = -10
         } else if (highestDiscount == 0 && markup == false) {
             finalPrice = product.price
+            discount = 0
         }
 
         if (stopGame == true) {
@@ -149,21 +152,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Disable the textbox
         document.getElementById("guess-price").disabled = true
 
-        // Update the end screen with the final price
-        const newHtml = `<p class="text-bold text-3xl md:text-4xl underline">End Of Game</p>
-        <br>
-        <p class="text-sm">The final price of the item is: $<span class="underline">${finalPrice.toFixed(2)}</span></p>
-        <br>
-        <p class="text-sm">Click the <span class="italic">continue</span> button to go back to product page</p>
-        <br>`
-
-
-        setTimeout(() => {
-            // Wait 2 seconds before showing end screen
-            document.getElementById("end-info").insertAdjacentHTML("afterbegin", newHtml)
-            document.getElementById("end-screen").classList.remove("hidden")
-        }, 2000) 
-
         const apiResponse = await fetch(shopURL)
         const apiData = await apiResponse.json()
         
@@ -187,11 +175,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             userCart = userObj.cart
             userCartHistory = userObj.currentCartHistory
         }
-    
+        if (discount != null && discount > 0) {
+            discount = highestDiscount
+        }
         // Add chosen product to user's cart
         const item = {
             "itemid": productID,
-            "quantity": 0,
+            "quantity": null,
             "discount": discount,
             "pricePerQuantity": 0
         }
@@ -218,13 +208,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (err) {
             console.error(err)
         }
-    }
 
-    const endButton = document.getElementById("end-btn")
+        // Update the end screen with the final price
+        const newHtml = `<p class="text-bold text-3xl md:text-4xl underline">End Of Game</p>
+        <br>
+        <p class="text-sm">The final price of the item is: $<span class="underline">${item.pricePerQuantity.toFixed(2)}</span></p>
+        <br>
+        <p class="text-sm">Click the <span class="italic">continue</span> button to go back to product page</p>
+        <br>`
+
+
+        setTimeout(() => {
+            // Wait 2 seconds before showing end screen
+            document.getElementById("end-info").insertAdjacentHTML("afterbegin", newHtml)
+            document.getElementById("end-screen").classList.remove("hidden")
+        }, 2000) 
+    }
     
-    endButton.addEventListener("click", function(){
+    document.getElementById("end-btn").addEventListener("click", function(){
         // Redirect to product page with final price as a query parameter
-        const prevUrl = `/product.html?id=${productID}&discount=${highestDiscount}`
+        const prevUrl = `/product.html?id=${productID}&discount=${discount}`
         window.location.href = prevUrl
     })
 
