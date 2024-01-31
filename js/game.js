@@ -44,23 +44,131 @@ document.addEventListener("DOMContentLoaded", async function () {
         triesDisplay.push(document.getElementById(`try-${i}`))
     }
 
+    let discount = 0
+    let highestDiscount = 0
+    let markup = false
+    let finalPrice = 0
+    let stopGame = false
+
     // Read the User Input
     document.getElementById("submit-guess-btn").addEventListener("click", async function (e) {
         e.preventDefault()
         document.getElementById("err-msg").innerText = "" // Reset Error Message
 
         // Verify User Answer
-        const userGuess = document.getElementById("guess-price").value
-        if (userGuess == "") {
+        const userGuess = parseFloat(document.getElementById("guess-price").value)
+        
+        const priceDifference = Math.abs(userGuess - product.price)
+        const priceDifferencePercentage = priceDifference / product.price * 100
+
+        if (isNaN(userGuess)) {
             document.getElementById("err-msg").innerText = "Enter a valid guess!"
         } else {
             
+            if (userGuess != product.price) {
+                if (priceDifferencePercentage <= 20) {
+                    // Gussed price ± 20% of Product Price, discount + 0.5% for every pricepercentage is 1%
+                    discount = 5 + (priceDifferencePercentage * 0.5)
+                } else if (priceDifferencePercentage <= 50) {
+                    // Gussed price ± 50% of Product Price, discount + 0.1% for every pricepercentage is 1%
+                    discount =  priceDifferencePercentage * 0.1
+                } else {
+                    // Gussed price > 50% of Product Price
+                    const randomNumber = Math.floor(Math.random() * 100)
+                    if (randomNumber <= 20) {
+                        markup = true
+                    }
+                }
+                // Edit Tries Remaining
+                triesRemaining -= 1 // Remove one try
+                triesDisplay[triesRemaining].classList.remove("bg-blue-300")
+                triesDisplay[triesRemaining].classList.add("bg-gray-600")
+                triesDisplay[triesRemaining].classList.add("text-white")
+            }else{
+                // User Gussed Correct Price
+                discount = 40
+                document.getElementById("timer").innerHTML = `<p class='font-semibold'>Congratulations!</p>`
+                stopGame = true
+            }
 
-            // Edit Tries Remaining
-            triesRemaining -= 1 // Remove one try
-            triesDisplay[triesRemaining].classList.remove("bg-blue-300")
-            triesDisplay[triesRemaining].classList.add("bg-gray-600")
-            triesDisplay[triesRemaining].classList.add("text-white")
+            if (triesRemaining == 0) {
+                // User ran out of tries
+                document.getElementById("timer").innerHTML = `<p class='font-semibold'>You Lost. Sorry!</p>`
+                stopGame = true
+            }
+
+            // Store user's closest guessed price
+            if (discount > highestDiscount) {
+                highestDiscount = discount
+            }
         }
+
+        // Check for user's closest guess discount or markup
+        if (highestDiscount > 0){
+            finalPrice = product.price - (product.price * (highestDiscount / 100))
+            finalPrice = Math.round(finalPrice * 10) / 10
+        } else if (highestDiscount == 0 && markup == true) {
+            finalPrice = product.price * 1.1
+            finalPrice = Math.round(finalPrice * 10) / 10
+        } else if (highestDiscount == 0 && markup == false) {
+            finalPrice = product.price
+        }
+
+        if (stopGame == true) {
+            // Stop the game
+            endGame()
+        }
+    })
+
+    // Set the initial time to 100 seconds
+    let timeRemaining = 100;
+
+    // Update the countdown timer every second
+    const countdownTimer = setInterval(() => {
+        timeRemaining -= 1;
+        document.getElementById("countdown").innerText = timeRemaining + "s";
+
+        // Check if the time has run out
+        if (timeRemaining <= 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown").innerText = "Time's Up!";
+            endGame()
+        }
+    }, 1000);
+
+    // Function to stop the game
+    function endGame() {
+        // Stop the countdown timer
+        clearInterval(countdownTimer)
+        // Disable the guess button
+        document.getElementById("submit-guess-btn").disabled = true
+        document.getElementById("submit-guess-btn").classList.remove("bg-btnblue")
+        document.getElementById("submit-guess-btn").classList.remove("hover:bg-btn2blue")
+        document.getElementById("submit-guess-btn").classList.add("bg-gray-600")
+        // Disable the textbox
+        document.getElementById("guess-price").disabled = true
+
+        // Update the end screen with the final price
+        const newHtml = `<p class="text-bold text-3xl md:text-4xl underline">End Of Game</p>
+        <br>
+        <p class="text-sm">The final price of the item is: $<span class="underline">${finalPrice.toFixed(2)}</span></p>
+        <br>
+        <p class="text-sm">Click the <span class="italic">continue</span> button to go back to product page</p>
+        <br>`
+
+
+        setTimeout(() => {
+            // Wait 2 seconds before showing end screen
+            document.getElementById("end-info").insertAdjacentHTML("afterbegin", newHtml)
+            document.getElementById("end-screen").classList.remove("hidden")
+        }, 2000) 
+    }
+
+    const endButton = document.getElementById("end-btn")
+    
+    endButton.addEventListener("click", function(){
+        // Redirect to product page with final price as a query parameter
+        const prevUrl = `/product.html?id=${productID}&discount=${highestDiscount}`
+        window.location.href = prevUrl
     })
 })
