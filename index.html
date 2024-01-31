@@ -9,10 +9,7 @@
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
         
-        <!-- JS Functions -->
-        <script src="./js/components/navbar.js"></script>
-        <script src="./js/index.js"></script>
-        <script src="./tailwind.config.js"></script>
+        <title>UnifiedGoods | Home</title>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -64,17 +61,36 @@
             <img class="w-full aspect-auto" srcset="/img/banner.jpg">
 
             <!-- Website Information -->
-            <section class="p-5 text-center font-serif">
-                <h1 class="font-bold text-3xl border-black border-2">UnifiedGoods</h1>
-                <br>
-                <p class="text-pretty m-1 whitespace-pre">Welcome to UnifiedGoods, where diversity meets convenience!
-                <br class="md:hidden">We are your go-to destination for a seamless shopping experience that spans the realms of fashion, technology, home decor, and more.
-                <br class="md:hidden">Discover a curated collection of clothes, electronics, furniture, and shoes all in one place, crafted to suit every taste and lifestyle.</p>
-                <br>
-                <p class="text-pretty m-1 whitespace-pre">At UnifiedGoods, we believe in bringing together the best of all worlds.
-                <br class="md:hidden">Our electic range of products reflects the diverse interests and preferences of our global community.
-                <br class="md:hidden">From the latest fashion trends to cutting-edge electronics, stylish furniture to comfortable shoes, we have carefully curated a collection that caters to your every need.
-                <br class="md:hidden">Explore a shopping journey that transcends boundaries – where variety and quality converge.</p> 
+            <section class="px-8 py-10 md:py-16">
+                <h1 class="font-bold text-3xl md:text-4.5xl mb-5 md:mb-12">Elevate Your Lifestyle, One Cart at a Time.</h1>
+                
+                <div class="flex flex-col md:flex-row gap-5 md:gap-20">
+                    <div class="flex-grow flex-shrink">
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Diversity</h2>
+                        <p>Discover a curated collection of clothes, electronics, furniture, and shoes all in one place, crafted to suit every taste and lifestyle.</p>
+                    </div>
+                    <div class="flex-grow flex-shrink">
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Trendy</h2>
+                        <p>Our inventory is constantly updated to reflect the hottest styles. Elevate your style with our ever-evolving collection, staying in touch with current trends.</p>
+                    </div>
+                    <div class="flex-grow flex-shrink">
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Affordable</h2>
+                        <p>Fashion doesn't need to cost you an arm and a leg, we believe in making trendy fashion accessible to all. Discover our range of affordable products today!</p>
+                    </div>
+                </div>
+
+                
+
+                <!-- <div>
+                    <p><span class="font-semibold">UnifiedGoods</span>, where diversity meets convenience! We believe in bringing together the best of all worlds.</p>
+                    <p>We are your go-to destination for a seamless shopping experience that spans the realms of fashion, technology, home decor, and more.</p>
+                </div>
+                <div>
+                    <br class="md:hidden">Our electic range of products reflects the diverse interests and preferences of our global community.
+                    <br class="md:hidden">From the latest fashion trends to cutting-edge electronics, stylish furniture to comfortable shoes, we have carefully curated a collection that caters to your every need.
+                    <br class="md:hidden">Explore a shopping journey that transcends boundaries – where variety and quality converge.</p> 
+
+                </div>
                 <br>
                 <i data-feather="arrow-down" class="sm:hidden mx-auto stroke-2 cursor-pointer border-black rounded-full border-2" id="show-more"></i>
                 <div class="max-sm:hidden" id="txt-container">
@@ -83,13 +99,13 @@
                     <br class="md:hidden">Embrace the unity of style, functionality, and innovation with UnifiedGoods. Your one-stop-shop for a world of possibilities awaits - experience the joy of unified shopping today!</p>
                     <br>
                     <i data-feather="arrow-up" class="sm:hidden mx-auto stroke-2 cursor-pointer border-black rounded-full border-2" id="show-less"></i>
-                </div>
+                </div> -->
                 
             </section>
 
             <!-- Items -->
             <section class="bg-lightblue/[0.2] p-5 text-center">
-                <h1 class="font-bold text-3xl border-black border-2">Trending Items</h1>
+                <h1 class="font-bold text-3xl">Trending Items</h1>
                 <!-- Featured Items -->
                 <div class="flex justify-center my-5">
                     <!-- Items -->
@@ -100,7 +116,7 @@
 
             <!-- Categories -->
             <section class="flex flex-col p-5">
-                <h1 class="font-bold text-3xl text-center border-black border-2">Categories</h1>
+                <h1 class="font-bold text-3xl text-center">Categories</h1>
                 <!-- First Row (2 Column) [Desktop] | (1 Column) [Mobile] -->
                 <div class="flex justify-center max-md:flex-wrap md:w-2/3 mx-auto items-center" id="cat-container-1">
 
@@ -113,8 +129,8 @@
 
 
             <!-- News -->
-            <section class="flex flex-col p-5 text-center font-serif">
-                <h1 class="font-bold text-3xl border-black border-2">News</h1>
+            <section class="flex flex-col p-5 text-center">
+                <h1 class="font-bold text-3xl">News</h1>
                 <p class="text-balance">Bla Bla Bla</p>
             </section>
         </d>
@@ -151,6 +167,11 @@
         <script src="https://unpkg.com/feather-icons"></script>
         <script>
             feather.replace();
-        </script> 
+        </script>
+
+        <!-- JS Functions -->
+        <script src="./js/components/navbar.js"></script>
+        <script src="./js/index.js"></script>
+        <script src="./tailwind.config.js"></script>
     </body>
 </html>

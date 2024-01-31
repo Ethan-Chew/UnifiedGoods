@@ -14,40 +14,45 @@
         <script type="module" src="./js/signin.js"></script>
     </head>
     <body>
-        <div class="flex flex-row w-screen h-screen">
+        <!-- Top Bar for Mobile -->
+        <div class="block md:hidden w-full bg-mainblue/[0.9] text-white p-5">
+            <h2 class="text-2xl font-semibold">UnifiedGoods</h2>
+            <div class="py-8">
+                <h1 class="text-4xl md:text-5xl font-bold mb-5">Welcome Back</h1>
+                <p class="md:text-lg"><span class="font-semibold">Elevate Your Lifestyle, One Cart at a Time.</span> Your one-stop-shop for a world of possibilities awaits – experience the joy of unified shopping today!</p>
+            </div>
+        </div>
+        
+        <div class="flex flex-row w-screen md:h-screen">
             <!-- Left Side Bar -->
-            <div class="hidden sm:block w-1/3 h-full p-6 bg-mainblue/[0.8] text-white">
+            <div class="hidden md:block w-1/3 h-full p-6 bg-mainblue/[0.8] text-white">
                 <h2 class="text-2xl font-semibold mb-2">UnifiedGoods</h2>
                 <div class="py-20">
-                    <h1 class="text-4.5xl font-bold">Welcome Back</h1>
-                    <p><span class="font-semibold">Elevate Your Lifestyle, One Cart at a Time.</span> Your one-stop-shop for a world of possibilities awaits – experience the joy of unified shopping today!</p>
+                    <h1 class="text-4xl xl:text-5xl font-bold mb-5">Welcome Back</h1>
+                    <p class="xl:text-lg"><span class="font-semibold">Elevate Your Lifestyle, One Cart at a Time.</span> Your one-stop-shop for a world of possibilities awaits – experience the joy of unified shopping today!</p>
                 </div>
-                <div>
-                    <dotlottie-player src="https://lottie.host/9bc5c490-3601-48c1-af69-e19fdde891fd/cH7IrmPfih.json" background="transparent" speed="1" class="w-64 h-64 hidden md:block" loop autoplay></dotlottie-player>
+                <div class="py-10 flex justify-center">
+                    <dotlottie-player src="https://lottie.host/9bc5c490-3601-48c1-af69-e19fdde891fd/cH7IrmPfih.json" background="transparent" speed="1" class="w-full 2xl:w-3/4 h-3/4 hidden md:block" loop autoplay></dotlottie-player>
                 </div>
             </div>
 
-            <!-- Top Bar for Mobile -->
-            <div class="block sm:hidden fixed w-full top-0 bg-mainblue/[0.9] text-white p-5">
-                <h2 class="text-2xl font-semibold">UnifiedGoods</h2>
-            </div>
 
             <!-- Right Login Bar -->
-            <div class="sm:w-2/3 flex flex-row items-center p-10">
+            <div class="md:w-2/3 flex flex-row items-center p-10">
                 <div>
                     <div class="mb-8">
-                        <h1 class="font-bold text-4xl mb-1">Sign In</h1>
-                        <p class="text-xl">Welcome Back. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h1 class="font-bold text-4xl xl:text-5xl mb-1">Sign In</h1>
+                        <p class="text-xl xl:text-2xl">Welcome Back. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     
-                    <form id="login-form">
+                    <form id="login-form" class="md:text-lg">
                         <div class="flex flex-col gap-3">
                             <label>
                                 <p class="mb-1">Username</p>
                                 <input 
                                 type="text"
                                 id="username"
-                                class="px-2 py-1 w-full sm:w-1/2 border-slate-400 border-2 rounded-lg"
+                                class="px-2 py-1 w-full md:w-1/2 border-slate-400 border-2 rounded-lg"
                                 required
                                 ></input>
                             </label>
@@ -56,7 +61,7 @@
                                 <input 
                                 type="password"
                                 id="password"
-                                class="px-2 py-1 w-full sm:w-1/2 border-slate-400 border-2 rounded-lg"
+                                class="px-2 py-1 w-full md:w-1/2 border-slate-400 border-2 rounded-lg"
                                 required
                                 ></input>
                             </label>

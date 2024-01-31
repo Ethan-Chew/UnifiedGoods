@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (filteredProducts != undefined){
                 product = filteredProducts[i]
             }
-            productContainer.innerHTML += `<a class="bg-containerblue shadow-md hover:shadow-xl p-4 rounded-lg text-center" href="/product.html?id=${product.id}&from=products">
-                <div class="flex items-center">
+            productContainer.innerHTML += `<a class="bg-containerblue shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center" href="/product.html?id=${product.id}&from=products">
+                <div class="flex justify-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">
                 </div>
                 <div class="mt-2 flex flex-col gap-2">
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         // Create a new div to store page navigation
         const pageNavigationContainer = document.createElement("div")
         pageNavigationContainer.id = "page-nav-container"
-        pageNavigationContainer.classList.add("w-screen","md:w-auto", "flex", "md:justify-content", "md:flex-wrap", "mt-4", "max-md:overflow-auto", "touch-pan-x")
+        pageNavigationContainer.classList.add("w-screen","md:w-auto", "flex", "md:justify-content", "md:flex-wrap", "mt-4", "max-md:overflow-auto", "touch-pan-x", "px-5")
         // Loop through the total number of pages and create page links
         for (let i = 1; i <= totalPages; i++) {
             // Create a new link for each page and add it to the page navigation container
@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 "border-black", 
                 "rounded-full", 
                 "hover:bg-gray-200",
+                "cursor-pointer"
             )
             pageLink.textContent = i
             // Check if the current page is the first page and add class if so
