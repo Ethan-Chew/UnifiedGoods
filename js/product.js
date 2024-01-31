@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Update Back Button Redirect
     if (goBack == "search") {
-        backBtn.href = "/search.html"
+        backBtn.src = "/search.html"
         backBtn.innerText = "< Back to Search"
     }
     if (goBack == "products") {
-        backBtn.href = "/products.html"
+        backBtn.src = "/products.html"
         backBtn.innerText = "< Back to Product List"
     }
 
