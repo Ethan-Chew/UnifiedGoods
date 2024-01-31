@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                     // Gussed price > 50% of Product Price
                     const randomNumber = Math.floor(Math.random() * 100)
                     if (randomNumber <= 20) {
-                        console.log(randomNumber)
                         markup = true
                     }
                 }
