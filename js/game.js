@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Get Query Parameters (Product ID)
     const urlParameters = new URLSearchParams(window.location.search)
     const productID = Number(urlParameters.get("id"))
+    const username = sessionStorage.getItem("username")
 
     // Fetch Data and Update Screen
     const shopURL = "https://assets.ethanchew.com/main.json"
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (triesRemaining == 0) {
                 // User ran out of tries
-                document.getElementById("timer").innerHTML = `<p class='font-semibold'>You Lost. Sorry!</p>`
+                document.getElementById("timer").innerHTML = `<p class='font-semibold'>Ran out of tries!</p>`
                 stopGame = true
             }
 
@@ -137,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }, 1000);
 
     // Function to stop the game
-    function endGame() {
+    async function endGame() {
         // Stop the countdown timer
         clearInterval(countdownTimer)
         // Disable the guess button
@@ -162,6 +163,61 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("end-info").insertAdjacentHTML("afterbegin", newHtml)
             document.getElementById("end-screen").classList.remove("hidden")
         }, 2000) 
+
+        const apiResponse = await fetch(shopURL)
+        const apiData = await apiResponse.json()
+        
+        // Filter for chosen product
+        let chosenProduct
+        for (let i = 0; i < apiData.length; i++) {
+            if (apiData[i].id === productID) {
+                chosenProduct = apiData[i]
+            }
+        }
+    
+        // Get user's existing cart
+        let userCart = []
+        let userCartHistory = []
+        const getUserResponse = await getDoc(doc(db, "users", username))
+        if (!getUserResponse.exists()) {
+            alert("User does not exist!")
+            window.location.href = "signin.html"
+        } else {
+            const userObj = getUserResponse.data()
+            userCart = userObj.cart
+            userCartHistory = userObj.currentCartHistory
+        }
+    
+        // Add chosen product to user's cart
+        const item = {
+            "itemid": productID,
+            "quantity": 0,
+            "discount": discount,
+            "pricePerQuantity": 0
+        }
+    
+        // Check if Item already exists in the cart
+        const existingCartIndex = userCart.findIndex(item => item.itemid == productID);
+        if (existingCartIndex === -1) {
+            // Item does not exist in cart
+            userCart.push(item)
+            userCartHistory.push(item.itemid)
+        } else {
+            // Item exists in the cart
+            userCart[existingCartIndex].quantity = quantity
+        }
+    
+        // Update user's cart
+        try {
+            const discountAmt = chosenProduct.price * (item.discount / 100)
+            item.pricePerQuantity = chosenProduct.price - discountAmt
+            const updateCartResponse = await updateDoc(doc(db, "users", username), {
+                cart: userCart,
+                currentCartHistory: userCartHistory
+            })
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const endButton = document.getElementById("end-btn")
@@ -171,4 +227,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const prevUrl = `/product.html?id=${productID}&discount=${highestDiscount}`
         window.location.href = prevUrl
     })
+
+
+
 })
