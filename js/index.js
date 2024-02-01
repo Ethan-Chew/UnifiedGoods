@@ -23,37 +23,39 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("carousel").innerHTML += card
             }
 
-        })
-    fetch(shopURL, getSettings)
-        .then(response => response.json())
-        .then(data => {
             const categories = {}
             data.forEach(item =>{
                 if (!categories[item.category.id]){
                     categories[item.category.id] = {
                         id: item.category.id,
-                        name: item.category.name,
-                        image: item.category.image,
+                        name: item.category.name
                     }
                 }
             })
-            
+
             const categoriesArray = Object.values(categories)
             // Shuffle the categories array randomly
             categoriesArray.sort(() => Math.random() - 0.5)
 
-            for (let x = 0; x < 5; x++){
-                const banner = `<a href="/products.html?category=${categoriesArray[x].name}&from=index" class="m-5 text-center relative">
-                    <img class="object-fill w-screen sm:w-2/3 md:w-[50rem] mx-auto h-[10rem] xl:h-[18rem] hover:opacity-50 hover:blur-sm duration-200" src="${categoriesArray[x].image}" alt="${categoriesArray[x].name}">
-                    <div class="absolute inset-0 flex items-center justify-center z-[-5] m-5">
-                        <p class="text-2xl lg:text-4xl font-bold w-full text-center text-pretty">${categoriesArray[x].name}</p>
-                    </div>
-                </a>`
-                if (x < 2){
-                    document.getElementById("cat-container-1").innerHTML += banner
-                } else {
-                    document.getElementById("cat-container-2").innerHTML += banner
-                }
+            
+            for (let x = 0; x < 2; x++){
+                document.getElementById("cat-text-"+x).innerText = categoriesArray[x].name
+                const productContainer = document.getElementById("cat-product-"+x)
+                console.log(productContainer)
+                productContainer.innerHTML = ""
+                data.forEach(item => {
+                    if (item.category.id == categoriesArray[x].id){
+                        productContainer.innerHTML += `<a class="bg-white shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center h-full min-w-60 max-w-60" href="/product.html?id=${data.id}&from=index">
+                        <div class="flex justify-center">
+                            <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square min-w-200">
+                        </div>
+                        <div class="mt-2">
+                            <p class="font-bold text-lg md:text-xl truncate hover:underline" title="${item.title}">${item.title}</p>
+                        </div>
+                    </a>`
+                    }
+                })
             }
+
         })
 })

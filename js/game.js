@@ -150,17 +150,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("submit-guess-btn").classList.add("bg-gray-600")
         // Disable the textbox
         document.getElementById("guess-price").disabled = true
-
-        const apiResponse = await fetch(shopURL)
-        const apiData = await apiResponse.json()
-        
-        // Filter for chosen product
-        let chosenProduct
-        for (let i = 0; i < apiData.length; i++) {
-            if (apiData[i].id === productID) {
-                chosenProduct = apiData[i]
-            }
-        }
     
         // Get user's existing cart
         let userCart = []
@@ -198,8 +187,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     
         // Update user's cart
         try {
-            const discountAmt = chosenProduct.price * (item.discount / 100)
-            item.pricePerQuantity = chosenProduct.price - discountAmt
+            const discountAmt = product.price * (item.discount / 100)
+            item.pricePerQuantity = product.price - discountAmt
             const updateCartResponse = await updateDoc(doc(db, "users", username), {
                 cart: userCart,
                 currentCartHistory: userCartHistory
