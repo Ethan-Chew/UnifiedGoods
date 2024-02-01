@@ -5,10 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="referrer" content="no-referrer">
         <link rel="stylesheet" href="./styles/index.css" type="text/css">
-        
-        <script src="https://cdn.tailwindcss.com"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
-        
+                
         <title>UnifiedGoods | Home</title>
     </head>
     <body>
@@ -40,15 +37,15 @@
             <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
                 <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
                 <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
             </nav>
             <!-- Bottom Nav (Mobile) -->
             <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
                 <a class="cursor-pointer" href="/">Home</a>
                 <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer" href="/profile.html">Profile</a>
+                <a class="cursor-pointer" href="/rewards.html" id="nav-mobile-rewards">Rewards</a>
+                <a class="cursor-pointer" href="/profile.html" id="nav-mobile-profile">Profile</a>
                 <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                     Sign In
                 </a>
@@ -66,46 +63,23 @@
                 
                 <div class="flex flex-col md:flex-row gap-5 md:gap-20">
                     <div class="flex-grow flex-shrink">
-                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Diversity</h2>
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Diversity 🤝</h2>
                         <p>Discover a curated collection of clothes, electronics, furniture, and shoes all in one place, crafted to suit every taste and lifestyle.</p>
                     </div>
                     <div class="flex-grow flex-shrink">
-                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Trendy</h2>
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Trendy ✨</h2>
                         <p>Our inventory is constantly updated to reflect the hottest styles. Elevate your style with our ever-evolving collection, staying in touch with current trends.</p>
                     </div>
                     <div class="flex-grow flex-shrink">
-                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Affordable</h2>
+                        <h2 class="font-semibold text-2xl md:text-3xl mb-2">Affordable 🛍️</h2>
                         <p>Fashion doesn't need to cost you an arm and a leg, we believe in making trendy fashion accessible to all. Discover our range of affordable products today!</p>
                     </div>
                 </div>
-
-                
-
-                <!-- <div>
-                    <p><span class="font-semibold">UnifiedGoods</span>, where diversity meets convenience! We believe in bringing together the best of all worlds.</p>
-                    <p>We are your go-to destination for a seamless shopping experience that spans the realms of fashion, technology, home decor, and more.</p>
-                </div>
-                <div>
-                    <br class="md:hidden">Our electic range of products reflects the diverse interests and preferences of our global community.
-                    <br class="md:hidden">From the latest fashion trends to cutting-edge electronics, stylish furniture to comfortable shoes, we have carefully curated a collection that caters to your every need.
-                    <br class="md:hidden">Explore a shopping journey that transcends boundaries – where variety and quality converge.</p> 
-
-                </div>
-                <br>
-                <i data-feather="arrow-down" class="sm:hidden mx-auto stroke-2 cursor-pointer border-black rounded-full border-2" id="show-more"></i>
-                <div class="max-sm:hidden" id="txt-container">
-                    <p class="text-pretty m-1 whitespace-pre">Our commitment to excellence ensures that each item in our selection is not just a purchase but an investment in enhancing your daily life.
-                    <br class="md:hidden">UnifiedGoods is more than an e-commerce platform; it's a lifestyle destination that unifies your desires under one virtual roof.
-                    <br class="md:hidden">Embrace the unity of style, functionality, and innovation with UnifiedGoods. Your one-stop-shop for a world of possibilities awaits - experience the joy of unified shopping today!</p>
-                    <br>
-                    <i data-feather="arrow-up" class="sm:hidden mx-auto stroke-2 cursor-pointer border-black rounded-full border-2" id="show-less"></i>
-                </div> -->
-                
             </section>
 
             <!-- Items -->
-            <section class="bg-lightblue/[0.2] p-5 text-center">
-                <h1 class="font-bold text-3xl">Trending Items</h1>
+            <section class="bg-lightblue/[0.2] py-8 md:py-12 text-center">
+                <h1 class="font-bold text-3xl md:text-4.5xl mb-5 md:mb-12">Trending Items</h1>
                 <!-- Featured Items -->
                 <div class="flex justify-center my-5">
                     <!-- Items -->
@@ -139,7 +113,7 @@
         <footer class="bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
             <!--About-->
             <div class="flex flex-col max-sm:mx-auto">
-                <p class="font-bold text-2xl">(some name)</p>
+                <p class="font-bold text-2xl">UnifiedGoods</p>
                 <p class="max-sm:text-center md:pt-4">Some Location</p> 
             </div>
             <!--Contacts-->
@@ -173,5 +147,7 @@
         <script src="./js/components/navbar.js"></script>
         <script src="./js/index.js"></script>
         <script src="./tailwind.config.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
     </body>
 </html>
