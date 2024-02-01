@@ -5,15 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="referrer" content="no-referrer">
         <link rel="stylesheet" href="./styles/index.css" type="text/css">
-        
-        <script src="https://cdn.tailwindcss.com"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
-        
-        <!-- JS Functions -->
-        <script src="./js/components/navbar.js"></script>
-        <script src="./js/search.js"></script>
-        <script src="./tailwind.config.js"></script>
-
+                
         <title>UnifiedGoods | Search</title>
     </head>
     <body>
@@ -52,8 +44,8 @@
             <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
                 <a class="cursor-pointer" href="/">Home</a>
                 <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer" href="/profile.html">Profile</a>
+                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
                 <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                     Sign In
                 </a>
@@ -111,5 +103,12 @@
         <script>
             feather.replace();
         </script> 
+        
+        <!-- JS Functions -->
+        <script src="./js/components/navbar.js"></script>
+        <script src="./js/search.js"></script>
+        <script src="./tailwind.config.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>   
     </body>
 </html>

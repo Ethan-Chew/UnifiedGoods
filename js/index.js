@@ -56,14 +56,4 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         })
-
-    document.getElementById("show-more").addEventListener("click", function() {
-        document.getElementById("show-more").classList.add("hidden")
-        document.getElementById("txt-container").classList.remove("max-sm:hidden")
-    })
-
-    document.getElementById("show-less").addEventListener("click", function() {
-        document.getElementById("txt-container").classList.add("max-sm:hidden")
-        document.getElementById("show-more").classList.remove("hidden")
-    })
 })
