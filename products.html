@@ -66,14 +66,15 @@
         </header>
           
         <!-- Categories -->
-        <div class="w-auto h-auto pt-[13vh]">
-            <div class="relative hidden" id="hidden-1">
-                <div class="bg-lightblue md:fixed md:w-auto md:h-auto md:p-4 flex flex-col relative w-full p-5">
-                    <p class="text-2xl font-bold mb-2">Categories</p>
+        <div class="w-auto h-auto mt-[6.5rem] flex flex-col md:flex-row">
+            <!-- Side Bar -->
+            <div class="min-w-[224px]">
+                <div class="relative bg-lightblue md:fixed md:w-auto md:h-auto md:py-1 flex flex-col p-2 md:rounded-r hidden" id="hidden-1">
+                    <p class="text-2xl font-bold mb-2 text-center underline">Categories</p>
                     <div id="category-container" class="grid grid-cols-2 md:grid-cols-none">
                         <!-- Category checkboxes container -->
                     </div>
-                    <div class="mt-4 flex flex-col gap-2 justify-center items-center">
+                    <div class="mt-2 flex flex-col gap-2 justify-center items-center">
                         <div class="flex flex-row gap-4">
                             <!-- Check all checkbox button -->
                             <button class="bg-black text-white w-24 py-1" id="select-all">Select All</button>
@@ -85,32 +86,49 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--Product Display-->
-        <div class="flex flex-col items-center h-auto md:pl-[26vh] lg:pl-[26vh] pl-[1vh] pr-[1vh] min-h-screen">
-            <div class="text-center pt-5 hidden" id="hidden-2">
-                <h1 class="text-4xl font-bold mb-7">Products List</h1>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-5" id="product-container">
-                <!--Product Information Container-->
-                <!--Product Page Number Container-->
-            </div>
-        </div>
-
-        <div class="relative">
-            <footer class="bg-black flex flex-row align-center px-5 py-8 text-white mt-5 bottom-0">
-                <div class="flex flex-col">
-                    <p class="font-bold text-2xl">(some name)</p>
-                    <p>Some Location</p> 
+            <!--Product Display-->
+            <div class="flex flex-col items-center h-auto pl-[1vh] pr-[1vh] min-h-screen">
+                <div class="text-center pt-5 hidden" id="hidden-2">
+                    <h1 class="text-4xl font-bold mb-7 underline">Products List</h1>
                 </div>
-                <div class="ml-auto">
-                    <p class="font-bold text-xl">Contact Us</p>
-                    <!-- Add Social Media Icons here -->
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-5" id="product-container">
+                    <!--Product Information Container-->
+                    <!--Product Page Number Container-->
                 </div>
-            </footer>
+            </div>
         </div>
+
+        
+
+        <!-- Contacts and about -->
+        <footer class="bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white mt-10">
+            <!--About-->
+            <div class="flex flex-col max-sm:mx-auto">
+                <p class="font-bold text-2xl">(some name)</p>
+                <p class="max-sm:text-center md:pt-4">Some Location</p> 
+            </div>
+            <!--Contacts-->
+            <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                <p class="font-bold text-xl">Contact Us</p>
+                <!-- Add Social Media Icons here -->
+                <div class="flex flex-row max-sm:justify-center justify-end md:pt-4">
+                    <!--Instagram-->
+                    <a href="">
+                        <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                    </a>
+                    <!--Facebook-->
+                    <a href="">
+                        <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                    </a>
+                    <!--X(Twitter)-->
+                    <a href="">
+                        <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
 
         <!-- Loading Animation -->
         <div id="loader" class="hidden w-screen h-screen fixed z-10 top-0 bg-subblack/50 backdrop-blur-sm flex items-center justify-center">
