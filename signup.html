@@ -8,10 +8,6 @@
         <script src="https://cdn.tailwindcss.com"></script> 
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-        
-        <!-- JS Functions -->
-        <script src="./tailwind.config.js"></script>
-        <script type="module" src="./js/createacc.js"></script>
     </head>
     <body>
         <!-- Top Bar for Mobile -->
@@ -23,16 +19,16 @@
             </div>
         </div>
                     
-        <div class="flex flex-row w-screen md:h-screen">
+        <div class="flex flex-row w-screen">
             <!-- Left Side Bar -->
-            <div class="hidden md:block w-1/3 h-full p-6 bg-mainblue/[0.8] text-white">
-                <h2 class="text-2xl font-semibold mb-2">UnifiedGoods</h2>
-                <div class="py-16">
-                    <h1 class="text-3xl xl:text-5xl font-bold mb-5">Welcome to UnifiedGoods.</h1>
+            <div class="hidden w-1/3 h-screen md:flex flex-col justify-between p-6 bg-mainblue/[0.9] text-white">
+                <a href="/index.html"><h2 class="text-2xl font-semibold mb-2">UnifiedGoods</h2></a>
+                <div class="">
+                    <h1 class="text-4xl xl:text-5xl font-bold mb-5">Welcome to UnifiedGoods.</h1>
                     <p class="xl:text-lg"><span class="font-semibold">Elevate Your Lifestyle, One Cart at a Time.</span> Your one-stop-shop for a world of possibilities awaits – experience the joy of unified shopping today!</p>
                 </div>
-                <div class="py-10 flex justify-center">
-                    <dotlottie-player src="https://lottie.host/9bc5c490-3601-48c1-af69-e19fdde891fd/cH7IrmPfih.json" background="transparent" speed="1" class="w-full 2xl:w-3/4 h-3/4 hidden md:block" loop autoplay></dotlottie-player>
+                <div class="flex justify-center mb-2">
+                    <dotlottie-player src="https://lottie.host/9bc5c490-3601-48c1-af69-e19fdde891fd/cH7IrmPfih.json" background="transparent" speed="1" class="w-full lg:w-3/4 xl:w-3/5 hidden md:block" loop autoplay></dotlottie-player>
                 </div>
             </div>
 
@@ -40,8 +36,8 @@
             <div class="md:w-2/3 flex flex-row items-center p-10">
                 <div class="w-full">
                     <div class="mb-8">
-                        <h1 class="font-bold text-4xl xl:text-5xl mb-1">Create an Account</h1>
-                        <p class="text-xl">Join (insert name), and start buying xxx with ease!</p>
+                        <h1 class="font-bold text-4xl xl:text-5xl mb-2">Create an Account</h1>
+                        <p class="text-xl">Have an account? <a class="text-mainblue hover:underline" href="/signin.html">Sign in</a></p>
                     </div>
                     
                     <form id="create-form" class="w-full xl:w-1/2">
@@ -109,7 +105,7 @@
                                 Create
                             </button>
                             <button class="px-5 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
-                                <a href="/signin.html">Sign In</a>
+                                <a href="/index.html">Back to Home</a>
                             </button>
                         </div>
                         <p class="mt-1 text-red-800" id="err-msg"></p>
@@ -117,5 +113,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- JS Functions -->
+        <script src="./tailwind.config.js"></script>
+        <script type="module" src="./js/createacc.js"></script>        
     </body>
 </html>
