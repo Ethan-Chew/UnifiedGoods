@@ -58,23 +58,28 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Verify User Answer
         const userGuess = parseFloat(document.getElementById("guess-price").value)
-        
+
         const priceDifference = Math.abs(userGuess - product.price)
         const priceDifferencePercentage = priceDifference / product.price * 100
 
         if (isNaN(userGuess)) {
             document.getElementById("err-msg").innerText = "Enter a valid guess!"
+        } else if (userGuess <= 0) {
+            document.getElementById("err-msg").innerText = "Enter a positive price guess!"
         } else {
             
             if (userGuess != product.price) {
                 if (priceDifferencePercentage <= 20) {
                     // Gussed price ± 20% of Product Price
+                    document.getElementById("err-msg").innerText = "You're close!"
                     discount = 5 + (priceDifferencePercentage * 0.5)
                 } else if (priceDifferencePercentage <= 50) {
                     // Gussed price ± 50% of Product Price
+                    document.getElementById("err-msg").innerText = "You're close!"
                     discount =  priceDifferencePercentage * 0.1
                 } else {
                     // Gussed price > 50% of Product Price
+                    document.getElementById("err-msg").innerText = "You're way off!"
                     const randomNumber = Math.floor(Math.random() * 100)
                     if (randomNumber <= 20) {
                         markup = true
@@ -88,12 +93,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             }else{
                 // User Gussed Correct Price
                 discount = 40
+                document.getElementById("err-msg").innerText = "Congratulations! You have gussed the correct price tag!"
                 document.getElementById("timer").innerHTML = `<p class='font-semibold'>Congratulations!</p>`
                 stopGame = true
             }
 
             if (triesRemaining == 0) {
                 // User ran out of tries
+                document.getElementById("err-msg").innerText += "\nYou ran out of tries!"
                 document.getElementById("timer").innerHTML = `<p class='font-semibold'>Ran out of tries!</p>`
                 stopGame = true
             }
@@ -219,5 +226,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         window.location.href = prevUrl
     })
 
-    // TODO: Validate Data and Show Popup
+
 })

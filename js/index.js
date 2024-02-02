@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (item.category.id == categoriesArray[x].id){
                         productContainer.innerHTML += `<a class="bg-lightblue/[0.4] shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center h-full min-w-60 max-w-60" href="/product.html?id=${item.id}&from=index">
                         <div class="flex justify-center">
-                            <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square min-w-200">
+                            <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square">
                         </div>
                         <div class="mt-2">
                             <p class="font-bold text-lg md:text-xl truncate hover:underline" title="${item.title}">${item.title}</p>
