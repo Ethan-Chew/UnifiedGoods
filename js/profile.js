@@ -24,4 +24,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         sessionStorage.removeItem("username")
         window.location.href = "index.html"
     })
+
+    // TODO: Update Profile
 })
