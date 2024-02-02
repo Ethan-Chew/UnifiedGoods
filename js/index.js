@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 productContainer.innerHTML = ""
                 data.forEach(item => {
                     if (item.category.id == categoriesArray[x].id){
-                        productContainer.innerHTML += `<a class="bg-white shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center h-full min-w-60 max-w-60" href="/product.html?id=${data.id}&from=index">
+                        productContainer.innerHTML += `<a class="bg-lightblue/[0.4] shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center h-full min-w-60 max-w-60" href="/product.html?id=${item.id}&from=index">
                         <div class="flex justify-center">
                             <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square min-w-200">
                         </div>
