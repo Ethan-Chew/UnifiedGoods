@@ -1,11 +1,11 @@
 # UnifiedGoods - A eCommerce Platform
-**UnifiedGoods** was created by [Ethan Chew](https://github.com/Ethan-Chew) and [Jefferson Low](https://github.com/Jefflyl98). UnifiedGoods is a fictional eCommerce platform, allowing users to 'purchase' items of various categories (for example, clothes, electronics, furniture, etc). Users can play a game in order to gain discounts on their purchases. More information about this game is located [below](###Guessing-the-Product's-Price). In addition, they will earn points as they purchase items from our store.
-<br>
+**UnifiedGoods** was created by [Ethan Chew](https://github.com/Ethan-Chew) and [Jefferson Low](https://github.com/Jefflyl98). UnifiedGoods is a fictional eCommerce platform, allowing users to 'purchase' items of various categories (for example, clothes, electronics, furniture, etc). Users can play a game in order to gain discounts on their purchases. More information about this game is located [below](###Guessing-the-Product's-Price). In addition, they will earn points as they purchase items from our store.  
+
 **Disclaimer:** This website is solely created for a school assignment, and all information and names mentioned are entirely fictional, any resemblence to real-life entities is purely a coincidence. All content in this site does not act as real-world information.
 
 ## Features
 ### Working E-Commerce Website
-UnifiedGoods closely mimics a fully-functional e-commerce website, allowing users to search, view, sort and buy products. 
+UnifiedGoods closely mimics a fully-functional e-commerce website, allowing users to search, view, sort and buy products. After searching for products they want to purchase, a game can be played to potentially earn a discount. Users can view the products they have added in the cart screen, reviewing them before checking out. A final receipt would be provided, confirming their purchase. After purchasing from our site, users would earn points which would be credited to their account.
 
 
 ### Guessing the Product's Price
@@ -38,8 +38,9 @@ For every **$5 spent**, **1 point** will be awarded.
 ## Full List of Implimented Features
 1. Functional Login and Create Account Pages
 2. Search for products by name and category
-3. Adding products to cart
+3. Adding products to cart and *'purchasing'* them
 4. Working Points System
+5. Functioning game for users to earn discounts on certain products
 
 ## Potential Future Improvements
 1. Depending on the user's tier, certain rewards can be awarded to them. For example, vouchers on their birthday month.
