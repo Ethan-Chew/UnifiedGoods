@@ -23,3 +23,25 @@ body::-webkit-scrollbar{
         background-position: 0% 50%;
     }
 }
+
+#cat-product-0::-webkit-scrollbar {
+    height: 5px;
+}
+#cat-product-0::-webkit-scrollbar-thumb{
+    background: rgb(173, 216, 230);
+    border-bottom: 10px;
+}
+#cat-product-0::-webkit-scrollbar-track{
+    background: rgb(224,224,224);
+}
+
+#cat-product-1::-webkit-scrollbar {
+    height: 5px;
+}
+#cat-product-1::-webkit-scrollbar-thumb{
+    background: rgb(173, 216, 230);
+    border-bottom: 10px;
+}
+#cat-product-1::-webkit-scrollbar-track{
+    background: rgb(224,224,224);
+}
