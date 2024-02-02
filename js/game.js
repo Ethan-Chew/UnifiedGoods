@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         // Update the end screen with the final price
-        const newHtml = `<p class="text-bold text-3xl md:text-4xl underline">End Of Game</p>
+        const newHtml = `<p class="text-bold text-3xl md:text-4xl">End Of Game</p>
         <br>
         <p class="text-sm">The final price of the item is: $<span class="underline">${item.pricePerQuantity.toFixed(2)}</span></p>
         <br>
@@ -215,10 +215,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     document.getElementById("end-btn").addEventListener("click", function(){
         // Redirect to product page with final price as a query parameter
-        const prevUrl = `/product.html?id=${productID}&discount=${discount}`
+        const prevUrl = `/product.html?id=${productID}`
         window.location.href = prevUrl
     })
-
-
-
 })

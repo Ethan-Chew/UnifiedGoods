@@ -75,7 +75,38 @@
                             <p id="checkout-title" class="text-xl">Checkout (0 items):</p>
                             <p id="checkout-total" class="text-2xl font-medium">$0.00</p>
                         </div>
-                        <button class="bg-mainblue/[0.8] hover:bg-mainblue disabled:bg-slate-400 disabled:cursor-not-allowed text-white py-2 rounded-xl" disabled>Proceed to Checkout</button>
+                        <button id="checkout-btn" class="bg-mainblue/[0.8] hover:bg-mainblue disabled:bg-slate-400 disabled:cursor-not-allowed text-white py-2 rounded-xl" disabled>Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Popup -->
+        <div id="checkout-receipt" class="hidden w-screen h-screen bg-subblack/30 backdrop-blur-sm fixed z-[1001] top-0 flex items-center justify-center">
+            <div class="w-screen h-screen bg-offwhite py-5 px-7 mx-0 sm:mx-20 my-0 sm:my-10 sm:max-w-[80vw] md:max-w-[60vw] sm:max-h-[80vh] flex flex-col gap-3 text-lg">
+                <h2 class="text-3xl font-bold">Receipt</h2>
+
+                <!-- User Info -->
+                <div>
+                    <p><span class="font-semibold">User:</span> <span id="receipt-user">John Doe</span></p>
+                    <p><span class="font-semibold">Checkout Date:</span> <span id="receipt-date">1 January 2024, 10:00am</span></p>
+                </div>
+
+                <!-- Products -->
+                <hr>
+                <div id="receipt-prodcontainer" class="flex flex-col gap-3 pr-5 overflow-y-scroll">
+                    <!-- List of Products -->
+                </div>
+
+                <!-- Total Price -->
+                <hr>
+                <div class="flex flex-col">
+                    <p><span class="font-semibold">Final Cost:</span> $<span id="receipt-finalcost">100</span></p>
+                    <p class="italic text-md">You will earn <span id="receipt-points">50</span> points after confirming your purchase!</p>
+
+                    <div class="flex flex-row gap-6">
+                        <button id="confirm-payment-btn" class="flex-grow flex-stretch px-5 py-1 text-white rounded-lg bg-mainblue/[0.8] hover:bg-mainblue/[0.9] text-md mt-4">Confirm Purchase</button>
+                        <button id="close-receipt-btn" class="flex-grow flex-stretch px-5 py-1 text-white rounded-lg bg-red-600 hover:bg-red-700 text-md mt-4">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -88,7 +119,7 @@
         </script>
 
         <!-- JS Functions -->
-        <script rc="./js/components/navbar.js"></script>
+        <script src="./js/components/navbar.js"></script>
         <script src="./tailwind.config.js"></script>
         <script type="module" src="./js/cart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>  
