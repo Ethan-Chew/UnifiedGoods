@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             for (let x = 0; x < 2; x++){
                 document.getElementById("cat-text-"+x).innerText = categoriesArray[x].name
+                // TODO: Update Styling
                 const productContainer = document.getElementById("cat-product-"+x)
                 console.log(productContainer)
                 productContainer.innerHTML = ""

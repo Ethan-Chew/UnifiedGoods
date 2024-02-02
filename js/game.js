@@ -218,4 +218,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         const prevUrl = `/product.html?id=${productID}`
         window.location.href = prevUrl
     })
+
+    // TODO: Validate Data and Show Popup
 })
