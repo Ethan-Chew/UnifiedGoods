@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const categoryName = urlParameters.get("category")
     
     // Start Loading Animation
-    document.getElementById("loader").classList.remove("hidden")
+    document.getElementById("item-loader").classList.remove("hidden")
 
     // Get Data from API
     const shopURL = "https://assets.ethanchew.com/main.json"
@@ -190,5 +190,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     document.getElementById('hidden-2').classList.remove('hidden');
 
     // Remove loading screen after products and categories loaded
-    document.getElementById("loader").remove()
+    document.getElementById("item-loader").remove()
 })

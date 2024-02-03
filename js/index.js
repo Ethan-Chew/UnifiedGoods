@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 categoryContainer.insertAdjacentHTML('afterbegin',`<p class="font-medium text-xl md:text-3xl w-full text-center md:text-left ">${categoriesArray[x].name}</p>
                 <br>
                 <p class="font-light text-lg md:text-xl w-full text-center md:text-left max-md:truncate" id="cat-desc-${x}">${categoriesArray[x].description}</p>`)
-                // TODO: Update Styling
                 const productContainer = document.getElementById("cat-product-"+x)
                 console.log(productContainer)
                 productContainer.innerHTML = ""
