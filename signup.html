@@ -43,59 +43,59 @@
                         <div class="flex flex-col gap-3">
                             <div class="flex flex-col sm:flex-row gap-3">
                                 <div class="flex items-stretch w-full gap-5">
+                                    <p>First Name</p>
                                     <label class="flex-grow flex-shrink">
-                                        <p class="mb-1">First Name</p>
                                         <input
                                         type="text"
                                         id="first-name"
                                         class="px-2 py-1 border-slate-400 border-2 rounded-lg w-full" required
-                                        />
+                                        >
                                     </label>
+                                    <p>Last Name</p>
                                     <label class="flex-grow flex-shrink">
-                                        <p class="mb-1">Last Name</p>
                                         <input
                                         type="text"
                                         id="last-name"
                                         class="px-2 py-1 border-slate-400 border-2 rounded-lg w-full" required
-                                        />
+                                        >
                                     </label>
                                 </div>
                             </div>
+                            <p>Username</p>
                             <label>
-                                <p class="mb-1">Username</p>
                                 <input 
                                 type="text"
                                 id="username"
                                 class="px-2 py-1 w-full border-slate-400 border-2 rounded-lg"
                                 required
-                                ></input>
+                                >
                             </label>
+                            <p>Email</p>
                             <label>
-                                <p class="mb-1">Email</p>
                                 <input 
                                 type="email"
                                 id="email"
                                 class="px-2 py-1 w-full border-slate-400 border-2 rounded-lg"
                                 required
-                                ></input>
+                                >
                             </label>
+                            <p>Password</p>
                             <label>
-                                <p class="mb-1">Password</p>
                                 <input 
                                 type="password"
                                 id="password"
                                 class="px-2 py-1 w-full border-slate-400 border-2 rounded-lg"
                                 required
-                                ></input>
+                                >
                             </label>
-                            <label>
-                                <p class="mb-1">Confirm Password</p>
+                            <p>Confirm Password</p>
+                            <label>                                
                                 <input 
                                 type="password"
                                 id="confirmPassword"
                                 class="px-2 py-1 w-full border-slate-400 border-2 rounded-lg"
                                 required
-                                ></input>
+                                >
                             </label>
                         </div>
     
@@ -103,9 +103,9 @@
                             <button type="submit" id="submit-create" class="px-5 py-2 text-white rounded-lg bg-mainblue/[0.7] hover:bg-mainblue/[0.9]">
                                 Create
                             </button>
-                            <button class="px-5 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
-                                <a href="/index.html">Back to Home</a>
-                            </button>
+                            <a href="/index.html" class="px-5 py-2 border-2 rounded-lg border-mainblue/[0.7] hover:border-mainblue/[0.9]">
+                                Back to Home
+                            </a>
                         </div>
                         <p class="mt-1 text-red-800" id="err-msg"></p>
                     </form>
