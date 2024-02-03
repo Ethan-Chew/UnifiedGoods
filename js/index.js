@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (!categories[item.category.id]){
                     categories[item.category.id] = {
                         id: item.category.id,
-                        name: item.category.name
+                        name: item.category.name,
+                        description: item.category.description
                     }
                 }
             })
@@ -39,7 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             
             for (let x = 0; x < 2; x++){
-                document.getElementById("cat-text-"+x).innerText = categoriesArray[x].name
+                const categoryContainer = document.getElementById("cat-text-"+x)
+                categoryContainer.insertAdjacentHTML('afterbegin',`<p class="font-medium text-xl md:text-3xl w-full text-center md:text-left ">${categoriesArray[x].name}</p>
+                <br>
+                <p class="font-light text-lg md:text-xl w-full text-center md:text-left max-md:truncate" id="cat-desc-${x}">${categoriesArray[x].description}</p>`)
                 // TODO: Update Styling
                 const productContainer = document.getElementById("cat-product-"+x)
                 console.log(productContainer)
@@ -59,4 +63,28 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
         })
+
+    document.getElementById("cat-plus-0").addEventListener("click", function(){
+        document.getElementById("cat-minus-0").classList.toggle("hidden")
+        document.getElementById("cat-plus-0").classList.toggle("hidden")
+        document.getElementById("cat-desc-0").classList.toggle("max-md:truncate")
+    })
+
+    document.getElementById("cat-minus-0").addEventListener("click", function(){
+        document.getElementById("cat-minus-0").classList.toggle("hidden")
+        document.getElementById("cat-plus-0").classList.toggle("hidden")
+        document.getElementById("cat-desc-0").classList.toggle("max-md:truncate")
+    })
+
+    document.getElementById("cat-plus-1").addEventListener("click", function(){
+        document.getElementById("cat-minus-1").classList.toggle("hidden")
+        document.getElementById("cat-plus-1").classList.toggle("hidden")
+        document.getElementById("cat-desc-1").classList.toggle("max-md:truncate")
+    })
+
+    document.getElementById("cat-minus-1").addEventListener("click", function(){
+        document.getElementById("cat-minus-1").classList.toggle("hidden")
+        document.getElementById("cat-plus-1").classList.toggle("hidden")
+        document.getElementById("cat-desc-1").classList.toggle("max-md:truncate")
+    })
 })

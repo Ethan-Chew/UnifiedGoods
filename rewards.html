@@ -53,7 +53,7 @@
         </header>
         
         <!-- Body Contents -->
-        <section class="pt-[5rem] md:pt-[8rem] px-5 md:px-10 md:px-0 min-w-0 mb-10">
+        <section class="pt-[5rem] md:pt-[8rem] px-5 md:px-10 md:px-0 min-w-0 mb-10 min-h-screen">
             <div class="px-2 md:px-10 xl:px-20">
                 <h1 class="font-bold text-4xl md:text-5xl pb-[2rem]">Your Rewards</h1>
                 <div class="flex flex-col md:flex-row justify-left gap-10 xl:gap-20 md:px-0">
@@ -93,15 +93,31 @@
         </section>
 
         <!-- Contacts and about -->
-        <footer class="inset-x-0 mt-10 md:mt-auto bottom-0">
-            <div class="bg-black flex items-center px-5 py-5 text-white">
-                <div class="flex-1">
-                    <h1 class="font-bold text-2xl">Contact us</h1>
-                    <p>Quack Quack</p>
-                </div>
-                <div class="flex1">
-                    <h1 class="font-bold text-2xl">About us</h1>
-                    <p>Quack Quack</p>
+        <footer class="bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
+            <!--About-->
+            <div class="flex flex-col max-sm:mx-auto">
+                <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
+                <p class="max-sm:text-center md:pt-2">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
+                <p class="max-sm:text-center md:pt-2">Email: <span class="underline underline-offset-2">unifiedgoods@noemail.com</span></p>
+                <p class="max-sm:text-center md:pt-2">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
+            </div>
+            <!--Contacts-->
+            <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                <p class="font-bold text-xl">Social Link</p>
+                <!-- Add Social Media Icons here -->
+                <div class="flex flex-row max-sm:justify-center justify-end md:pt-4">
+                    <!--Instagram-->
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                    </a>
+                    <!--Facebook-->
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                    </a>
+                    <!--X(Twitter)-->
+                    <a href="https://twitter.com/" target="_blank">
+                        <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                    </a>
                 </div>
             </div>
         </footer>
