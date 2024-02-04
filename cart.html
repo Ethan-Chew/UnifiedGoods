@@ -8,77 +8,110 @@
         <title>UnifiedGoods | Cart</title>
     </head>
     <body>
-        <!-- Navigation Bar -->
-        <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
-            <!-- Top Nav -->
-            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
-                <!-- Left Navigation -->
-                <div class="flex-1 flex justify-left gap-6 mr-auto">
-                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
-                </div>
-
-                <!-- Logo -->
-                <div class="font-bold text-2xl">
-                    <a href="/">UnifiedGoods</a>
-                </div>
-
-                <!-- Right Navigation -->
-                <div class="flex-1 flex gap-6 items-center justify-end">
-                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
-                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                        Sign In
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Bottom Nav (Desktop) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
-                <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
-            </nav>
-            <!-- Bottom Nav (Mobile) -->
-            <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a class="cursor-pointer" href="/">Home</a>
-                <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
-                <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                    Sign In
-                </a>
-            </nav>
-        </header>
-        
-        <!-- Main Content -->
-        <div class="w-screen h-screen pt-24 md:pt-32 overflow-x-hidden">
-            <h1 class="text-4xl font-bold mb-8 px-10">Shopping Cart</h1>
-            <div class="w-screen flex flex-col-reverse md:flex-row px-10 gap-10 md:gap-0">
-                <!-- Items -->
-                <div id="items-container" class="w-full md:w-3/5 flex flex-col gap-5">
-                    <div id="no-items-container" class="bg-offwhite w-full p-5 py-10 gap-6 flex flex-col items-center justify-center">
-                        <div class="flex flex-col items-center gap-2">
-                            <i data-feather="help-circle" class="w-8 h-8 stroke-2 cursor-pointer"></i>
-                            <p class="text-xl">There's nothing in your cart!</p>
-                        </div>
-                        <a href="/products.html" class="cursor-pointer bg-mainblue/[0.8] hover:bg-mainblue px-6 py-2 rounded-3xl text-white">
-                            Start Shopping
+        <div class="flex flex-col min-h-screen justify-between">
+            <!-- Navigation Bar -->
+            <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
+                <!-- Top Nav -->
+                <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                    <!-- Left Navigation -->
+                    <div class="flex-1 flex justify-left gap-6 mr-auto">
+                        <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                        <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+                    </div>
+    
+                    <!-- Logo -->
+                    <div class="font-bold text-2xl">
+                        <a href="/">UnifiedGoods</a>
+                    </div>
+    
+                    <!-- Right Navigation -->
+                    <div class="flex-1 flex gap-6 items-center justify-end">
+                        <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
+                        <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                            Sign In
                         </a>
                     </div>
                 </div>
-
-                <!-- Checkout -->
-                <div class="w-full md:w-1/3 ml-0 md:ml-auto">
-                    <div class="bg-offwhite w-full p-5 flex flex-col gap-5">
-                        <div>
-                            <p id="checkout-title" class="text-xl">Checkout (0 items):</p>
-                            <p id="checkout-total" class="text-2xl font-medium">$0.00</p>
+                
+                <!-- Bottom Nav (Desktop) -->
+                <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
+                    <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                </nav>
+                <!-- Bottom Nav (Mobile) -->
+                <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                    <a class="cursor-pointer" href="/">Home</a>
+                    <a class="cursor-pointer" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
+                    <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                        Sign In
+                    </a>
+                </nav>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="w-screen pt-24 md:pt-32 mb-5 overflow-x-hidden flex-grow">
+                <h1 class="text-4xl font-bold mb-8 px-10">Shopping Cart</h1>
+                <div class="w-screen flex flex-col-reverse md:flex-row px-10 gap-10 md:gap-0">
+                    <!-- Items -->
+                    <div id="items-container" class="w-full md:w-3/5 flex flex-col gap-5">
+                        <div id="no-items-container" class="bg-offwhite w-full p-5 py-10 gap-6 flex flex-col items-center justify-center">
+                            <div class="flex flex-col items-center gap-2">
+                                <i data-feather="help-circle" class="w-8 h-8 stroke-2 cursor-pointer"></i>
+                                <p class="text-xl">There's nothing in your cart!</p>
+                            </div>
+                            <a href="/products.html" class="cursor-pointer bg-mainblue/[0.8] hover:bg-mainblue px-6 py-2 rounded-3xl text-white">
+                                Start Shopping
+                            </a>
                         </div>
-                        <button id="checkout-btn" class="bg-mainblue/[0.8] hover:bg-mainblue disabled:bg-slate-400 disabled:cursor-not-allowed text-white py-2 rounded-xl" disabled>Proceed to Checkout</button>
+                    </div>
+    
+                    <!-- Checkout -->
+                    <div class="w-full md:w-1/3 ml-0 md:ml-auto">
+                        <div class="bg-offwhite w-full p-5 flex flex-col gap-5">
+                            <div>
+                                <p id="checkout-title" class="text-xl">Checkout (0 items):</p>
+                                <p id="checkout-total" class="text-2xl font-medium">$0.00</p>
+                            </div>
+                            <button id="checkout-btn" class="bg-mainblue/[0.8] hover:bg-mainblue disabled:bg-slate-400 disabled:cursor-not-allowed text-white py-2 rounded-xl" disabled>Proceed to Checkout</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="w-screen bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
+                <!--About-->
+                <div class="flex flex-col max-sm:mx-auto">
+                    <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
+                    <div class="mt-2 flex flex-col gap-1">
+                        <p class="max-sm:text-center">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
+                        <p class="max-sm:text-center">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
+                    </div>
+                </div>
+                <!--Contacts-->
+                <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                    <p class="font-bold text-2xl">Our Socials</p>
+                    <!-- Add Social Media Icons here -->
+                    <div class="flex flex-row max-sm:justify-center justify-start pt-2 md:pt-4 gap-2">
+                        <!--Instagram-->
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--Facebook-->
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--X(Twitter)-->
+                        <a href="https://twitter.com/" target="_blank">
+                            <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <!-- Checkout Popup -->

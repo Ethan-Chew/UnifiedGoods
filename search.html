@@ -10,93 +10,127 @@
         <title>UnifiedGoods | Search</title>
     </head>
     <body>
-        <!-- Navigation Bar -->
-        <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
-            <!-- Top Nav -->
-            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
-                <!-- Left Navigation -->
-                <div class="flex-1 flex justify-left gap-6 mr-auto">
-                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
-                </div>
-
-                <!-- Logo -->
-                <div class="font-bold text-2xl">
-                    <a href="/">UnifiedGoods</a>
-                </div>
-
-                <!-- Right Navigation -->
-                <div class="flex-1 flex gap-6 items-center justify-end">
-                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
-                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                        Sign In
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Bottom Nav (Desktop) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
-                <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
-            </nav>
-            <!-- Bottom Nav (Mobile) -->
-            <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a class="cursor-pointer" href="/">Home</a>
-                <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
-                <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                    Sign In
-                </a>
-            </nav>
-        </header>
-
-        <!-- Main Body Contents -->
-        <div class="w-screen h-screen">
-            <div class="w-screen h-3/5 md:h-1/2 bg-gradient-to-br from-cyan-500 to-blue-500 flex justify-center items-center gap-14">
-                <div class="w-screen flex flex-col justify-center items-center relative top-16 gap-14">
-                    <h1 class="text-white text-5xl md:text-6xl font-semibold text-center mx-5">Find your Style</h1>
-                    <div class="w-3/4 bg-white px-6 py-4 shadow-xl text-xl md:text-2xl rounded-3xl flex flex-col md:flex-row gap-5 align-left md:align-center items-left md:items-center">
-                        <!-- Search Field -->
-                        <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
-                            <i data-feather="search" class="h-6 w-6 md:h-8 md:w-8"></i>
-                            <input id="search-field" placeholder="Search..." class="p-1 w-full">
-                        </div>
-                        <!-- Section Search -->
-                        <div class="flex flex-row gap-3">
-                            <i data-feather="shopping-bag" class="h-6 w-6 md:h-8 md:w-8"></i>
-                            <select id="category-field">
-                                <option value="0">Select Option</option>
-                                <option value="1">Clothes</option>
-                                <option value="2">Electronics</option>
-                                <option value="3">Furniture</option>
-                                <option value="4">Shoes</option>
-                                <option value="5">Miscellaneous</option>
-                                <option value="6">Men's Top</option>
-                                <option value="7">Men's Bottom</option>
-                                <option value="8">Women's Dress</option>
-                                <option value="9">Women's Top</option>
-                                <option value="10">Women's Bottom</option>
-                            </select>
-                        </div>
-                        <button id="search-submit" class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
-                            Search
-                        </button>
+        <div class="flex flex-col min-h-screen justify-between">
+            <!-- Navigation Bar -->
+            <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
+                <!-- Top Nav -->
+                <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                    <!-- Left Navigation -->
+                    <div class="flex-1 flex justify-left gap-6 mr-auto">
+                        <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                        <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+                    </div>
+    
+                    <!-- Logo -->
+                    <div class="font-bold text-2xl">
+                        <a href="/">UnifiedGoods</a>
+                    </div>
+    
+                    <!-- Right Navigation -->
+                    <div class="flex-1 flex gap-6 items-center justify-end">
+                        <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
+                        <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                            Sign In
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div id="content-container" class="hidden px-10 py-5">
-                <div class="pb-8">
-                    <h2 class="text-3xl font-semibold" id="search-desc">Search for "..."</h2>
-                    <p class="text-xl" id="search-count">We found <span class="font-semibold">100</span> results.</p>
+            
+                <!-- Bottom Nav (Desktop) -->
+                <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
+                    <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                </nav>
+                <!-- Bottom Nav (Mobile) -->
+                <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                    <a class="cursor-pointer" href="/">Home</a>
+                    <a class="cursor-pointer" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
+                    <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                        Sign In
+                    </a>
+                </nav>
+            </header>
+    
+            <!-- Main Body Contents -->
+            <main class="w-screen h-screen">
+                <div class="w-screen h-3/5 md:h-1/2 bg-gradient-to-br from-cyan-500 to-blue-500 flex justify-center items-center gap-14">
+                    <div class="w-screen flex flex-col justify-center items-center relative top-16 gap-14">
+                        <h1 class="text-white text-5xl md:text-6xl font-semibold text-center mx-5">Find your Style</h1>
+                        <div class="w-3/4 bg-white px-6 py-4 shadow-xl text-xl md:text-2xl rounded-3xl flex flex-col md:flex-row gap-5 align-left md:align-center items-left md:items-center">
+                            <!-- Search Field -->
+                            <div class="md:w-1/2 md:border-r-2 flex flex-row gap-3 items-center align-center">
+                                <i data-feather="search" class="h-6 w-6 md:h-8 md:w-8"></i>
+                                <input id="search-field" placeholder="Search..." class="p-1 w-full">
+                            </div>
+                            <!-- Section Search -->
+                            <div class="flex flex-row gap-3">
+                                <i data-feather="shopping-bag" class="h-6 w-6 md:h-8 md:w-8"></i>
+                                <select id="category-field">
+                                    <option value="0">Select Option</option>
+                                    <option value="1">Clothes</option>
+                                    <option value="2">Electronics</option>
+                                    <option value="3">Furniture</option>
+                                    <option value="4">Shoes</option>
+                                    <option value="5">Miscellaneous</option>
+                                    <option value="6">Men's Top</option>
+                                    <option value="7">Men's Bottom</option>
+                                    <option value="8">Women's Dress</option>
+                                    <option value="9">Women's Top</option>
+                                    <option value="10">Women's Bottom</option>
+                                </select>
+                            </div>
+                            <button id="search-submit" class="md:ml-auto px-5 py-2 text-xl text-white bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl">
+                                Search
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="results-container" class="flex flex-row flex-wrap gap-x-8 gap-y-10">
-                    
+                <div id="content-container" class="hidden px-10 py-5">
+                    <div class="pb-8">
+                        <h2 class="text-3xl font-semibold" id="search-desc">Search for "..."</h2>
+                        <p class="text-xl" id="search-count">We found <span class="font-semibold">100</span> results.</p>
+                    </div>
+    
+                    <div id="results-container" class="flex flex-row flex-wrap gap-x-8 gap-y-10">
+                        
+                    </div>
                 </div>
-            </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="w-screen bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
+                <!--About-->
+                <div class="flex flex-col max-sm:mx-auto">
+                    <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
+                    <div class="mt-2 flex flex-col gap-1">
+                        <p class="max-sm:text-center">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
+                        <p class="max-sm:text-center">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
+                    </div>
+                </div>
+                <!--Contacts-->
+                <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                    <p class="font-bold text-2xl">Our Socials</p>
+                    <!-- Add Social Media Icons here -->
+                    <div class="flex flex-row max-sm:justify-center justify-start pt-2 md:pt-4 gap-2">
+                        <!--Instagram-->
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--Facebook-->
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--X(Twitter)-->
+                        <a href="https://twitter.com/" target="_blank">
+                            <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         <!-- Import Icons -->

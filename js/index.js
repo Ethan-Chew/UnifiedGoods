@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (ids.includes(id)) {
                     id = Math.floor(Math.random() * (data.length));
                 } else { ids.push(id); }
-                const card = `<a class="w-2/3 sm:w-1/3 md:w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${data[id].id}&from=index">
+                const card = `<a class="w-3/4 min-[500px]:w-1/3 sm:w-1/3 md:w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${data[id].id}&from=index">
                     <div>
                         <img class="aspect-square rounded-lg" src="${data[id].images[0]}" alt="${data[id].title}">
                         <p class="font-bold text-center text-lg my-3">${data[id].title}</p>
@@ -34,15 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const categoriesArray = Object.values(categories);
             // Shuffle the categories array randomly
             categoriesArray.sort(() => Math.random() - 0.5);
-
             
             for (let x = 0; x < 2; x++){
                 const categoryContainer = document.getElementById("cat-text-"+x);
                 categoryContainer.insertAdjacentHTML(
                     'afterbegin',
-                    `<p class="font-medium text-xl md:text-3xl w-full text-center md:text-left">${categoriesArray[x].name}</p>
-                    <br>
-                    <p class="font-light text-lg md:text-xl w-full text-center md:text-left max-md:truncate" id="cat-desc-${x}">
+                    `<p class="font-semibold text-3xl xl:text-4xl w-full text-left mb-3">${categoriesArray[x].name}</p>
+                    <p class="font-light text-lg w-full text-left">
                         ${categoriesArray[x].description}
                     </p>`
                 );
@@ -55,35 +53,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square">
                             </div>
                             <div class="mt-2">
-                                <p class="font-bold text-lg md:text-xl truncate hover:underline" title="${item.title}">${item.title}</p>
+                                <p class="font-bold text-lg truncate hover:underline" title="${item.title}">${item.title}</p>
                             </div>
                         </a>`;
                     }
                 });
             }
         });
-
-    document.getElementById("cat-plus-0").addEventListener("click", function(){
-        document.getElementById("cat-minus-0").classList.toggle("hidden");
-        document.getElementById("cat-plus-0").classList.toggle("hidden");
-        document.getElementById("cat-desc-0").classList.toggle("max-md:truncate");
-    });
-
-    document.getElementById("cat-minus-0").addEventListener("click", function(){
-        document.getElementById("cat-minus-0").classList.toggle("hidden");
-        document.getElementById("cat-plus-0").classList.toggle("hidden");
-        document.getElementById("cat-desc-0").classList.toggle("max-md:truncate");
-    });
-
-    document.getElementById("cat-plus-1").addEventListener("click", function(){
-        document.getElementById("cat-minus-1").classList.toggle("hidden");
-        document.getElementById("cat-plus-1").classList.toggle("hidden");
-        document.getElementById("cat-desc-1").classList.toggle("max-md:truncate");
-    });
-
-    document.getElementById("cat-minus-1").addEventListener("click", function(){
-        document.getElementById("cat-minus-1").classList.toggle("hidden");
-        document.getElementById("cat-plus-1").classList.toggle("hidden");
-        document.getElementById("cat-desc-1").classList.toggle("max-md:truncate");
-    });
 });

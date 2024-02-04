@@ -10,93 +10,120 @@
         <title>UnifiedGoods | Profile</title>
     </head>
     <body>
-        <!-- Navigation Bar -->
-        <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
-            <!-- Top Nav -->
-            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
-                <!-- Left Navigation -->
-                <div class="flex-1 flex justify-left gap-6 mr-auto">
-                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+        <div class="flex flex-col min-h-screen justify-between">
+            <!-- Navigation Bar -->
+            <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
+                <!-- Top Nav -->
+                <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                    <!-- Left Navigation -->
+                    <div class="flex-1 flex justify-left gap-6 mr-auto">
+                        <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                        <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+                    </div>
+    
+                    <!-- Logo -->
+                    <div class="font-bold text-2xl">
+                        <a href="/">UnifiedGoods</a>
+                    </div>
+    
+                    <!-- Right Navigation -->
+                    <div class="flex-1 flex gap-6 items-center justify-end">
+                        <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
+                        <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                            Sign In
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Logo -->
-                <div class="font-bold text-2xl">
-                    <a href="/">UnifiedGoods</a>
-                </div>
-
-                <!-- Right Navigation -->
-                <div class="flex-1 flex gap-6 items-center justify-end">
-                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
-                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                
+                <!-- Bottom Nav (Desktop) -->
+                <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
+                    <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                </nav>
+                <!-- Bottom Nav (Mobile) -->
+                <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                    <a class="cursor-pointer" href="/">Home</a>
+                    <a class="cursor-pointer" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
+                    <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
-                </div>
-            </div>
+                </nav>
+            </header>
             
-            <!-- Bottom Nav (Desktop) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
-                <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
-            </nav>
-            <!-- Bottom Nav (Mobile) -->
-            <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a class="cursor-pointer" href="/">Home</a>
-                <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
-                <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                    Sign In
-                </a>
-            </nav>
-        </header>
-        
-        <!-- Main Content -->
-        <div class="w-screen h-screen flex justify-center items-center  max-md:mt-[3.5rem]">
-            <div class="flex flex-col items-left bg-gray-200 px-14 py-6 shadow-xl rounded-2xl">
-                <h1 class="font-bold text-4xl mb-8 text-center">Profile</h1>
-                <div class="flex flex-col md:flex-row gap-10 md:gap-20">
-                    <div class="flex flex-col items-center gap-2">
-                        <img class="w-40 h-40 rounded-full" src="./img/samplepfp.jpg" alt="profile picture">
-                        <p id="users-name-lbl" class="text-2xl">Some Name</p>
+            <!-- Main Content -->
+            <main class="w-screen flex justify-center items-center max-md:mt-[3.5rem] flex-grow">
+                <div class="flex flex-col items-left bg-gray-200 px-14 py-6 shadow-xl rounded-2xl">
+                    <h1 class="font-bold text-4xl mb-8 text-center">Profile</h1>
+                    <div class="flex flex-col md:flex-row gap-10 md:gap-20">
+                        <div class="flex flex-col items-center gap-2">
+                            <img class="w-40 h-40 rounded-full" src="./img/samplepfp.jpg" alt="profile picture">
+                            <p id="users-name-lbl" class="text-2xl">Some Name</p>
+                        </div>
+                        <div class="flex flex-row">
+                            <form class="flex flex-col gap-2">
+                                <p>Username</p>
+                                <label>
+                                    <input
+                                        class="px-3 py-2"
+                                        id="username"
+                                        placeholder="username"
+                                    >
+                                </label>
+                                <p>Email</p>
+                                <label>
+                                    <input
+                                        class="px-3 py-2"
+                                        id="email"
+                                        placeholder="example@example.com"
+                                    >
+                                </label>
+                                <button id="update-btn" class="bg-blue-200 hover:bg-blue-300 py-2 rounded-xl mt-2">
+                                    Update Profile
+                                </button>
+                                <button id="signout-btn" class="bg-red-200 hover:bg-red-300 py-2 rounded-xl mt-2">
+                                    Sign Out
+                                </button>
+                            </form>
+    
+                        </div>
                     </div>
-                    <div class="flex flex-row">
-                        <form class="flex flex-col gap-2">
-                            <p>Username</p>
-                            <label>
-                                <input
-                                    class="px-3 py-2"
-                                    id="username"
-                                    placeholder="username"
-                                >
-                            </label>
-                            <p>Email</p>
-                            <label>
-                                <input
-                                    class="px-3 py-2"
-                                    id="email"
-                                    placeholder="example@example.com"
-                                >
-                            </label>
-                            <button id="update-btn" class="bg-blue-200 hover:bg-blue-300 py-2 rounded-xl mt-2">
-                                Update Profile
-                            </button>
-                            <button id="signout-btn" class="bg-red-200 hover:bg-red-300 py-2 rounded-xl mt-2">
-                                Sign Out
-                            </button>
-                        </form>
+                </div>
+            </main>
 
+            <!-- Footer -->
+            <footer class="w-screen bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
+                <!--About-->
+                <div class="flex flex-col max-sm:mx-auto">
+                    <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
+                    <div class="mt-2 flex flex-col gap-1">
+                        <p class="max-sm:text-center">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
+                        <p class="max-sm:text-center">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="flex flex-col gap-10 items-center bg-blue-100 rounded-3xl shadow-lg">
-                <h1 class="font-bold text-4xl">Profile</h1>
-                <div class="flex flex-col items-start gap-3">
-                    <h2 class="font-semibold text-3xl">Edit Particulars</h2>
+                <!--Contacts-->
+                <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                    <p class="font-bold text-2xl">Our Socials</p>
+                    <!-- Add Social Media Icons here -->
+                    <div class="flex flex-row max-sm:justify-center justify-start pt-2 md:pt-4 gap-2">
+                        <!--Instagram-->
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--Facebook-->
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--X(Twitter)-->
+                        <a href="https://twitter.com/" target="_blank">
+                            <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                    </div>
                 </div>
-            </div> -->
+            </footer>
         </div>
 
         <!-- Import Icons -->

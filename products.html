@@ -10,124 +10,121 @@
         <title>UnifiedGoods | Products</title>
     </head>
     
-    <body class="min-h-screen">
-        <div class="z-[1] bg-white w-[100vw] h-[100vh] fixed grid place-items-center" id="item-loader">
-            <iframe class="m-auto" src="https://lottie.host/embed/bf4684a9-9024-49d5-8806-922ef70b7abb/QEYks5QB9S.json"></iframe>
-        </div>
-
-        <!-- Navigation Bar -->
-        <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
-            <!-- Top Nav -->
-            <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
-                <!-- Left Navigation -->
-                <div class="flex-1 flex justify-left gap-6 mr-auto">
-                    <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
-                    <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+    <body>
+        <div class="flex flex-col min-h-screen justify-between">
+            <!-- Navigation Bar -->
+            <header class="z-[1000] flex flex-col fixed top-0 w-screen drop-shadow-lg">
+                <!-- Top Nav -->
+                <div class="bg-lightblue flex items-center px-5 py-3 md:py-2">
+                    <!-- Left Navigation -->
+                    <div class="flex-1 flex justify-left gap-6 mr-auto">
+                        <i data-feather="menu" class="stroke-2 sm:hidden cursor-pointer" id="mobile-nav-icon"></i>
+                        <a href="/search.html"><i data-feather="search" class="stroke-2 cursor-pointer"></i></a>
+                    </div>
+    
+                    <!-- Logo -->
+                    <div class="font-bold text-2xl">
+                        <a href="/">UnifiedGoods</a>
+                    </div>
+    
+                    <!-- Right Navigation -->
+                    <div class="flex-1 flex gap-6 items-center justify-end">
+                        <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
+                        <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                            Sign In
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Logo -->
-                <div class="font-bold text-2xl">
-                    <a href="/">UnifiedGoods</a>
-                </div>
-
-                <!-- Right Navigation -->
-                <div class="flex-1 flex gap-6 items-center justify-end">
-                    <a href="/cart.html"><i data-feather="shopping-cart" class="stroke-2 cursor-pointer"></i></a>
-                    <a href="/signin.html" id="sign-in-btn" class="hidden sm:block py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
+                
+                <!-- Bottom Nav (Desktop) -->
+                <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
+                    <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                </nav>
+                <!-- Bottom Nav (Mobile) -->
+                <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
+                    <a class="cursor-pointer" href="/">Home</a>
+                    <a class="cursor-pointer" href="/products.html">Products</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
+                    <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
-                </div>
-            </div>
-            
-            <!-- Bottom Nav (Desktop) -->
-            <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
-                <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
-                <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
-            </nav>
-            <!-- Bottom Nav (Mobile) -->
-            <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
-                <a class="cursor-pointer" href="/">Home</a>
-                <a class="cursor-pointer" href="/products.html">Products</a>
-                <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
-                <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
-                <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
-                    Sign In
-                </a>
-            </nav>
-        </header>
-          
-        <!-- Categories -->
-        <div class="min-h-screen w-auto h-auto mt-[3.5rem] md:mt-[6rem] flex flex-col md:flex-row pb-4">
-            <!-- Side Bar -->
-            <div class="min-w-[224px]">
-                <div class="relative bg-lightblue md:fixed md:w-auto md:h-auto md:py-3 flex flex-col p-2 md:rounded-r hidden" id="hidden-1">
-                    <p class="text-2xl font-bold mb-2 text-center underline">Categories</p>
-                    <div id="category-container" class="grid grid-cols-2 md:grid-cols-none">
-                        <!-- Category checkboxes container -->
-                    </div>
-                    <div class="mt-2 flex flex-col gap-2 justify-center items-center">
-                        <div class="flex flex-row gap-4">
-                            <!-- Check all checkbox button -->
-                            <button class="bg-black text-white w-24 py-1" id="select-all">Select All</button>
-                            <!-- Uncheck all checkbox button -->
-                            <button class="bg-black text-white w-24 py-1" id="clear">Clear</button>
+                </nav>
+            </header>
+              
+            <!-- Main Content -->
+            <main class="min-h-screen w-auto h-auto mt-[3.5rem] md:mt-[6rem] flex flex-col md:flex-row pb-4 flex-grow">
+                <!-- Side Bar -->
+                <div class="min-w-[224px]">
+                    <div class="relative bg-lightblue md:fixed md:w-auto md:h-auto md:py-3 flex flex-col p-2 md:rounded-r hidden" id="hidden-1">
+                        <p class="text-2xl font-bold mb-2 text-center">Categories</p>
+                        <div id="category-container" class="grid grid-cols-2 md:grid-cols-none">
+                            <!-- Category checkboxes container -->
                         </div>
-                        <!-- Apply filter button -->    
-                        <button class="bg-black text-white w-24 py-1" id="apply">Apply</button>
+                        <div class="mt-2 flex flex-col gap-2 justify-center items-center">
+                            <div class="flex flex-row gap-4">
+                                <!-- Check all checkbox button -->
+                                <button class="bg-black text-white w-24 py-1" id="select-all">Select All</button>
+                                <!-- Uncheck all checkbox button -->
+                                <button class="bg-black text-white w-24 py-1" id="clear">Clear</button>
+                            </div>
+                            <!-- Apply filter button -->    
+                            <button class="bg-black text-white w-24 py-1" id="apply">Apply</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!--Product Display-->
-            <div class="flex flex-col items-center h-auto pl-[1vh] pr-[1vh] min-h-screen">
-                <div class="text-center pt-5 hidden" id="hidden-2">
-                    <h1 class="text-4xl font-bold mb-7 underline">Products List</h1>
+    
+                <!--Product Display-->
+                <div class="flex flex-col items-center h-auto pl-[1vh] pr-[1vh] min-h-screen">
+                    <div class="text-center pt-5 hidden" id="hidden-2">
+                        <h1 class="text-4xl font-bold mb-7">Products List</h1>
+                    </div>
+    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-5" id="product-container">
+                        <!--Product Information Container-->
+                        <!--Product Page Number Container-->
+                    </div>
                 </div>
+            </main>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-5" id="product-container">
-                    <!--Product Information Container-->
-                    <!--Product Page Number Container-->
+            <!-- Footer -->
+            <footer class="w-screen bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
+                <!--About-->
+                <div class="flex flex-col max-sm:mx-auto">
+                    <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
+                    <div class="mt-2 flex flex-col gap-1">
+                        <p class="max-sm:text-center">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
+                        <p class="max-sm:text-center">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
+                    </div>
                 </div>
-            </div>
+                <!--Contacts-->
+                <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
+                    <p class="font-bold text-2xl">Our Socials</p>
+                    <!-- Add Social Media Icons here -->
+                    <div class="flex flex-row max-sm:justify-center justify-start pt-2 md:pt-4 gap-2">
+                        <!--Instagram-->
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--Facebook-->
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                        <!--X(Twitter)-->
+                        <a href="https://twitter.com/" target="_blank">
+                            <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+            </footer>
         </div>
 
-        
-
-        <!-- Contacts and about -->
-        <footer class="bg-black flex flex-col sm:justify-center sm:flex-row align-center px-5 py-8 text-white">
-            <!--About-->
-            <div class="flex flex-col max-sm:mx-auto">
-                <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
-                <p class="max-sm:text-center md:pt-2">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
-                <p class="max-sm:text-center md:pt-2">Email: <span class="underline underline-offset-2">unifiedgoods@noemail.com</span></p>
-                <p class="max-sm:text-center md:pt-2">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
-            </div>
-            <!--Contacts-->
-            <div class="max-sm:mx-auto sm:ml-auto max-sm:pt-[10px]">
-                <p class="font-bold text-xl">Social Link</p>
-                <!-- Add Social Media Icons here -->
-                <div class="flex flex-row max-sm:justify-center justify-end md:pt-4">
-                    <!--Instagram-->
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <i data-feather="instagram" class="stroke-2 cursor-pointer"></i>
-                    </a>
-                    <!--Facebook-->
-                    <a href="https://www.facebook.com/" target="_blank">
-                        <i data-feather="facebook" class="stroke-2 cursor-pointer"></i>
-                    </a>
-                    <!--X(Twitter)-->
-                    <a href="https://twitter.com/" target="_blank">
-                        <i data-feather="twitter" class="stroke-2 cursor-pointer"></i>
-                    </a>
-                </div>
-            </div>
-        </footer>
-
         <!-- Loading Animation -->
-        <div id="loader" class="hidden w-screen h-screen fixed z-10 top-0 bg-subblack/50 backdrop-blur-sm flex items-center justify-center">
-            <dotlottie-player src="https://lottie.host/eda4695d-ae7d-48a1-9387-288eac4f6ef4/KEgsdjAn6c.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+        <div class="z-[1] bg-white w-[100vw] h-[100vh] fixed grid place-items-center" id="item-loader">
+            <iframe class="m-auto" src="https://lottie.host/embed/bf4684a9-9024-49d5-8806-922ef70b7abb/QEYks5QB9S.json"></iframe>
         </div>
 
         <!-- Import Icons -->
