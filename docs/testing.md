@@ -1,5 +1,5 @@
 # Testing
-How the UnifiedGoods site can be tested, to ensure that all implimented features work as expected. UnifiedGoods has been tested to be Mobile Responsive. On mobile, the alignment of various elements would be changed in order to accomodate the smaller screen size. In addition, font sizes are decreased as well.
+How the UnifiedGoods site can be tested, to ensure that all implimented features work as expected.
 
 ## Preparations
 1. Verify that you have created an account with UnifiedGoods.
