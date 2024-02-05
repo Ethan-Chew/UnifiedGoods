@@ -121,6 +121,13 @@ document.addEventListener("DOMContentLoaded", async function() {
                     await updateDoc(doc(db, "users", username), {
                         cart: arrayRemove(userCart[i])
                     });
+
+                    userCart.splice(i);
+                    updateCheckoutInfo(userCart);
+
+                    if (numOfValidItems - 1 <= 0) {
+                        noItemsContainer.classList.remove("hidden");
+                    }
                 } catch (err) {
                     console.error(err);
                 }
@@ -170,18 +177,20 @@ document.addEventListener("DOMContentLoaded", async function() {
         let totalCost = 0;
         let userPoints = 0;
         document.getElementById("receipt-prodcontainer").innerHTML = "";
+        let itemIndex = 1;
         for (let i = 0; i < userCart.length; i++) {
             if (!(userCart[i].quantity == 0 || userCart[i].quantity == null)) {
                 let prodQuantity = userCart.find((item) => item.itemid == cartItems[i].id).quantity;
                 totalCost += userCart[i].pricePerQuantity * parseInt(prodQuantity);
                 document.getElementById("receipt-prodcontainer").innerHTML += `<div class="flex flex-row items-center gap-6">
-                    <p class="text-4xl">${i + 1}</p>
+                    <p class="text-4xl">${itemIndex}</p>
                     <div class="truncate">
                         <p class="font-semibold text-2xl truncate">${cartItems[i].title}</p>
                         <p><span class="font-semibold">Quantity:</span> <span id="receipt-prod1-quantity">${prodQuantity}</span></p>
-                        <p><span class="font-semibold">Subtotal:</span> $<span id="receipt-prod1-price">${userCart[i].pricePerQuantity * parseInt(prodQuantity)}</span></p>
+                        <p><span class="font-semibold">Subtotal:</span> $<span id="receipt-prod1-price">${parseFloat(userCart[i].pricePerQuantity * parseInt(prodQuantity)).toFixed(2)}</span></p>
                     </div>
                 </div>`;
+                itemIndex += 1;
             }
         }
         document.getElementById("receipt-finalcost").innerText = totalCost;
@@ -200,6 +209,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
             alert("Order Placed! Thank you for shopping with UnifiedGoods!");
             document.getElementById("checkout-receipt").classList.add("hidden");
+            location.reload()
         });
 
         // Close Receipt Button

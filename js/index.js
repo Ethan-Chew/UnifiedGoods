@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Shuffle the categories array randomly
             categoriesArray.sort(() => Math.random() - 0.5);
             
-            for (let x = 0; x < 2; x++){
+            for (let x = 0; x < 2; x++) {
                 const categoryContainer = document.getElementById("cat-text-"+x);
                 categoryContainer.insertAdjacentHTML(
                     'afterbegin',

@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             userCartHistory = userObj.currentCartHistory;
         }
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 
     // Update the price based on discount
@@ -177,7 +177,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Add Item to Cart if Signed In and Has Played Game/Accept Markup
     addCartBtn.addEventListener("click", async function () {
-        console.log("A")
         const username = sessionStorage.getItem("username");
 
         // Show Sign In overlay if user not signed in

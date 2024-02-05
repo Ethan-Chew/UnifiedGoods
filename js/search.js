@@ -48,7 +48,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         // Display to Screen
         /// Remove spacer
-        document.getElementById("spacer").remove()
+        const spacer = document.getElementById("spacer");
+        if (spacer) {
+            spacer.remove();
+        }
 
         /// Update Search Details
         document.getElementById("search-desc").innerText = `Search for ${textField.value != "" ? `"${textField.value}"` : ""}${textField.value != "" && catField.value != 0 ? " and " : ""}${catField.value != 0 ? searchCat : ""}`;
@@ -57,11 +60,11 @@ document.addEventListener("DOMContentLoaded", async function() {
         /// Display the Search Results on the Screen
         let resultsContainer = document.getElementById("results-container");
         if (resultsContainer) {
-            resultsContainer.remove()
+            resultsContainer.remove();
         }
-        resultsContainer = document.createElement("div")
-        resultsContainer.id = "results-container"
-        resultsContainer.className = "flex flex-row flex-wrap gap-x-8 gap-y-10 px-10 py-5"
+        resultsContainer = document.createElement("div");
+        resultsContainer.id = "results-container";
+        resultsContainer.className = "flex flex-row flex-wrap gap-x-8 gap-y-10 px-10 py-5";
         for (let i = 0; i < results.length; i++) {
             resultsContainer.innerHTML += `<a class="w-80 bg-lightblue/[0.3] p-3 rounded-lg flex flex-col align-center items-center" href="/product.html?id=${results[i].id}&from=search">
                 <div>
@@ -70,8 +73,8 @@ document.addEventListener("DOMContentLoaded", async function() {
                 </div>
             </a>`;
         }
-        document.getElementById("page-content").insertBefore(resultsContainer, document.getElementsByTagName("footer")[0])
-        
+        document.getElementById("page-content").insertBefore(resultsContainer, document.getElementsByTagName("footer")[0]);
+
         /// Show the Search Info Container
         document.getElementById("searchinfo-container").classList.remove("hidden");
     });

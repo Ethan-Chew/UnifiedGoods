@@ -218,7 +218,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     document.getElementById("end-btn").addEventListener("click", function(){
         // Redirect to product page with final price as a query parameter
-        const prevUrl = `/product.html?id=${productID}`;
-        window.location.href = prevUrl;
+        window.location.href = `/product.html?id=${productID}`;
     });
 });
