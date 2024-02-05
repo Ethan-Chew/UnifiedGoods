@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
                 // User accepts markup
                 document.getElementById("overlay-accept-markup").addEventListener("click", async function () {
-                    const randomMarkup = -Math.floor(Math.random() * (31 - 20)) + 20;
+                    const randomMarkup = -(Math.floor(Math.random() * (31 - 20)) + 20);
                     const updatedItem = await addToCart(randomMarkup);
                     document.getElementById("nsi-overlay").classList.add("hidden");
                     document.getElementById("nogame-overlay").classList.add("hidden");
