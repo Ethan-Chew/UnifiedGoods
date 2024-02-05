@@ -21,7 +21,6 @@ By implementing an interactive game which allows users to earn discounts on the 
     - Points and tier systems to receive various benefits!
 
 ## Color Scheme
-
 ![Color Palette](https://github.com/Ethan-Chew/UnifiedGoods/assets/131668427/3fd7b56e-7ecc-48e4-81bd-365a61b131cd)
 
 

@@ -3,8 +3,12 @@ When creating this website, we used multiple APIs and libraries in order to add 
 1. [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore) -- NoSQL Database for storing user data
 2. [Tailwind CSS](https://tailwindcss.com/) -- Chosen CSS Framework
 3. [Feather Icons](https://feathericons.com/) -- Open Sourced Icons
+4. [JSHint](https://jshint.com/), [W3C HTML Validator](https://validator.w3.org/), [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) -- Validating our codebase to reduce errors
+5. [Normalize.css](https://necolas.github.io/normalize.css/) -- Allows consistent rendering of HTML elements
+6. [Figma](https://www.figma.com/) -- Wireframe Design
+7. HTML, CSS and JavaScript -- Languages used to build, style and adding functionality into our website
 
-Originally, we started this project using [RestDB](https://restdb.io/) as our database for storing user data. However, due to API Call Limit constrains, we eventually moved over to using Firebase's Cloud Firestore instead.
+Originally, we started this project using [RestDB](https://restdb.io/) as our main database for storing user data. However, due to API Rate Limit constrains, we eventually moved over to using Firebase's Cloud Firestore instead.
 
 To ensure reliability in our products database, we created our own database of products, with data and images taken from the web. This 'database' is essentially a huge JSON file containing about 250 unique products. You can access this JSON file [here](https://assets.ethanchew.com/main.json).
 

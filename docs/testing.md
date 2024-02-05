@@ -9,7 +9,7 @@ How the UnifiedGoods site can be tested, to ensure that all implimented features
 ## Navigation Bar
 1. Mobile Responsiveness
     - On smaller screens, the *secondary* navbar is collapsed into a Hamburger Menu. By clicking the Hamburger Icon on the top left hand side of the screen, the user would be able to toggle between showing and hidding the mobile navigation tabs
-2. Sign in Requirement
+2. Account Requirement
     - Some pages require users to sign in before interacting with it, for example, the cart, rewards and profile screen.
     - If the user clicks on the Rewards and Profile Screens and they are not logged in, an alert would prompt them to sign in, then redirect them to the sign in page.
 
@@ -41,7 +41,7 @@ How the UnifiedGoods site can be tested, to ensure that all implimented features
 ## Game Screen
 1. Ensure the game loads the correct product information for guessing the price.
 2. Test that the countdown timer works.
-3. Test the amount of time the user is able to guess. (tries)
+3. Test the amount of times the user is able to guess the price. (tries)
 4. Test the calculation for the discount is working properly.
 5. Check if results are stored in the database correctly.
 6. Check if the end screen results price is shown correctly
