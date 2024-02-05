@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     const loaderAnim = document.getElementById("loader");
     const backBtn = document.getElementById("back-btn");
     const productPriceLbl = document.getElementById("prod-price");
-    const guessPriceBtn = document.getElementById("guess-price-btn");
 
     // Update Back Button Redirect
     if (goBack == "search") {
@@ -61,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Start Game Button
-    guessPriceBtn.addEventListener("click", function () {
+    document.getElementById("guess-price-btn").addEventListener("click", function () {
         if (!sessionStorage.getItem("username")) {
             document.getElementById("nsi-overlay").classList.remove("hidden");
         } else {
@@ -96,6 +95,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             // Product is in the cart, check discount
             cartSelectedItem = userCart[i];
             if (cartSelectedItem.discount == null) {
+                console.log(cartSelectedItem)
                 // Null discount, display '???'
                 productPriceLbl.innerText = "S$???";
             } else {
@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     // Hide Play Game button if user has added/removed the product from current cart
     for (let i = 0; i < userCartHistory.length; i++) {
         if (userCartHistory[i] == productID) {
-            guessPriceBtn.disabled = true;
-            guessPriceBtn.innerText = "You've guessed before!";
+            document.getElementById("guess-price-btn").disabled = true;
+            document.getElementById("guess-price-btn").innerText = "You've guessed before!";
             break;
         }
     }
@@ -132,21 +132,30 @@ document.addEventListener("DOMContentLoaded", async function() {
             "pricePerQuantity": 0
         };
 
+        // Add the Price to the Item Object
+        const discountAmt = chosenProduct.price * (item.discount / 100);
+        const pricePerQuantity = (chosenProduct.price - discountAmt).toFixed(2);
+        item.pricePerQuantity = pricePerQuantity;
+
         // Check if Item already exists in the cart
         const existingCartIndex = userCart.findIndex(item => item.itemid == productID);
         if (existingCartIndex === -1) {
             // Item does not exist in cart
             userCart.push(item);
-            userCartHistory.push(item.itemid);
         } else {
             // Item exists in the cart
             userCart[existingCartIndex].quantity = quantity;
         }
+        
+        // Check if Item exists in cart history
+        const checkCartHistoryIndex = userCartHistory.findIndex(itemid => itemid == productID)
+        if (checkCartHistoryIndex === -1) {
+            // Item does not exist in cart history
+            userCartHistory.push(item.itemid);
+        }
 
         // Update user's cart
         try {
-            const discountAmt = chosenProduct.price * (item.discount / 100);
-            item.pricePerQuantity = chosenProduct.price - discountAmt;
             await updateDoc(doc(db, "users", username), {
                 cart: userCart,
                 currentCartHistory: userCartHistory
@@ -160,6 +169,15 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         // Enable Add to Cart button
         addCartBtn.disabled = false;
+
+        return item;
+    }
+
+    // Helper Function to update the product cost information
+    function updateProductCostInfo(item) {
+        document.getElementById("prod-price").innerText = `S$${item.pricePerQuantity} (${item.discount >= 0 ? "discounted" : "marked-up"})`;
+        document.getElementById("guess-price-btn").disabled = true;
+        document.getElementById("guess-price-btn").innerText = "You've guessed before!";
     }
 
     // Helper Function to display successful add to cart lottie
@@ -197,12 +215,15 @@ document.addEventListener("DOMContentLoaded", async function() {
                 // User accepts markup
                 document.getElementById("overlay-accept-markup").addEventListener("click", async function () {
                     const randomMarkup = -Math.floor(Math.random() * (31 - 20)) + 20;
-                    await addToCart(randomMarkup);
+                    const updatedItem = await addToCart(randomMarkup);
                     document.getElementById("nsi-overlay").classList.add("hidden");
                     document.getElementById("nogame-overlay").classList.add("hidden");
 
                     // Show Lottie Animation (hide after 1s)
                     displayLottie();
+
+                    // Update Product Information
+                    updateProductCostInfo(updatedItem);
                 });
 
                 // User Starts Game
@@ -215,10 +236,13 @@ document.addEventListener("DOMContentLoaded", async function() {
                 });
             } else {
                 // Game as been played before
-                await addToCart(cartSelectedItem.discount);
+                const updatedItem = await addToCart(cartSelectedItem.discount);
 
                 // Show Lottie Animation (hide after 1s)
                 displayLottie();
+
+                // Update Product Information
+                updateProductCostInfo(updatedItem);
             }
         }
     });

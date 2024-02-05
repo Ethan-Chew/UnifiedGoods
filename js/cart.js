@@ -12,20 +12,19 @@ document.addEventListener("DOMContentLoaded", async function() {
     const shopDBURL = "https://assets.ethanchew.com/main.json";
 
     // HTML Elements
-    const noItemsContainer = document.getElementById("no-items-container");
     const container = document.getElementById("items-container");
     const checkoutTitle = document.getElementById("checkout-title");
     const checkoutTotal = document.getElementById("checkout-total");
     const checkoutButton = document.getElementById("checkout-btn");
     
     // Helper Function to update final checkout price
-    function updateCheckoutInfo(userCart) {
+    function updateCheckoutInfo(cartFromDatabase) {
         /// Update Total Cost
         let total = 0.0;
         let totalQuantity = 0;
-        for (let i = 0; i < userCart.length; i++) {
-            total += Number(userCart[i].quantity) * userCart[i].pricePerQuantity;
-            totalQuantity += Number(userCart[i].quantity);
+        for (let i = 0; i < cartFromDatabase.length; i++) {
+            total += Number(cartFromDatabase[i].quantity) * cartFromDatabase[i].pricePerQuantity;
+            totalQuantity += Number(cartFromDatabase[i].quantity);
         }
         checkoutTotal.innerText = `S$${parseFloat(total).toFixed(2)}`;
 
@@ -40,123 +39,135 @@ document.addEventListener("DOMContentLoaded", async function() {
         window.location.href = "signin.html";
     }
     let userData = getUserResponse.data();
-    let userCart = userData.cart;
+    let cartFromDatabase = userData.cart;
 
     // Check if there are items with Quantity > 0 in the Cart
     let numOfValidItems = 0;
-    for (let i = 0; i < userCart.length; i++) {
-        if (parseInt(userCart[i].quantity) > 0) {
+    for (let i = 0; i < cartFromDatabase.length; i++) {
+        if (parseInt(cartFromDatabase[i].quantity) > 0) {
             numOfValidItems += 1;
         }
     }
-    if (numOfValidItems > 0) {
-        noItemsContainer.classList.add("hidden"); // Hide section displaying no items
-        checkoutButton.disabled = false;
+    // Helper Function to Disable Checkout
+    function checkDisableCheckout(numOfValidItems) {
+        if (numOfValidItems > 0) {
+            document.getElementById("no-items-container").classList.add("hidden"); // Hide section displaying no items
+            document.getElementById("checkout-btn").disabled = false;
+        } else {
+            document.getElementById("no-items-container").classList.remove("hidden"); // Hide section displaying no items
+            document.getElementById("checkout-btn").disabled = true;
+        }
     }
+    checkDisableCheckout(numOfValidItems);
     
     /// Display Items in the Cart
-    let cartItems = [];
-    if (userCart.length > 0) {
+    let cartItemsDetail = [];
+    if (cartFromDatabase.length > 0) {
         // Grab Cart Items from API
         /// Query API for Items
         const getItemsResponse = await fetch(shopDBURL);
         const shopItems = await getItemsResponse.json();
 
-        for (let i = 0; i < userCart.length; i++) {
-            if (!cartItems.find((item) => item.id == userCart[i].itemid)) {
-                cartItems.push(shopItems.find((item) => item.id == userCart[i].itemid));
+        for (let i = 0; i < cartFromDatabase.length; i++) {
+            if (!cartItemsDetail.find((item) => item.id == cartFromDatabase[i].itemid)) {
+                cartItemsDetail.push(shopItems.find((item) => item.id == cartFromDatabase[i].itemid));
             }
         }
         
         /// Display Cart on Screen
-        let containerIndex = 0
-        for (let i = 0; i < cartItems.length; i++) {
+        for (let i = 0; i < cartItemsDetail.length; i++) {
             /// Get the price based on discount
             let itemPrice = "";
-            for (let j = 0; j < userCart.length; j++) {
-                if (userCart[j].itemid == cartItems[i].id) {
+            for (let j = 0; j < cartFromDatabase.length; j++) {
+                if (cartFromDatabase[j].itemid == cartItemsDetail[i].id) {
                     // Product is in the cart, check discount
-                    if (userCart[j].discount == null) {
+                    if (cartFromDatabase[j].discount == null) {
                         // Null discount, display '???'
                         itemPrice = "S$???";
                     } else {
                         // Set price based on price - discount
-                        itemPrice = `S$${userCart[j].pricePerQuantity} (${userCart[j].discount >= 0 ? "discounted" : "marked-up"})`;
+                        itemPrice = `S$${cartFromDatabase[j].pricePerQuantity} (${cartFromDatabase[j].discount >= 0 ? "discounted" : "marked-up"})`;
                     }
                     break;
                 }
             }
 
-            if (!(userCart[i].quantity == 0 || userCart[i].quantity == null)) {
-                container.innerHTML += `<div id="${`container-${containerIndex}`}" class="bg-offwhite w-full p-5 flex flex-col md:flex-row gap-5 md:gap-10">
-                    <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/3 md:w-1/5 object-contain" />
+            if (!(cartFromDatabase[i].quantity == 0 || cartFromDatabase[i].quantity == null)) {
+                container.innerHTML += `<div id="${`container-${cartFromDatabase[i].itemid}`}" class="bg-offwhite w-full p-5 flex flex-col md:flex-row gap-5 md:gap-10">
+                    <img src="${cartItemsDetail[i].images[0]}" alt=${cartItemsDetail[i].title} class="w-1/3 md:w-1/5 object-contain" />
                     <div class="flex flex-col">
-                        <p class="font-semibold text-2xl md:text-2xl xl:text-3xl">${cartItems[i].title}</p>
+                        <p class="font-semibold text-2xl md:text-2xl xl:text-3xl">${cartItemsDetail[i].title}</p>
                         <p class="text-xl md:text-xl xl:text-2xl mb-2">${itemPrice}</p>
                         <div class="mt-auto flex flex-row gap-5">
                             <label class="px-3 md:px-5 py-2 bg-black text-white">
                                 Quantity: 
                                 <input 
-                                    id="quantity-${containerIndex}"
-                                    type="number" value="${userCart.find((item) => item.itemid == cartItems[i].id).quantity}" min="1" max="50"
+                                    id="quantity-${cartFromDatabase[i].itemid}"
+                                    type="number" value="${cartFromDatabase.find((item) => item.itemid == cartItemsDetail[i].id).quantity}" min="1" max="50"
                                     class="ml-2 bg-black text-white w-1/3"
                                 >
                             </label>
-                            <button id="remove-${containerIndex}" class="px-3 md:px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
+                            <button id="remove-${cartFromDatabase[i].itemid}" class="px-3 md:px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
                         </div>
                     </div>
                 </div>`;
-                containerIndex += 1;
             }
         }
 
         // Check for Updates to Item
-        for (let i = 0; i < containerIndex; i++) {
-            // Check for Remove
-            document.getElementById(`remove-${i}`).addEventListener("click", async function () {
-                document.getElementById(`container-${i}`).classList.add("hidden");
-
-                // Remove Item from Cart in Database
-                try {
-                    await updateDoc(doc(db, "users", username), {
-                        cart: arrayRemove(userCart[i])
-                    });
-
-                    userCart.splice(i);
-                    updateCheckoutInfo(userCart);
-
-                    if (numOfValidItems - 1 <= 0) {
-                        noItemsContainer.classList.remove("hidden");
-                    }
-                } catch (err) {
-                    console.error(err);
-                }
-            });
-
-            // Check for Quantity Changes
-            document.getElementById(`quantity-${i}`).addEventListener("input", async function () {
-                const newQuantity = document.getElementById(`quantity-${i}`).value;
-
-                // Check if Item already exists in the cart
-                const existingCartIndex = userCart.findIndex(item => item.itemid == userCart[i].itemid);
-                if (existingCartIndex !== -1 && newQuantity != "") {
-                    userCart[existingCartIndex].quantity = newQuantity;
-
-                    // Update Database
+        for (let i = 0; i < cartFromDatabase.length; i++) {
+            if (cartFromDatabase[i].quantity !== null) {
+                // Currently Being Displayed
+                /// Check for Remove
+                document.getElementById(`remove-${cartFromDatabase[i].itemid}`).addEventListener("click", async function () {
+                    document.getElementById(`container-${cartFromDatabase[i].itemid}`).remove();
+                    // Remove Item from Cart in Database
                     try {
+                        cartFromDatabase[i].quantity = null
                         await updateDoc(doc(db, "users", username), {
-                            cart: userCart
+                            cart: cartFromDatabase
                         });
+
+                        numOfValidItems -= 1
+
+                        // Update Checkout Section Information
+                        updateCheckoutInfo(cartFromDatabase);
+                        checkDisableCheckout(numOfValidItems)
                     } catch (err) {
                         console.error(err);
                     }
-
-                    updateCheckoutInfo(userCart);
-                }
-            });
+                    
+                    if (cartFromDatabase.length == 0) {
+                        document.getElementById("no-items-container").classList.remove("hidden");
+                        checkoutButton.disabled = true;
+                    }
+                });
+    
+                /// Check for Quantity Changes
+                document.getElementById(`quantity-${cartFromDatabase[i].itemid}`).addEventListener("input", async function () {
+                    const newQuantity = document.getElementById(`quantity-${i}`).value;
+    
+                    // Check if Item already exists in the cart
+                    const existingCartIndex = cartFromDatabase.findIndex(item => item.itemid == cartFromDatabase[i].itemid);
+                    if (existingCartIndex !== -1 && newQuantity != "") {
+                        cartFromDatabase[existingCartIndex].quantity = newQuantity;
+    
+                        // Update Database
+                        try {
+                            await updateDoc(doc(db, "users", username), {
+                                cart: cartFromDatabase
+                            });
+                        } catch (err) {
+                            console.error(err);
+                        }
+    
+                        updateCheckoutInfo(cartFromDatabase);
+                    }
+                });
+            }
         }
 
-        updateCheckoutInfo(userCart);
+        updateCheckoutInfo(cartFromDatabase);
     }
 
     // Allow User to Checkout
@@ -178,16 +189,16 @@ document.addEventListener("DOMContentLoaded", async function() {
         let userPoints = 0;
         document.getElementById("receipt-prodcontainer").innerHTML = "";
         let itemIndex = 1;
-        for (let i = 0; i < userCart.length; i++) {
-            if (!(userCart[i].quantity == 0 || userCart[i].quantity == null)) {
-                let prodQuantity = userCart.find((item) => item.itemid == cartItems[i].id).quantity;
-                totalCost += userCart[i].pricePerQuantity * parseInt(prodQuantity);
+        for (let i = 0; i < cartFromDatabase.length; i++) {
+            if (!(cartFromDatabase[i].quantity == 0 || cartFromDatabase[i].quantity == null)) {
+                let prodQuantity = cartFromDatabase.find((item) => item.itemid == cartItemsDetail[i].id).quantity;
+                totalCost += cartFromDatabase[i].pricePerQuantity * parseInt(prodQuantity);
                 document.getElementById("receipt-prodcontainer").innerHTML += `<div class="flex flex-row items-center gap-6">
                     <p class="text-4xl">${itemIndex}</p>
                     <div class="truncate">
-                        <p class="font-semibold text-2xl truncate">${cartItems[i].title}</p>
+                        <p class="font-semibold text-2xl truncate">${cartItemsDetail[i].title}</p>
                         <p><span class="font-semibold">Quantity:</span> <span id="receipt-prod1-quantity">${prodQuantity}</span></p>
-                        <p><span class="font-semibold">Subtotal:</span> $<span id="receipt-prod1-price">${parseFloat(userCart[i].pricePerQuantity * parseInt(prodQuantity)).toFixed(2)}</span></p>
+                        <p><span class="font-semibold">Subtotal:</span> $<span id="receipt-prod1-price">${parseFloat(cartFromDatabase[i].pricePerQuantity * parseInt(prodQuantity)).toFixed(2)}</span></p>
                     </div>
                 </div>`;
                 itemIndex += 1;
