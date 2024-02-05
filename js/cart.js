@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
         
         /// Display Cart on Screen
+        let containerIndex = 0
         for (let i = 0; i < cartItems.length; i++) {
             /// Get the price based on discount
             let itemPrice = "";
@@ -87,29 +88,30 @@ document.addEventListener("DOMContentLoaded", async function() {
             }
 
             if (!(userCart[i].quantity == 0 || userCart[i].quantity == null)) {
-                container.innerHTML += `<div id="${`container-${i}`}" class="bg-offwhite w-full p-5 flex flex-col md:flex-row gap-5 md:gap-10">
-                    <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/3 md:w-1/5" />
+                container.innerHTML += `<div id="${`container-${containerIndex}`}" class="bg-offwhite w-full p-5 flex flex-col md:flex-row gap-5 md:gap-10">
+                    <img src="${cartItems[i].images[0]}" alt=${cartItems[i].title} class="w-1/3 md:w-1/5 object-contain" />
                     <div class="flex flex-col">
-                        <p class="font-semibold text-2xl md:text-3xl">${cartItems[i].title}</p>
-                        <p class="text-xl md:text-2xl mb-2 md:mb-0">${itemPrice}</p>
+                        <p class="font-semibold text-2xl md:text-2xl xl:text-3xl">${cartItems[i].title}</p>
+                        <p class="text-xl md:text-xl xl:text-2xl mb-2">${itemPrice}</p>
                         <div class="mt-auto flex flex-row gap-5">
                             <label class="px-3 md:px-5 py-2 bg-black text-white">
                                 Quantity: 
                                 <input 
-                                    id="quantity-${i}"
+                                    id="quantity-${containerIndex}"
                                     type="number" value="${userCart.find((item) => item.itemid == cartItems[i].id).quantity}" min="1" max="50"
                                     class="ml-2 bg-black text-white w-1/3"
                                 >
                             </label>
-                            <button id="remove-${i}" class="px-3 md:px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
+                            <button id="remove-${containerIndex}" class="px-3 md:px-5 py-2 bg-red-700 hover:bg-red-800 text-white">Remove</button>
                         </div>
                     </div>
                 </div>`;
+                containerIndex += 1;
             }
         }
 
         // Check for Updates to Item
-        for (let i = 0; i< cartItems.length; i++) {
+        for (let i = 0; i < containerIndex; i++) {
             // Check for Remove
             document.getElementById(`remove-${i}`).addEventListener("click", async function () {
                 document.getElementById(`container-${i}`).classList.add("hidden");
