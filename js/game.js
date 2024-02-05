@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             if (triesRemaining == 0) {
                 // User ran out of tries
-                document.getElementById("err-msg").innerText += "\nYou ran out of tries!";
+                document.getElementById("err-msg").innerText += "\tYou ran out of tries!";
                 document.getElementById("timer").innerHTML = `<p class='font-semibold'>Ran out of tries!</p>`;
                 stopGame = true;
             }

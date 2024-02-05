@@ -8,7 +8,7 @@
 
         <title>Guess the Price!</title>
     </head>
-    <body class="h-screen flex align-center justify-center game-bg">
+    <body class="h-auto min-h-screen flex align-center justify-center game-bg">
 
         <!--End Screen-->
         <div class="flex flex-col align-center mb-[10px] hidden" id="end-screen">            
@@ -21,7 +21,8 @@
         </div>
 
         <!--Game Page-->
-        <div class="flex flex-col align-center justify-center my-0 md:my-20 mx-0 md:mx-20 p-8 bg-offwhite/[0.65] backdrop-blur-xl gap-8">
+        <div class="flex flex-col align-center my-0 md:my-20 mx-0 md:mx-20 p-10 bg-offwhite/[0.65] backdrop-blur-xl gap-8">
+            <!--Product Information-->
             <div class="flex flex-col gap-7">
                 <h1 class="text-4.5xl md:text-5xl font-bold">Guess the Price!</h1>
                 <div class="flex flex-col md:flex-row gap-5 align-center">
@@ -33,7 +34,9 @@
                     </div>
                 </div>
             </div>
+            <!--Tries and Guess Section-->
             <div class="flex flex-col-reverse md:flex-col gap-8">
+                <!--Tries Remaining-->
                 <div>
                     <h3 class="text-2xl font-bold mb-2">Tries Remaining</h3>
                     <div class="flex flex-row gap-3">
@@ -42,14 +45,17 @@
                         <div id="try-3" class="w-10 h-10 rounded-full bg-blue-300 flex items-center justify-center"><p class="font-semibold text-lg">3</p></div>
                     </div>
                 </div>
+                <!--Guess Section-->
                 <div class="flex flex-col">
                     <h3 class="text-2xl font-bold mb-2">Guess It!</h3>
                     <form class="w-full md:w-2/5 flex flex-col items-left align-left gap-2">
+                        <!--Guess textbox-->
                         <input
                             id="guess-price"
                             placeholder="$0.00"
                             class="px-3 py-2"
                             >
+                            <!--Guess button-->
                             <button
                             id="submit-guess-btn"
                             class="w-1/2 bg-btnblue hover:bg-btn2blue text-white py-2"
