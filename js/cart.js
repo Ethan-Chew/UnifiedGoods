@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                         itemPrice = "S$???";
                     } else {
                         // Set price based on price - discount
-                        itemPrice = `S$${cartFromDatabase[j].pricePerQuantity} (${cartFromDatabase[j].discount >= 0 ? "discounted" : "marked-up"})`;
+                        itemPrice = `S$${cartFromDatabase[j].pricePerQuantity.toFixed(2)} (${cartFromDatabase[j].discount >= 0 ? "discounted" : "marked-up"})`;
                     }
                     break;
                 }
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     
                 /// Check for Quantity Changes
                 document.getElementById(`quantity-${cartFromDatabase[i].itemid}`).addEventListener("input", async function () {
-                    const newQuantity = document.getElementById(`quantity-${i}`).value;
+                    const newQuantity = document.getElementById(`quantity-${cartFromDatabase[i].itemid}`).value;
     
                     // Check if Item already exists in the cart
                     const existingCartIndex = cartFromDatabase.findIndex(item => item.itemid == cartFromDatabase[i].itemid);
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 itemIndex += 1;
             }
         }
-        document.getElementById("receipt-finalcost").innerText = totalCost;
+        document.getElementById("receipt-finalcost").innerText = parseFloat(totalCost).toFixed(2);
         /// Calculate and Display Points
         userPoints = Math.floor(totalCost / 5);
         document.getElementById("receipt-points").innerText = userPoints;

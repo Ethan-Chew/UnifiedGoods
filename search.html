@@ -40,15 +40,15 @@
                 <nav class="bg-slate-100 px-5 py-3 gap-8 hidden sm:flex flex-row justify-center">
                     <a class="cursor-pointer hover:font-semibold" href="/">Home</a>
                     <a class="cursor-pointer hover:font-semibold" href="/products.html">Products</a>
-                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html">Rewards</a>
-                    <a class="cursor-pointer hover:font-semibold" href="/profile.html">Profile</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
+                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
                 </nav>
                 <!-- Bottom Nav (Mobile) -->
                 <nav class="hidden bg-slate-100 px-5 py-3 gap-4 flex flex-col justify-center" id="mobile-nav">
                     <a class="cursor-pointer" href="/">Home</a>
                     <a class="cursor-pointer" href="/products.html">Products</a>
-                    <a class="cursor-pointer hover:font-semibold" href="/rewards.html" id="nav-dt-rewards">Rewards</a>
-                    <a class="cursor-pointer hover:font-semibold" href="/profile.html" id="nav-dt-profile">Profile</a>
+                    <a class="cursor-pointer" href="/rewards.html" id="nav-mobile-rewards">Rewards</a>
+                    <a class="cursor-pointer" href="/profile.html" id="nav-mobile-profile">Profile</a>
                     <a href="/signin.html" id="sign-in-btn-mobile" class="py-2 px-4 bg-btn2blue hover:bg-mainblue/[0.6] rounded-xl font-medium cursor-pointer">
                         Sign In
                     </a>
@@ -67,7 +67,7 @@
                                 <input id="search-field" placeholder="Search..." class="p-1 w-full">
                             </div>
                             <!-- Section Search -->
-                            <div class="flex flex-row gap-3">
+                            <div class="flex flex-row items-center gap-3">
                                 <i data-feather="shopping-bag" class="h-6 w-6 md:h-8 md:w-8"></i>
                                 <select id="category-field">
                                     <option value="0">Select Option</option>
@@ -107,8 +107,8 @@
                     <div class="flex flex-col max-sm:mx-auto">
                         <p class="max-sm:text-center font-bold text-2xl">Contact Us</p>
                         <div class="mt-2 flex flex-col gap-1">
-                            <p class="max-sm:text-center">Address: <span class="underline underline-offset-2">123 Nowhere Street #01-01</span></p>
-                            <p class="max-sm:text-center">Phone: <span class="underline underline-offset-2">+65 9999 9999</span></p>
+                            <p class="max-sm:text-center"><span class="font-bold">Address:</span> 123 Nowhere Street #01-01</p>
+                            <p class="max-sm:text-center"><span class="font-bold">Phone:</span> +65 9999 9999</p>
                         </div>
                     </div>
                     <!--Contacts-->
