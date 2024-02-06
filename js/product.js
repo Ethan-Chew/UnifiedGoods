@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 productPriceLbl.innerText = "S$???";
             } else {
                 // Set price based on price - discount
-                productPriceLbl.innerText = `S$${cartSelectedItem.pricePerQuantity} (${cartSelectedItem.discount >= 0 ? "discounted" : "marked-up"})`;
+                productPriceLbl.innerText = `S$${cartSelectedItem.pricePerQuantity.toFixed(2)} (${cartSelectedItem.discount >= 0 ? "discounted" : "marked-up"})`;
             }
             break;
         }
