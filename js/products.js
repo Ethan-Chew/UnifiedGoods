@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     if (sessionStorage.getItem("userID")) {
         document.getElementById("sign-in-btn").classList.add("md:hidden");
     }
-
-    // Query API and Update Data
-    const urlParameters = new URLSearchParams(window.location.search);
-    const categoryName = urlParameters.get("category");
     
     // Start Loading Animation
     document.getElementById("item-loader").classList.remove("hidden");
@@ -30,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
-    // Show All Products
+    // Container to show all product
     const productContainer = document.getElementById("product-container");
 
     // Calculate total amount of products
@@ -170,20 +166,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         renderProductsForPage(1, apiData);
     });
 
-    // If accessed from categories section in index/home page
-    if (categoryName != undefined){
-        const checkbox = document.getElementById(categoryName);
-        checkbox.checked = true;
-        filteredProducts = apiData.filter(product => product.category.name === categoryName);
-        totalProducts = filteredProducts.length;
-        totalPages = Math.ceil(totalProducts / productsPerPage);
-        // Clear existing content of product container
-        productContainer.innerHTML = "";
-        pageNavigationContainer = document.getElementById("page-nav-container");
-        pageNavigationContainer.parentNode.removeChild(pageNavigationContainer);
-        createPageNavigation(filteredProducts);
-        renderProductsForPage(1, filteredProducts);
-    }
 
     // Show the Categories and Products after loading
     document.getElementById('hidden-1').classList.remove('hidden');
