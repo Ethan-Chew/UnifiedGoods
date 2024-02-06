@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             // Generate the Trending Products
             for (let i = 0; i < 4; i++) {
+                // Store 4 random products to be generate the carousel
                 let id = Math.floor(Math.random() * (data.length));
                 if (ids.includes(id)) {
                     id = Math.floor(Math.random() * (data.length));
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const categories = {};
             data.forEach(item =>{
                 if (!categories[item.category.id]){
+                    // Add the category to the categories object if it doesn't exist yet.
                     categories[item.category.id] = {
                         id: item.category.id,
                         name: item.category.name,
@@ -37,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             for (let x = 0; x < 2; x++) {
                 const categoryContainer = document.getElementById("cat-text-"+x);
+                // Generate the category name and description
                 categoryContainer.insertAdjacentHTML(
                     'afterbegin',
                     `<p class="font-semibold text-3xl xl:text-4xl w-full text-left mb-3">${categoriesArray[x].name}</p>
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 productContainer.innerHTML = "";
                 data.forEach(item => {
                     if (item.category.id == categoriesArray[x].id){
+                        // Generate the products for the category
                         productContainer.innerHTML += `<a class="bg-lightblue/[0.4] shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center h-full min-w-60 max-w-60" href="/product.html?id=${item.id}&from=index">
                             <div class="flex justify-center">
                                 <img src="${item.images[0]}" alt="${item.title}" class="object-cover aspect-square">

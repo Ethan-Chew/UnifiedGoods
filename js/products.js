@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             if (filteredProducts != undefined){
                 product = filteredProducts[i];
             }
+            // Add product to product container
             productContainer.innerHTML += `<a class="bg-containerblue shadow-md hover:shadow-xl p-4 rounded-lg text-center align-center" href="/product.html?id=${product.id}&from=products">
                 <div class="flex justify-center">
                     <img src="${product.images[0]}" alt="Product Image" class="object-cover aspect-square w-[20rem] h-auto">

@@ -59,14 +59,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Verify User Answer
         const userGuess = parseFloat(document.getElementById("guess-price").value);
 
+        // Calculate Price Difference and Percentage Difference between User Guess and Product Price (± 20%, ± 50%, > 50%)
         const priceDifference = Math.abs(userGuess - product.price);
         const priceDifferencePercentage = priceDifference / product.price * 100;
-
+        // Check if user entered a valid guess (not a number, not negative, not 0)
         if (isNaN(userGuess)) {
             document.getElementById("err-msg").innerText = "Enter a valid guess!";
         } else if (userGuess <= 0) {
             document.getElementById("err-msg").innerText = "Enter a positive price guess!";
         } else {
+            // Guessed price is not the product price
             if (userGuess != product.price) {
                 if (priceDifferencePercentage <= 20) {
                     // Gussed price ± 20% of Product Price
@@ -112,13 +114,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Check for user's closest guess discount or markup
         if (highestDiscount > 0){
+            // Calculate discount according user's closest gussed price
             finalPrice = product.price - (product.price * (highestDiscount / 100));
             finalPrice = Math.round(finalPrice * 10) / 10;
         } else if (highestDiscount == 0 && markup == true) {
+            // Calculate final price with markup
             finalPrice = product.price * 1.1;
             finalPrice = Math.round(finalPrice * 10) / 10;
             discount = -10;
         } else if (highestDiscount == 0 && markup == false) {
+            // Calculate final price without markup
             finalPrice = product.price;
             discount = 0;
         }
