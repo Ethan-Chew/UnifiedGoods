@@ -1,5 +1,5 @@
 import { db } from "./api/firebase.js";
-import { getDoc, updateDoc, arrayRemove, doc, increment } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
+import { getDoc, updateDoc, doc, increment } from 'https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js';
 
 document.addEventListener("DOMContentLoaded", async function() {
     if (!sessionStorage.getItem("username")) {
@@ -32,6 +32,17 @@ document.addEventListener("DOMContentLoaded", async function() {
         checkoutTitle.innerText = `Checkout (${totalQuantity ? totalQuantity : 0} item${totalQuantity == 1 ? "" : "s"})`;
     }
 
+    // Helper Function to Disable Checkout
+    function checkDisableCheckout(numOfValidItems) {
+        if (numOfValidItems > 0) {
+            document.getElementById("no-items-container").classList.add("hidden"); // Hide section displaying no items
+            document.getElementById("checkout-btn").disabled = false;
+        } else {
+            document.getElementById("no-items-container").classList.remove("hidden"); // Hide section displaying no items
+            document.getElementById("checkout-btn").disabled = true;
+        }
+    }
+
     // Retrieve User's Cart from Database
     const getUserResponse = await getDoc(doc(db, "users", username));
     if (!getUserResponse.exists()) {
@@ -48,16 +59,8 @@ document.addEventListener("DOMContentLoaded", async function() {
             numOfValidItems += 1;
         }
     }
-    // Helper Function to Disable Checkout
-    function checkDisableCheckout(numOfValidItems) {
-        if (numOfValidItems > 0) {
-            document.getElementById("no-items-container").classList.add("hidden"); // Hide section displaying no items
-            document.getElementById("checkout-btn").disabled = false;
-        } else {
-            document.getElementById("no-items-container").classList.remove("hidden"); // Hide section displaying no items
-            document.getElementById("checkout-btn").disabled = true;
-        }
-    }
+    
+    // Check if checkout is disabled
     checkDisableCheckout(numOfValidItems);
     
     /// Display Items in the Cart
@@ -135,11 +138,6 @@ document.addEventListener("DOMContentLoaded", async function() {
                         checkDisableCheckout(numOfValidItems)
                     } catch (err) {
                         console.error(err);
-                    }
-                    
-                    if (cartFromDatabase.length == 0) {
-                        document.getElementById("no-items-container").classList.remove("hidden");
-                        checkoutButton.disabled = true;
                     }
                 });
     

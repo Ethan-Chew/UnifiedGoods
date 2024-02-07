@@ -1,5 +1,7 @@
 # UnifiedGoods - A eCommerce Platform
-**UnifiedGoods** was created by [Ethan Chew](https://github.com/Ethan-Chew) and [Jefferson Low](https://github.com/Jefflyl98). UnifiedGoods is a fictional eCommerce platform, allowing users to 'purchase' items of various categories (for example, clothes, electronics, furniture, etc). Users can play a game in order to gain discounts on their purchases. More information about this game is located [below](###Guessing-the-Product's-Price). In addition, they will earn points as they purchase items from our store.  
+**UnifiedGoods** was created by [Ethan Chew](https://github.com/Ethan-Chew) and [Jefferson Low](https://github.com/Jefflyl98).  
+UnifiedGoods is a fictional eCommerce platform, allowing users to 'purchase' items of various categories (for example, clothes, electronics, furniture, etc). Users can play a game in order to gain discounts on their purchases. More information about this game is located [below](###Guessing-the-Product's-Price). In addition, they will earn points as they purchase items from our store.  
+A [introductory video](https://drive.google.com/file/d/1zKLrLhBqWnx7C7t3TTJs4_KOHtYGXa9l/view?usp=sharing) was also created. You can view the [powerpoint deck](https://drive.google.com/file/d/17fwgVTuHHbt1W_bWluT1_ivIvhIvBCDK/view?usp=sharing) used in the video.
 
 **Disclaimer:** This website is solely created for a school assignment, and all information and names mentioned are entirely fictional, any resemblence to real-life entities is purely a coincidence. All content in this site does not act as real-world information.
 
