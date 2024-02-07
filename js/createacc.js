@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     errorField.innerText = `Unknown Error! Error: ${err}`;
                 }
             }
+            document.getElementById("submit-create").disabled = false;
         }
     });
 });
