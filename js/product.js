@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
         
         // Check if Item exists in cart history
-        const checkCartHistoryIndex = userCartHistory.findIndex(itemid => itemid == productID)
+        const checkCartHistoryIndex = userCartHistory.findIndex(itemid => itemid == productID);
         if (checkCartHistoryIndex === -1) {
             // Item does not exist in cart history
             userCartHistory.push(item.itemid);

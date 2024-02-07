@@ -26,5 +26,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // Un-Hide the Profile Screen
-    document.getElementById("profile-container").classList.remove("hidden")
+    document.getElementById("profile-container").classList.remove("hidden");
 });

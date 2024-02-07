@@ -126,16 +126,16 @@ document.addEventListener("DOMContentLoaded", async function() {
                     document.getElementById(`container-${cartFromDatabase[i].itemid}`).remove();
                     // Remove Item from Cart in Database
                     try {
-                        cartFromDatabase[i].quantity = null
+                        cartFromDatabase[i].quantity = null;
                         await updateDoc(doc(db, "users", username), {
                             cart: cartFromDatabase
                         });
 
-                        numOfValidItems -= 1
+                        numOfValidItems -= 1;
 
                         // Update Checkout Section Information
                         updateCheckoutInfo(cartFromDatabase);
-                        checkDisableCheckout(numOfValidItems)
+                        checkDisableCheckout(numOfValidItems);
                     } catch (err) {
                         console.error(err);
                     }
