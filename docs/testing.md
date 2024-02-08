@@ -49,8 +49,8 @@ How the UnifiedGoods site can be tested, to ensure that all implimented features
     - Verify that the products are filtered appropriately.
 
 ## Rewards Screen
-1. **Tier Calculation**: Ensure that the user tiers is calculated accurately based on their points earned.
-2. **Details**: Ensures that the user's loyalty rewards, points and tiers are displayed correctly.
+1. **Tier Calculation**: Ensure that the user tiers is calculated accurately based on their points earned. Information on how each tier can be attained is documented in the main [README file](../README.md).
+2. **Details**: Ensures that the user's points and tiers are displayed correctly.
 
 ## Cart Screen
 1. **Cart Functionality**: Products added to carts are stored and shown correctly. Check if the product can be viewed, removed or edit the quantity in the cart.
