@@ -2,70 +2,72 @@
 How the UnifiedGoods site can be tested, to ensure that all implimented features work as expected.
 
 ## Preparations
-1. Verify that you have created an account with UnifiedGoods.
-    - When creating an account, **please DO NOT enter a real password.** Passwords stored in our database are not encrypted, and only sample passwords should be used.
-2. Once you have an account, simply log in.
+1. **Account Creation**: Test account creation with various scenarios, including valid inputs, invalid inputs.
+    - Invalid inputs: Duplicate username
+    - Check if user is able to succesfully create their account.
+    - **WARNING - DO NOT enter a real password**. Passwords stored in our database are not encrypted, and only sample passwords should be used.
+2. **Login**: Test login functionality with correct details and incorrect password.
+    - Check if user is able to login to their account.
 
 ## Navigation Bar
-1. Mobile Responsiveness
-    - On smaller screens, the *secondary* navbar is collapsed into a Hamburger Menu. By clicking the Hamburger Icon on the top left hand side of the screen, the user would be able to toggle between showing and hidding the mobile navigation tabs
-2. Account Requirement
-    - Some pages require users to sign in before interacting with it, for example, the cart, rewards and profile screen.
-    - If the user clicks on the Rewards and Profile Screens and they are not logged in, an alert would prompt them to sign in, then redirect them to the sign in page.
+1. **Mobile Responsiveness**: Test the appearance and the functionality of the navigation menu when on different devices and screen sizes.
+2. **Authentication**: Verify that users attempts to access restricted pages prompts the user to log in and will redirect them to the log in page succesfully.
 
 ## Home Screen
-1. Trending Products
-    - For the demostration purposes, the trending products are generated randomly every time the page is refreshed
-    - Clicking on a product will bring you to its respective product detail page
-2. Categories
-    - On every page load, two random categories would be chosen and displayed to the user.
-    - The relevant products in these categories would be shown as well.
+1. **Trending Products**: Continuously refresh the home page and ensure that the trending products is consistently changing and not fixed on a particular sets of products. Clicking on a product will bring you to its respective product detail page.
+    - For demonstration purposes the trending products are generated reandomly every time the page is refreshed.
+2. **Categories Display**: Confirm that the products in the categories section displayed are relevant and match the category the should belong in. Clicking on a product will bring you to its respective product detail page.
+    - On every page load, two random categories should be choosen and displayed to the user.
 
 ## Product Screen
-1. Verify that all relevant product details are displayed, including the product name, price, description, and any other applicable information.
-2. Ensure that the product image is clear and properly displayed, able to switch between the provided images
-3. Check that the "Add to Cart" button and quantity is functional and adds the correct amount of the product to the cart.
-4. Check that the "Guess the Price" button will link to the game page.
+1. **Product Details**: Verify that all the product details, including product name, pricing, descriptions and any other applicable information are displayed and accurate.
+2. **Images Quality**: Check the image resolution and ensure that images loaded is clear and properly displayed across all different devices and browsers.
+3. **Game Link Button**: Check that the "Guess the Price" button will link to the game page correctly.
 
 ## Product List Screen
-1. Categories Sidebar
-    - On page load, fetch every available categories from the database to create the categories checkboxes.
-    - Apply button shows the products from selected/checked categories.
-    - Clear button unchecks all checkboxes and shows products from all categories.
-    - Select all button checks all the checkboxes.
-2. Products List
-    - On page load, a maximum of 16 products should be loaded on screen and page navigation is generated.
-    - Page navigation works and shows different products for all the pages.
-    - Clicking on the product will open the link to the product page for purchasing.
+1. **Category Sidebar**: On page load, fetch every categories available from the database and create their respective checkboxes. Ensure that the respective buttons are executing the functions appropriately.
+    - Clear button unchecks all checkboxes and display all available products
+    - Select all button will check all the checkboxes
+    - Apply button will display products from the selected respective categories.
+2. **Category Filtering**: Ensure that selecting/deselecting categories correctly filters the displayed products.
+3. **Pagination Functionality**: Test the pagination by navigating through the various pages and verifying that the products are displayed and not duplicated.
+4. **Products List**: Clicking on a product will bring you to its respective product detail page.
   
 ## Game Screen
-1. Ensure the game loads the correct product information for guessing the price.
-2. Test that the countdown timer works.
-3. Test the amount of times the user is able to guess the price. (tries)
-4. Test the calculation for the discount is working properly.
-5. Check if results are stored in the database correctly.
-6. Check if the end screen results price is shown correctly
-7. Test if the continue button will return to the correct product page.
+1. **Game Stability**: Test the game under various scenarios
+    - Products and its details are shown correctly
+    - Countdown timer works and starts ticking down
+    - Test the amount of times that the user is able to guess the price
+    - Test that the calculation for the discounts are working properly
+    - End screen shows the correct price
+    - Continue button in the end screen will bring the user back to the product page
+2. **Results Storage**: Verify that the game results such as the discounts and item price are stored securely in the datbase and associated with the correct user and product.
 
 ## Search Screen
-1. Confirm that the search bar is responsive and allows users to enter search queries
-2. Check that the relevant products are displayed based on the search query
-3. Verify that the search results are filtered properly.
+1. **Search Query Handling**: Test the search bar with various queries, including misspelled words, partial matches and special characters.
+    - Check that the correct products are displayed based on the query.
+    - Verify that the products are filtered appropriately.
 
 ## Rewards Screen
-1. Ensures that the user's loyalty rewards, points and tier is correctly displayed
+1. **Tier Calculation**: Ensure that the user tiers is calculated accurately based on their points earned.
+2. **Details**: Ensures that the user's loyalty rewards, points and tiers are displayed correctly.
 
 ## Cart Screen
-1. Cart Functionality
-    - Products added from various sections of the site is stored and shown correctly
-    - Check that if the product can be viewed, removed or edited in the cart
-    - Test the checkout process and ensure it shows a confirmation popup
+1. **Cart Functionality**: Products added to carts are stored and shown correctly. Check if the product can be viewed, removed or edit the quantity in the cart.
+2. **Checkout Functionality**: Check that a confirmation page is shown with all the correct details and a receipt is shown in the end.
+    - When checked out fully the appropriate amount of points should be added to the user profile.
 
 ## Profile Screen
-1. Confirm that the user is able to edit their profile information.
+1. **Details**: Confirm that the user's username and email information is correctly displayed on the screen
+2. **Functionality**: Ensure that the sign out button, succesfully sign out from their account and bring them back to the home page. 
 
 ## General Testing
-1. Test the sites on different browsers and ensure functionality
-2. Test on various devices (mobile,tablet,desktop) to ensure reposnsiveness and functionality
-3. Ensure the performance of the website is optimized and working well.
-4. Check if user is able to register and login to their accounts.
+1. **Performance Testing**: Perform various testing to measure the website load times, server response times, and overal responsiveness under various traffic loads should be optimized and working well.
+2. **Accessibility Testing**: Perform testing of all functions and visuals in different browsers and devices for responsiveness.
+
+## User Experience Testing
+1. Conduct usability testing to test the intuitiveness and ease of use of the website interface.
+2. Test common user interaction, such as browsing of products, adding items to cart, completing purchase and playing the game to ensure a smooth experience.
+
+## Session Management
+1. Test session handling mechanisms, such as session expiration and session persistence across page reloads, to ensure a seamless user experience without unexpected logouts.
